@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Application Capability</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+    <style>
+main,
+main>article,
+main>article>div {
+background:inherit;
+}
+body {
+counter-reset:section sub-section appendix sub-appendix;
+}
+code, samp { color: #e00; }
+pre code, pre samp { color: var(--text); }
+dfn { font-weight:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+position: relative;
+}
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
+margin:0;
+font-weight:normal;
+font-style:normal;
+font-size:1em;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span,
+figure.example > figcaption > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
+color:var(--issueheading-text);
+}
+div.note h3, div.note h4, div.note h5 {
+color:var(--noteheading-text);
+}
+figure.example figcaption {
+color:var(--exampleheading-text);
+}
+main figure {
+text-align:left;
+}
+figure[id] {
+position:relative;
+padding:0.5em;
+}
+figure[id] figcaption {
+font-style:normal;
+font-size:1em;
+}
+figure.example figcaption span + span {
+text-transform:initial;
+}
+.copyright + hr {
+border-style: solid;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+#acknowledgements ul { padding: 0; margin:0; }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+dd .contributed {
+user-select: none;
+}
+aside.do { overflow:inherit; }
+aside.do blockquote {
+padding: 0; border: 0; margin: 0;
+}
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
+}
+dl [rel~="odrl:action"] li:after {
+content: ", ";
+}
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
+aside section > .toc,
+aside section > .toc ol {
+margin-left: revert;
+}
+aside section > .toc li li {
+margin-left: 1em;
+font-size: revert;
+}
+.toc li > p:first-child {
+margin-bottom:initial;
+}
+
+table {
+border-collapse:collapse;
+}
+table + table {
+margin-top:2em;
+}
+caption {
+text-align:left;
+padding:0 0.25em 0.25em;
+margin-bottom: 1em;
+font-size: 1em;
+font-style: revert;
+font-weight: bold;
+border-bottom: 1px solid;
+}
+caption, tbody, tfoot {
+border-bottom:2pt solid #ccc;
+}
+thead,
+thead th[colspan] {
+border-bottom:1pt solid #ccc;
+}
+[rowspan] { vertical-align: bottom; }
+tbody [rowspan] { vertical-align: middle; }
+tbody th[scope="rowgroup"] {
+border-bottom:3pt double #ccc;
+}
+tr {
+border-bottom:1pt solid #ccc;
+}
+th, td {
+padding:0.25em;
+font-size:0.923em;
+word-wrap:normal;
+}
+table ul,
+table ol,
+table li,
+table p,
+table dd {
+margin:0;
+text-align:left;
+}
+table ul,
+table ol {
+padding-left:1em;
+}
+tfoot td > * + * {
+margin-top:1em;
+}
+tfoot dd:after { content: "\A"; white-space:pre; }
+tfoot dt, tfoot dd { display:inline; }
+tfoot dd { margin-left: 0.5em; }
+tfoot dd + dt { margin-top:0; }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
+}
+</style>
+    <link href="https://www.w3.org/StyleSheets/TR/2021/base.css" media="all" rel="stylesheet" title="W3C-Base" />
+    <link disabled="" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="" rel="stylesheet" />
+    <link href="http://localhost:3000/dokieli/media/css/dokieli.css" media="all" rel="stylesheet" />
+    <script async="" src="http://localhost:3000/dokieli/scripts/dokieli.js"></script>
+  </head>
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/">
+    <main>
+      <article about="" typeof="schema:Article">
+        <div class="head">
+          <h1 property="schema:name">Application Capability</h1>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2024-05-31T00:00:00Z">28 May 2024</time></p>
+          <details open="">
+            <summary>More details about this document</summary>
+            <dl id="document-identifier">
+              <dt>This version</dt>
+              <dd><a href="https://example.org/app-capability">https://example.org/app-capability</a></dd>
+            </dl>
+            <dl id="document-latest-published-version">
+              <dt>Latest published version</dt>
+              <dd><a href="https://example.org/app-capability">https://example.org/app-capability</a></dd>
+            </dl>
+            <dl id="document-history">
+              <dt>History</dt>
+              <dd><a href="https://github.com/csarven/app-capability/commits/main/index.html">Commit history</a></dd>
+            </dl>
+            <dl id="document-editors">
+              <dt>Editors</dt>
+              <dd data-editor-id="46140" id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></span></span> <span class="contributed">(v0.3.1415)</span></dd>
+              <dd data-editor-id="129283" id="Virginia-Balseiro"><span about="" rel="schema:editor schema:author"><span about="https://virginiabalseiro.com/#me" typeof="schema:Person"><span about="https://virginiabalseiro.com/#me" property="schema:name"><span property="schema:givenName">Virginia</span> <span property="schema:familyName">Balseiro</span></span></span></span> <span class="contributed">(v0.3.1415)</span></dd>
+            </dl>
+            <dl id="document-published">
+              <dt>Published</dt>
+              <dd><time content="2024-05-31T00:00:00Z" datatype="xsd:dateTime" datetime="2024-05-31T00:00:00Z" property="schema:datePublished">2024-05-31</time></dd>
+            </dl>
+            <dl id="document-modified">
+              <dt>Modified</dt>
+              <dd><time content="2026-07-15T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-07-15T10:58:10.735Z" property="schema:dateModified">2026-07-15</time></dd>
+            </dl>
+            <dl id="document-feedback">
+              <dt>Feedback</dt>
+              <dd><a href="https://github.com/csarven/app-capability" rel="doap:repository">GitHub csarven/app-capability</a> (<a href="https://github.com/csarven/app-capability/pulls">pull requests</a>, <a href="https://github.com/csarven/app-capability/issues/new">new issue</a>, <a href="https://github.com/csarven/app-capability/issues" rel="doap:bug-database">open issues</a>)</dd>
+            </dl>
+            <dl id="document-language">
+              <dt>Language</dt>
+              <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
+            </dl>
+            <dl id="document-type">
+              <dt>Document Type</dt>
+              <dd><a href="http://usefulinc.com/ns/doap#Specification" rel="rdf:type">Specification</a></dd>
+            </dl>
+            <dl id="document-version">
+              <dt>Version</dt>
+              <dd><span lang="" property="schema:version" xml:lang="">0.3.1415</span></dd>
+            </dl>
+            <dl id="document-policy">
+              <dt>Policy</dt>
+              <dd>
+                <dl id="document-policy-offer" rel="odrl:hasPolicy" resource="#document-policy-offer" typeof="odrl:Policy">
+                  <dt>Rule</dt>
+                  <dd><a about="#document-policy-offer" href="https://www.w3.org/TR/odrl-vocab/#term-Offer" typeof="odrl:Offer">Offer</a></dd>
+                  <dt>Unique Identifier</dt>
+                  <dd><a href="https://example.org/app-capability#document-policy-offer" rel="odrl:uid">https://example.org/app-capability#document-policy-offer</a></dd>
+                  <dt>Target</dt>
+                  <dd><a href="https://example.org/app-capability" rel="odrl:target">https://example.org/app-capability</a></dd>
+                  <dt>Permission</dt>
+                  <dd>
+                    <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
+                      <dt>Assigner</dt>
+                      <dd><a href="https://www.w3.org/groups/cg/foo-bar-baz/" rel="odrl:assigner">W3C Foo Bar Baz Group</a></dd>
+                      <dt>Action</dt>
+                      <dd>
+                        <ul rel="odrl:action">
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-aggregate" resource="odrl:aggregate">Aggregate</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-archive" resource="odrl:archive">Archive</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse" resource="odrl:concurrentUse">Concurrent Use</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks" resource="http://creativecommons.org/ns#DerivativeWorks">Derivative Works</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-derive" resource="odrl:derive">Derive</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-digitize" resource="odrl:digitize">Digitize</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-display" resource="odrl:display">Display</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Distribution" resource="http://creativecommons.org/ns#Distribution">Distribution</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-index" resource="odrl:index">Index</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-inform" resource="odrl:inform">Inform</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-install" resource="odrl:install">Install</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Notice" resource="http://creativecommons.org/ns#Notice">Notice</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-present" resource="odrl:present">Present</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-print" resource="odrl:print">Print</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-read" resource="odrl:read">Read</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-reproduce" resource="odrl:reproduce">Reproduce</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction" resource="http://creativecommons.org/ns#Reproduction">Reproduction</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-stream" resource="odrl:stream">Stream</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-synchronize" resource="odrl:synchronize">Synchronize</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech" resource="odrl:textToSpeech">Text-to-speech</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-transform" resource="odrl:transform">Transform</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-translate" resource="odrl:translate">Translate</a></li>
+                        </ul>
+                      </dd>
+                    </dl>
+                  </dd>
+                </dl>
+              </dd>
+            </dl>
+          </details>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2024–9999 the Contributors to Application Capability, Version 0.3.1415, published by the <a href="https://www.w3.org/groups/cg/foo-bar-baz/">Foo Bar Baz Group</a> under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a about="" href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</span></p>
+          <hr title="Separator for header" />
+        </div>
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>Application Capability (<abbr title="Application Capability">AC</abbr>) defines a structured description of an application's affordances: the actions it can perform, how to invoke them, and what it requires from the environment to function. Consumers, including servers, <a href="https://www.w3.org/TR/web-user-agents/">web user agents</a>, and applications, can discover and process these descriptions to make informed decisions about accessing, presenting, and interacting with resources.</p>
+            </div>
+          </section>
+          <section id="status-of-this-document" inlist="" rel="schema:hasPart" resource="#status-of-this-document">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This report was published by the <a href="https://www.w3.org/groups/cg/foo-bar-baz/">Foo Bar Baz Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
+            </div>
+          </section>
+          <nav id="toc">
+            <h2>Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline"><a class="tocxref" href="#abstract"><bdi class="secno"></bdi> <span>Abstract</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#status-of-this-document"><bdi class="secno"></bdi> <span>Status of This Document</span></a></li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.1</bdi> <span>Terminology</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#namespaces"><bdi class="secno">1.2</bdi> <span>Namespaces</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#syntax"><bdi class="secno">1.3</bdi> <span>Syntax</span></a></li>
+                    <li class="tocline">
+                      <p><a class="tocxref" href="#conformance"><bdi class="secno">1.4</bdi> <span>Conformance</span></a></p>
+                      <ol>
+                        <li class="tocline"><a class="tocxref" href="#normative-and-informative-content"><bdi class="secno">1.4.1</bdi> <span>Normative and Informative Content</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#specification-category"><bdi class="secno">1.4.2</bdi> <span>Specification Category</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#classes-of-products"><bdi class="secno">1.4.3</bdi> <span>Classes of Products</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#interoperability"><bdi class="secno">1.4.4</bdi> <span>Interoperability</span></a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </li>
+                <li class="tocline"><a class="tocxref" href="#discovery"><bdi class="secno">2.</bdi> <span>Discovery</span></a></li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#data-model"><bdi class="secno">3.</bdi> <span>Capability Description Data Model</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#capability-description"><bdi class="secno">3.1</bdi> <span>Capability Description</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#capability"><bdi class="secno">3.2</bdi> <span>Capability</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#invocation"><bdi class="secno">3.3</bdi> <span>Invocation</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#invocation-variables"><bdi class="secno">3.4</bdi> <span>Invocation Variables</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#requirement"><bdi class="secno">3.6</bdi> <span>Requirement</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#embedding-in-other-description-formats"><bdi class="secno">3.7</bdi> <span>Embedding in Other Description Formats</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#notifications"><bdi class="secno">4.</bdi> <span>Notifications</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#request-notification"><bdi class="secno">4.1</bdi> <span>Request Notification</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#requirements-review"><bdi class="secno">4.2</bdi> <span>Requirements Review</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#access-request"><bdi class="secno">4.3</bdi> <span>Access Request</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#error-response-inbox-discovery"><bdi class="secno">4.4</bdi> <span>Error Response Inbox Discovery</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#extensions"><bdi class="secno">5.</bdi> <span>Extensions</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#invocation-extension"><bdi class="secno">5.1</bdi> <span>Invocation Extension</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#considerations"><bdi class="secno">6.</bdi> <span>Considerations</span></a></p>
+                  <ol>
+                    <li class="tocline">
+                      <p><a class="tocxref" href="#security-considerations"><bdi class="secno">6.1</bdi> <span>Security Considerations</span></a></p>
+                      <ol>
+                        <li class="tocline"><a class="tocxref" href="#threat-model"><bdi class="secno">6.1.1</bdi> <span>Threat Model</span></a></li>
+                      </ol>
+                    </li>
+                    <li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">6.2</bdi> <span>Privacy Considerations</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">6.3</bdi> <span>Accessibility Considerations</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#internationalization-considerations"><bdi class="secno">6.4</bdi> <span>Internationalization Considerations</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#security-and-privacy-review"><bdi class="secno">6.5</bdi> <span>Security and Privacy Review</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#societal-impact-review"><bdi class="secno">6.6</bdi> <span>Societal Impact Review</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#application-considerations"><bdi class="secno">6.7</bdi> <span>Application Considerations</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">B.</bdi> <span>Acknowledgements</span></a></li>
+                <li class="tocline">
+                  <p><a class="tocxref" href="#references"><bdi class="secno">C.</bdi> <span>References</span></a></p>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">C.1</bdi> <span>Normative References</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.2</bdi> <span>Informative References</span></a></li>
+                  </ol>
+                </li>
+              </ol>
+            </div>
+          </nav>
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 property="schema:name">Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+              <p>Web applications increasingly operate in decentralised environments where resources are stored and served independently of the applications that consume them. A server hosting a resource has no prior knowledge of which applications a user may wish to use to interact with in different ways. Applications and tools such as resource managers, catalogues, and authorisation agents face the same problem: no reliable mechanism exists to discover what an application supports, what resource types it handles, or what web user agent permissions it requires.</p>
+              <p>This specification addresses that gap by defining a structured description of an application's capabilities and requirements. An <dfn id="dfn-application-capability-description">Application Capability Description</dfn> allows an application to declare, at a discoverable location, the following kinds of information:</p>
+              <ul>
+                <li>The media types, classes of resources, or shape of resources it can handle;</li>
+                <li>The actions it can perform on those resources, expressed in terms of established action vocabularies;</li>
+                <li>The invocation patterns used to trigger the application, such as a <cite>URI Template</cite> for opening a resource;</li>
+                <li>The web user agent level permissions and <cite>Content Security Policy</cite> directives it requires, so that server operators can make informed decisions about authorisation;</li>
+                <li>Descriptive information such as name, description, homepage, and repository, together with an inbox for receiving notifications about the outcome of a requirements review.</li>
+              </ul>
+              <p>This specification is informed by, but distinct from, the following related efforts:</p>
+              <ul>
+                <li><cite><a href="https://w3c.github.io/manifest/">Web Application Manifest</a></cite> defines a JSON-based manifest for installed web apps, primarily for Progressive Web Applications (PWA) use cases; its <code>file_handlers</code> member declares media-type handling scoped to installed applications mediated by the browser or operating system;</li>
+                <li><cite><a href="https://w3c.github.io/webappsec-csp/">Content Security Policy Level 3</a></cite> defines the CSP header mechanism that servers use to restrict resource loading;</li>
+                <li><cite><a href="https://w3c.github.io/permissions/">Permissions</a></cite> and <cite><a href="https://w3c.github.io/webappsec-permissions-policy/">Permissions Policy</a></cite> define browser permission models;</li>
+                <li><cite><a href="https://w3c.github.io/dpv/dpv/">Data Privacy Vocabulary (DPV)</a></cite> provides vocabulary for expressing data processing purposes and policies;</li>
+                <li><cite><a href="http://usefulinc.com/ns/doap">Description of a Project (DOAP)</a></cite> provides vocabulary for describing software projects;</li>
+                <li><cite><a href="https://www.hydra-cg.com/spec/latest/core/">Hydra Core Vocabulary</a></cite> describes HTTP API operations and IRI templates in RDF;</li>
+                <li><cite><a href="https://www.w3.org/TR/wot-architecture11/">Web of Things (WoT) Architecture</a></cite> defines a self-description model for network-connected entities, describing interaction affordances of the entity itself; this specification describes applications that act on third-party resources and negotiate host-origin Content Security Policy;</li>
+                <li><cite><a href="https://html.spec.whatwg.org/multipage/system-state.html#custom-handlers">registerProtocolHandler</a></cite> (HTML) allows a web application to register as a handler for a custom URL scheme, enabling scheme-based invocation. It requires prior user-mediated browser registration and is scoped to named schemes rather than arbitrary <code>https:</code> IRIs, making it unsuitable as a general mechanism for invoking applications against HTTP resources;</li>
+                <li><cite><a href="https://www.w3.org/TR/service-workers/">Service Workers</a></cite> can intercept fetch requests before they reach the network, allowing query-string parameters to remain client-side and avoiding server disclosure. This requires the service worker to be registered in advance, introducing a bootstrapping dependency that general-purpose invocation cannot rely on.</li>
+              </ul>
+              <p>Where terms from these vocabularies are appropriate, this specification reuses or references them.</p>
+              <p>Use cases:</p>
+              <ul id="use-cases">
+                <li>Resource owner wants to set application-specific content security policies for servers so that users can bring their own applications to hosted resources without the browser blocking them, and without the server issuing overly permissive blanket policies.</li>
+                <li>End-user wants to use a specific application based on its affordances so that they can choose among applications whose declared actions match their intent, without hardcoded file associations.</li>
+                <li>Application developer wants their application's entry in catalogues to update automatically, by publishing one authoritative capability description that catalogues re-fetch, instead of submitting updates to each catalogue manually.</li>
+              </ul>
+              <p>This specification is intended for:</p>
+              <ul about="" rel="schema:audience">
+                <li><a href="http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135">Server and storage operators</a> that want to make security and privacy-relevant decisions about which applications may access resources they serve, and to understand the permissions those applications declare they need.</li>
+                <li><a href="http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d">Application developers</a> that want to produce or consume structured capability descriptions from their applications so that they can be discovered and invoked by other consumers.</li>
+              </ul>
+              <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme">
+                <h3 property="schema:name skos:prefLabel">Terminology</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <p property="skos:definition">The Application Capability specification defines the following terms. These terms are referenced throughout this specification.</p>
+                  <dl>
+                    <dt><dfn id="dfn-application">Application</dfn></dt>
+                    <dd>A web application that operates on resources identified by IRIs. An application may be deployed at a fixed origin, embedded in markup-based host languages, or as a <cite>Web Extension</cite>. An application may act as a <a href="#dfn-sender">Sender</a>, a <a href="#dfn-consumer">Consumer</a>, or both.</dd>
+                    <dt><dfn id="dfn-sender">Sender</dfn></dt>
+                    <dd>An implementation that publishes and, where applicable, delivers an Application Capability Description to a <a href="#dfn-receiver">Receiver</a>. Typically an application making its identity, capabilities, and requirements known.</dd>
+                    <dt><dfn id="dfn-receiver">Receiver</dfn></dt>
+                    <dd>An implementation that accepts and processes capability descriptions or notifications referencing them. Typically an HTTP server that hosts resources, hosts an inbox, reviews declared requirements, and serves Content Security Policy headers accordingly.</dd>
+                    <dt><dfn id="dfn-consumer">Consumer</dfn></dt>
+                    <dd>An implementation that reads and processes an Application Capability Description, obtained directly from the application's IRI or from a <a href="#dfn-receiver">Receiver</a>, in order to discover capabilities, prepare invocations, or inform authorisation decisions.</dd>
+                    <dt><dfn id="dfn-capability">Capability</dfn></dt>
+                    <dd>A declared affordance of an application: an action that can be triggered by an invocation.</dd>
+                    <dt><dfn id="dfn-invocation">Invocation</dfn></dt>
+                    <dd>The act of triggering an application to perform processes, for example by navigating to a URI constructed from a URI Template. For invocations based on URI Templates, an invocation covers only the URL-loading step; subsequent user-activated operations or UI events within the application are out of scope, even though the capabilities do express these affordances.</dd>
+                  </dl>
+                </div>
+              </section>
+              <section id="namespaces" inlist="" rel="schema:hasPart" resource="#namespaces">
+                <h3 property="schema:name">Namespaces</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The following prefixes and namespaces are used in this specification.</p>
+                  <table>
+                    <caption>Prefixes and Namespaces</caption>
+                    <thead>
+                      <tr>
+                        <th>Prefix</th>
+                        <th>Namespace</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>rdf</code></td>
+                        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                        <td>[<cite><a class="bibref" href="#bib-rdf-schema">rdf-schema</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td><code>rdfs</code></td>
+                        <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                        <td>[<cite><a class="bibref" href="#bib-rdf-schema">rdf-schema</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td><code>dcterms</code></td>
+                        <td>http://purl.org/dc/terms/</td>
+                        <td>[<cite><a class="bibref" href="#bib-dc-terms">DC-TERMS</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td><code>doap</code></td>
+                        <td>http://usefulinc.com/ns/doap#</td>
+                        <td>Description of a Project</td>
+                      </tr>
+                      <tr>
+                        <td><code>hydra</code></td>
+                        <td>http://www.w3.org/ns/hydra/core#</td>
+                        <td>[<cite><a class="bibref" href="#bib-hydra">Hydra Core Vocabulary</a></cite></td>
+                      </tr>
+                      <tr>
+                        <td><code>ldp</code></td>
+                        <td>http://www.w3.org/ns/ldp#</td>
+                        <td>[<cite><a class="bibref" href="#bib-ldp">Linked Data Platform</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td><code>odrl</code></td>
+                        <td>http://www.w3.org/ns/odrl/2/</td>
+                        <td>[<cite><a class="bibref" href="#bib-odrl-vocab">ODRL Vocabulary &amp; Expression 2.2</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td><code>dpv</code></td>
+                        <td>https://w3id.org/dpv#</td>
+                        <td>[<cite><a class="bibref" href="#bib-dpv">Data Privacy Vocabulary</a></cite>]</td>
+                      </tr>
+                      <tr>
+                        <td><code>ac</code></td>
+                        <td>https://www.w3.org/ns/ac#</td>
+                        <td>Application Capability (this specification)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+              <section id="syntax" inlist="" rel="schema:hasPart" resource="#syntax">
+                <h3 property="schema:name">Syntax</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This specification uses JSON-LD [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>] as the preferred data format, and <code>https://www.w3.org/ns/ac.jsonld</code> as a URI for the JSON-LD context and as a value of the <code>profile</code> parameter used for content negotiation.</p>
+                  <div class="note">
+                    <p><span>Note</span>: The JSON-LD context and the vocabulary outlined in this section are temporarily included here. Once the JSON-LD context document and the vocabulary are published, they will be the normative references.</p>
+                  </div>
+                  <figure class="listing" id="jsonld-context" rel="schema:hasPart" resource="#jsonld-context">
+                    <figcaption property="schema:name">JSON-LD context (<code>https://www.w3.org/ns/ac.jsonld</code>)</figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "ac":      "https://www.w3.org/ns/ac#",
+    "as":      "https://www.w3.org/ns/activitystreams#",
+    "dpv":     "https://w3id.org/dpv#",
+    "ldp":     "http://www.w3.org/ns/ldp#",
+    "odrl":    "http://www.w3.org/ns/odrl/2/",
+    "id":   "@id",
+    "type": "@type",
+    "Accept": "as:Accept",
+    "accept": "ac:accept",
+    "action": {"@id": "ac:action", "@type": "@id"},
+    "actor": {"@id": "as:actor", "@type": "@id"},
+    "browserPermission": "ac:browserPermission",
+    "Capability": "ac:Capability",
+    "capability": {"@id": "ac:capability", "@type": "@id"},
+    "cspDirective": "ac:cspDirective",
+    "destination": {"@id": "ac:destination", "@type": "@id"},
+    "inbox": {"@id": "ldp:inbox", "@type": "@id"},
+    "Invocation": "ac:Invocation",
+    "invocation": {"@id": "ac:invocation", "@type": "@id"},
+    "login": {"@id": "ac:login", "@type": "@id"},
+    "mapping": "ac:mapping",
+    "object": {"@id": "as:object", "@type": "@id"},
+    "open": {"@id": "ac:open", "@type": "@id"},
+    "output": "ac:output",
+    "property": {"@id": "ac:property", "@type": "@id"},
+    "proxy": {"@id": "ac:proxy", "@type": "@id"},
+    "Reject": "as:Reject",
+    "Request": "ac:Request",
+    "Requirement": "ac:Requirement",
+    "requirement": {"@id": "ac:requirement", "@type": "@id"},
+    "resourceType": {"@id": "ac:resourceType", "@type": "@id"},
+    "search": "ac:search",
+    "shape": {"@id": "ac:shape", "@type": "@id"},
+    "summary": "as:summary",
+    "template": "ac:template",
+    "UriTemplateInvocation": "ac:UriTemplateInvocation",
+    "variable": "ac:variable"
+  }
+}</code></pre>
+                  </figure>
+                  <p>When this context is combined with other JSON-LD contexts, for example ActivityStreams in <a href="#notifications">request notifications</a>, it is listed last so that its term definitions apply.</p>
+                  <p>This context does not define a term for typing the application itself. A capability description subject can carry any type from its host vocabulary (for example <code>as:Application</code>, an OAuth client, a <code>doap:Project</code>, or a Web of Things Thing) or none at all; see <a href="#capability-description">Capability Description</a>.</p>
+                  <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as <code>as</code> and <code>ldp</code>, retain the semantics of their defining specifications.</p>
+                  <table>
+                    <caption>Classes</caption>
+                    <thead>
+                      <tr>
+                        <th>Term</th>
+                        <th>IRI</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>Accept</code>, <code>Reject</code></td>
+                        <td><code>as:Accept</code>, <code>as:Reject</code></td>
+                        <td>Outcome notification types (Activity Vocabulary).</td>
+                      </tr>
+                      <tr>
+                        <td>(none)</td>
+                        <td><code>ac:Application</code></td>
+                        <td>A web application that operates on resources identified by IRIs. Not aliased in the context: a capability description subject can use this class, a host vocabulary's type, or none at all.</td>
+                      </tr>
+                      <tr>
+                        <td><code>Capability</code></td>
+                        <td><code>ac:Capability</code></td>
+                        <td>A declared affordance of an application: an action that can be triggered by an invocation. See <a href="#capability">Capability</a>.</td>
+                      </tr>
+                      <tr>
+                        <td><code>Invocation</code></td>
+                        <td><code>ac:Invocation</code></td>
+                        <td>An abstract class describing one mechanism by which a capability is triggered. See <a href="#invocation">Invocation</a>.</td>
+                      </tr>
+                      <tr>
+                        <td><code>Request</code></td>
+                        <td><code>ac:Request</code></td>
+                        <td>A notification asking a Receiver to review information concerning an application and act on it. See <a href="#request-notification">Request Notification</a>.</td>
+                      </tr>
+                      <tr>
+                        <td><code>Requirement</code></td>
+                        <td><code>ac:Requirement</code></td>
+                        <td>A declaration of something the application needs from its environment. See <a href="#requirement">Requirement</a>.</td>
+                      </tr>
+                      <tr>
+                        <td><code>UriTemplateInvocation</code></td>
+                        <td><code>ac:UriTemplateInvocation</code></td>
+                        <td>An Invocation by navigation to an IRI constructed from a URI Template. See <a href="#uri-template-invocation">URI Template Invocation</a>.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <caption>Properties</caption>
+                    <thead>
+                      <tr>
+                        <th>Term</th>
+                        <th>IRI</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>accept</code></td>
+                        <td><code>ac:accept</code></td>
+                        <td>Media types a capability accepts as input.</td>
+                      </tr>
+                      <tr>
+                        <td><code>action</code></td>
+                        <td><code>ac:action</code></td>
+                        <td>The action a capability affords, preferably from a controlled and shared vocabulary.</td>
+                      </tr>
+                      <tr>
+                        <td><code>actor</code>, <code>object</code>, <code>summary</code></td>
+                        <td><code>as:actor</code>, <code>as:object</code>, <code>as:summary</code></td>
+                        <td>Properties used in <a href="#notifications">request notifications</a> (Activity Vocabulary).</td>
+                      </tr>
+                      <tr>
+                        <td><code>browserPermission</code></td>
+                        <td><code>ac:browserPermission</code></td>
+                        <td>A browser permission name the application may request at runtime.</td>
+                      </tr>
+                      <tr>
+                        <td><code>capability</code></td>
+                        <td><code>ac:capability</code></td>
+                        <td>Links an application to one or more <a href="#capability">Capability</a> declarations.</td>
+                      </tr>
+                      <tr>
+                        <td><code>cspDirective</code></td>
+                        <td><code>ac:cspDirective</code></td>
+                        <td>A CSP directive the application requires the host server to include.</td>
+                      </tr>
+                      <tr>
+                        <td><code>destination</code></td>
+                        <td><code>ac:destination</code></td>
+                        <td>The IRI to deliver or save the result of an action to.</td>
+                      </tr>
+                      <tr>
+                        <td><code>login</code>, <code>open</code>, <code>output</code>, <code>proxy</code>, <code>search</code></td>
+                        <td><code>ac:login</code>, <code>ac:open</code>, <code>ac:output</code>, <code>ac:proxy</code>, <code>ac:search</code></td>
+                        <td>Invocation variables parameterising the IRI used to invoke an application. See <a href="#invocation-variables">Invocation Variables</a>.</td>
+                      </tr>
+                      <tr>
+                        <td><code>inbox</code></td>
+                        <td><code>ldp:inbox</code></td>
+                        <td>The IRI of a Linked Data Notifications inbox associated with the application.</td>
+                      </tr>
+                      <tr>
+                        <td><code>invocation</code></td>
+                        <td><code>ac:invocation</code></td>
+                        <td>Links a capability to one or more <a href="#invocation">Invocations</a> describing how to trigger it.</td>
+                      </tr>
+                      <tr>
+                        <td><code>mapping</code></td>
+                        <td><code>ac:mapping</code></td>
+                        <td>Mapping nodes pairing a template variable with its defining property.</td>
+                      </tr>
+                      <tr>
+                        <td><code>output</code></td>
+                        <td><code>ac:output</code></td>
+                        <td>Media types of the result produced by a capability's action.</td>
+                      </tr>
+                      <tr>
+                        <td><code>property</code></td>
+                        <td><code>ac:property</code></td>
+                        <td>The property defining the semantics of a template variable.</td>
+                      </tr>
+                      <tr>
+                        <td><code>requirement</code></td>
+                        <td><code>ac:requirement</code></td>
+                        <td>Links an application to one or more <a href="#requirement">Requirement</a> declarations.</td>
+                      </tr>
+                      <tr>
+                        <td><code>resourceType</code></td>
+                        <td><code>ac:resourceType</code></td>
+                        <td>IRIs identifying the classes of resource a capability applies to.</td>
+                      </tr>
+                      <tr>
+                        <td><code>shape</code></td>
+                        <td><code>ac:shape</code></td>
+                        <td>IRIs identifying shapes for a resource that a capability applies to.</td>
+                      </tr>
+                      <tr>
+                        <td><code>template</code></td>
+                        <td><code>ac:template</code></td>
+                        <td>An RFC 6570 URI Template expressing the invocation-specific part of the IRI.</td>
+                      </tr>
+                      <tr>
+                        <td><code>variable</code></td>
+                        <td><code>ac:variable</code></td>
+                        <td>The string name of a variable as used in a template.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+              <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
+                <h3 property="schema:name">Conformance</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This section describes the <span about="" rel="spec:conformance" resource="#conformance">conformance model of the Application Capability specification</span>.</p>
+                  <section id="normative-and-informative-content" inlist="" rel="schema:hasPart" resource="#normative-and-informative-content">
+                    <h4 property="schema:name">Normative and Informative Content</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+                      <p id="requirement-levels">The key words "<span rel="spec:requirement" resource="spec:MUST">MUST</span>", "<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>", "<span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span>", and "<span rel="spec:requirement" resource="spec:MAY">MAY</span>" are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                      <p id="advisement-levels">The key words "<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>", "<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>", "<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", "<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", "<span rel="dcterms:subject" resource="spec:Can">can</span>", "<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>", "<span rel="dcterms:subject" resource="spec:Could">could</span>", "<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>", "<span rel="dcterms:subject" resource="spec:Might">might</span>", and "<span rel="dcterms:subject" resource="spec:MightNot">might not</span>" are used for non-normative content.</p>
+                    </div>
+                  </section>
+                  <section id="specification-category" inlist="" rel="schema:hasPart spec:specificationCategory" resource="#specification-category" typeof="skos:ConceptScheme">
+                    <h4 property="schema:name skos:prefLabel">Specification Category</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Application Capability</span> specification identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:ContentData">content/data</span> (the capability description format), <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span> (the URI Template invocation syntax), and <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span> (the discovery and notification interactions between Senders, Receivers, and Consumers). These categories correspond to the severable modules identified in the Status of This Document.</p>
+                    </div>
+                  </section>
+                  <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
+                    <h4 property="schema:name skos:prefLabel">Classes of Products</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Application Capability</span> specification identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations.</p>
+                      <p>A single implementation may fulfil more than one role simultaneously.</p>
+                      <dl rel="skos:hasTopConcept">
+                        <dt about="#CapabilityDescription" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:Content" typeof="skos:Concept"><dfn id="CapabilityDescription">Capability Description</dfn></dt>
+                        <dd about="#CapabilityDescription" property="skos:definition">The structured document describing a web application's capabilities and requirements.</dd>
+                        <dt about="#Receiver" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:RespondingAgent" typeof="skos:Concept"><dfn id="Receiver">Receiver</dfn></dt>
+                        <dd about="#Receiver" property="skos:definition">An implementation (typically a <cite>responding agent</cite> such as a server) that accepts HTTP requests to provide a representation of a <a href="#CapabilityDescription">Capability Description</a>. Receivers also accept notifications to their inbox about capability descriptions so that the needs of an application can be reviewed and processed, such as applying CSP headers or addressing authorisation needs.</dd>
+                        <dt about="#Consumer" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Consumer">Consumer</dfn></dt>
+                        <dd about="#Consumer" property="skos:definition">An implementation that reads and processes a <a href="#CapabilityDescription">Capability Description</a> in order to discover application's capabilities and requirements, construct invocation instructions, or surface other application affordances.</dd>
+                        <dt about="#Sender" property="skos:prefLabel" rel="skos:relatedMatch" resource="spec:ProducerOfContent" typeof="skos:Concept"><dfn id="Sender">Sender</dfn></dt>
+                        <dd about="#Sender" property="skos:definition">An implementation that delivers a <a href="#CapabilityDescription">Capability Description</a> to a Receiver's inbox.</dd>
+                      </dl>
+                    </div>
+                  </section>
+                  <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability">
+                    <h4 property="schema:name skos:prefLabel">Interoperability</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>This document can be subdivided into the following <a href="https://www.w3.org/TR/spec-variability/#subdivision-module">modules</a>:</p>
+                      <ul>
+                        <li><a href="#discovery">Discovery</a> together with the <a href="#data-model">Capability Description Data Model</a></li>
+                        <li><a href="#notifications">Notifications</a></li>
+                      </ul>
+                      <p property="skos:definition">In this specification, interoperability occurs between the <a href="#classes-of-products">classes of products</a> defined by this specification: <a href="#Consumer-CapabilityDescription" rel="skos:hasTopConcept">Consumer–CapabilityDescription</a>, <a href="#Consumer-Receiver" rel="skos:hasTopConcept">Consumer–Receiver</a>, and <a href="#Sender-Receiver" rel="skos:hasTopConcept">Sender–Receiver</a>.</p>
+                      <dl>
+                        <dt about="#Consumer-CapabilityDescription" property="skos:prefLabel" typeof="skos:Concept"><dfn id="Consumer-CapabilityDescription">Consumer–Capability Description interoperability</dfn></dt>
+                        <dd about="#Consumer-CapabilityDescription" property="skos:definition">Interoperability of implementations for <a href="#Consumer" rel="rdfs:seeAlso">Consumer</a> and <a href="#CapabilityDescription" rel="rdfs:seeAlso">Capability Description</a> is tested by evaluating the description's conformance to the data model and processing of descriptions.</dd>
+                        <dt about="#Consumer-Receiver" property="skos:prefLabel" typeof="skos:Concept"><dfn id="Consumer-Receiver">Consumer–Receiver interoperability</dfn></dt>
+                        <dd about="#Consumer-Receiver" property="skos:definition">Interoperability of implementations for <a href="#Consumer" rel="rdfs:seeAlso">Consumer</a> and <a href="#Receiver" rel="rdfs:seeAlso">Receiver</a> is tested by evaluating an implementation's ability to request and respond to HTTP messages.</dd>
+                        <dt about="#Sender-Receiver" property="skos:prefLabel" typeof="skos:Concept"><dfn id="Sender-Receiver">Sender–Receiver interoperability</dfn></dt>
+                        <dd about="#Sender-Receiver" property="skos:definition">Interoperability of implementations for <a href="#Sender" rel="rdfs:seeAlso">Sender</a> and <a href="#Receiver" rel="rdfs:seeAlso">Receiver</a> is tested by evaluating an implementation's ability to request and respond to HTTP messages.</dd>
+                      </dl>
+                    </div>
+                  </section>
+                </div>
+              </section>
+            </div>
+          </section>
+          <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
+            <h2 property="schema:name">Discovery</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The starting point for discovery is a web resource containing a capability description. How the subject URI of an application is obtained is not constrained by this specification.</p>
+                
+              <p><a href="#capability-description" rel="rdfs:seeAlso">Capability Description</a> is a subject of <code>capability</code> or <code>requirement</code> statements. A <a href="#Consumer">Consumer</a> that obtains such a URI treats it as the subject of the capability description and dereferences it, directly or via redirect, requesting a format that carries the description, such as <code>application/ld+json</code>. In the case of a fragment URI, the Consumer fetches the document at the base IRI and locates the subject within it by matching the full URI. A <a href="#Consumer">Consumer</a> can obtain a capability description from a <a href="#Receiver">Receiver</a> that has accepted and stored it from a <a href="#Sender">Sender</a>.</p>
+              <p></p>
+              <figure class="example listing" id="description-resource-request-response" rel="schema:hasPart" resource="#description-resource-request-response">
+                <figcaption property="schema:name"><span>Example</span>: <span>Discovery of a capability description resource.</span></figcaption>
+                <pre property="schema:description"><code>GET https://app.example/</code>
+<code>Accept: application/ld+json</code>
+<code></code>
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Type: application/ld+json</code></pre>
+              </figure>
+            </div>
+          </section>
+          <section id="data-model" inlist="" rel="schema:hasPart" resource="#data-model">
+            <h2 property="schema:name">Capability Description Data Model</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="capability-description" inlist="" rel="schema:hasPart" resource="#capability-description">
+                <h3 property="schema:name">Capability Description</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The following properties are defined by this specification for the discovery of an application's capabilities and requirements.</p>
+                  <dl>
+                    <dt><code>capability</code></dt>
+                    <dd>Links the application to one or more <a href="#capability">Capability</a> declarations.</dd>
+                    <dt><code>requirement</code></dt>
+                    <dd>Links the application to one or more <a href="#requirement">requirement</a> declarations.</dd>
+                    <dt><code>inbox</code></dt>
+                    <dd>The IRI of a Linked Data Notifications inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> publish this property.</dd>
+                  </dl>
+                  <p>The <code>capability</code> and <code>requirement</code> properties <span rel="spec:requirement" resource="spec:MAY">MAY</span> be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedding-in-other-description-formats">Embedding in Other Description Formats</a> for usage alongside other vocabularies and within non-RDF formats.</p>
+                  <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Application capability description in JSON-LD. One capability per action; capabilities may share invocations. The type and descriptive properties come from host vocabularies (here <code>ac:Application</code> and <code>as:name</code>); neither is required.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#i",
+  "type": "ac:Application",
+  "as:name": "Example App",
+  "inbox": "https://app.example/inbox/",
+  "capability": [
+    "https://app.example/#capability-view",
+    "https://app.example/#capability-edit",
+    "https://app.example/#capability-transform-html"
+  ],
+  "requirement": [
+    "https://app.example/#requirement-scripts",
+    "https://app.example/#requirement-styles",
+    "https://app.example/#requirement-connect",
+    "https://app.example/#requirement-notifications"
+  ]
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
+              <section id="capability" inlist="" rel="schema:hasPart" resource="#capability">
+                <h3 property="schema:name">Capability</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A <dfn id="dfn-capability-node">Capability</dfn> is a resource of type <code>Capability</code> that declares one action an application can perform, the media types (if any) the action applies to, and how to invoke it.</p>
+                  <p>Because capabilities are identified by IRIs, they can be shared across applications. An application's capability description may reference a capability IRI published elsewhere (for example, a well-known capability defined by a community or standard) rather than defining its own. Multiple applications linking to the same capability IRI signal that they support the same action under the same terms.</p>
+                  <dl>
+                    <dt><code>accept</code></dt>
+                    <dd>Zero or more media types (RFC 2046) that this capability accepts as input.</dd>
+                    <dt><code>resourceType</code></dt>
+                    <dd>Zero or more IRIs identifying the classes of resource (e.g., <code>rdf:type</code>) this capability applies to.</dd>
+                    <dt><code>shape</code></dt>
+                    <dd>Zero or more IRIs identifying shapes (e.g., SHACL) for a resource that this capability applies to. The interpretation of a shape is bound to the capability's <code>action</code>: for a display or edit action the shape describes the accepted input; for a transform action it describes the accepted source. Shape-based matching is stricter than <code>accept</code> or <code>resourceType</code> matching, and Consumers can fall back to the coarser criteria when shape validation is unavailable.</dd>
+                    <dt><code>action</code></dt>
+                    <dd>The action the application can perform per capability. Each capability declares an action. Recommended practice is to use values from a controlled and shared vocabulary (such as ODRL actions). An application that affords multiple actions declares multiple capabilities, which can share an <a href="#invocation">invocation</a> by reference.</dd>
+                    <dt><code>invocation</code></dt>
+                    <dd>Links the capability to one or more <a href="#invocation">invocations</a> describing how to trigger it.</dd>
+                    <dt><code>destination</code></dt>
+                    <dd>The IRI to deliver or save the result to. Used when the action produces an output.</dd>
+                    <dt><code>output</code></dt>
+                    <dd>Zero or more media types of the result produced by the action. An application that can produce multiple output formats declares a separate Capability for each format. Consumers match the desired output format against the declared <code>output</code> to select the appropriate Capability, then pass that format as the <code>output</code> invocation variable.</dd>
+                  </dl>
+                  <p>Matching semantics: a Consumer performing a given match never selects a capability that declares no criterion of that kind. A media-type match ignores capabilities without <code>accept</code>, an output-format match ignores capabilities without <code>output</code>, a resource-type match ignores capabilities without <code>resourceType</code>, and a shape match ignores capabilities without <code>shape</code>. Capabilities that declare none of these criteria are selected by <code>action</code>. Consumers <span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span> ignore capabilities whose declared <code>action</code>, <code>accept</code>, or <code>resourceType</code> they do not recognise rather than treat them as errors.</p>
+                  <div class="note">
+                    <p><span>Note</span>: <code>action</code> describes what the application affords once invoked. It is unrelated to the HTTP GET used for navigation and to the methods the application later uses to manipulate the resource, which are outside the scope of this specification.</p>
+                  </div>
+                  <figure class="example listing" id="capability-no-invocation-example" rel="schema:hasPart" resource="#capability-no-invocation-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>A capability that advertises what the application can do without declaring how to invoke it. Consumers may surface it in a UI (e.g. a catalogue entry) but cannot construct an invocation IRI from it.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#capability-open",
+  "type": "Capability",
+  "action": "odrl:display"
+}</code></pre>
+                  </figure>
+                  <figure class="example listing" id="capability-open-example" rel="schema:hasPart" resource="#capability-open-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>An open capability with an invocation. No accept, output, or destination: the application opens any resource the Consumer provides.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#capability-open",
+  "type": "Capability",
+  "action": "odrl:display",
+  "invocation": "https://app.example/#invoke-open"
+}</code></pre>
+                  </figure>
+                  <figure class="example listing" id="capability-shared-invocation-example" rel="schema:hasPart" resource="#capability-shared-invocation-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Two capabilities sharing one invocation by IRI reference. The Consumer selects by action (display versus modify), then follows the shared invocation IRI.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#capability-view",
+  "type": "Capability",
+  "accept": ["text/html", "text/markdown"],
+  "action": "odrl:display",
+  "invocation": "https://app.example/#invoke-open"
+}</code></pre>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#capability-edit",
+  "type": "Capability",
+  "accept": ["text/html", "text/markdown"],
+  "action": "odrl:modify",
+  "invocation": "https://app.example/#invoke-open"
+}</code></pre>
+                  </figure>
+                  <figure class="example listing" id="capability-transform-example" rel="schema:hasPart" resource="#capability-transform-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>A transform capability with all properties. The Consumer matches on accept and output format to select this capability, then invokes it with the resource to transform; the application delivers the result to the declared destination.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#capability-transform",
+  "type": "Capability",
+  "accept": "text/markdown",
+  "action": "odrl:transform",
+  "output": "text/html",
+  "destination": "https://storage.example/output/",
+  "invocation": "https://app.example/#invoke-transform"
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
+              <section id="invocation" inlist="" rel="schema:hasPart" resource="#invocation">
+                <h3 property="schema:name">Invocation</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>An <dfn id="dfn-invocation-node">Invocation</dfn> is a resource describing one mechanism by which a capability is triggered. <code>Invocation</code> is an abstract class; every Invocation is typed with one of its subclasses. This specification defines <code>UriTemplateInvocation</code>. Other invocation kinds can be described by defining additional subclasses of <code>Invocation</code>; this specification does not constrain their form.</p>
+                  <p>A capability <span rel="spec:requirement" resource="spec:MAY">MAY</span> declare multiple invocations. A Consumer selects an invocation according to its own deployment context and not by document order. Consumers <span rel="spec:requirement" resource="spec:MUST">MUST</span> ignore invocations of a type they do not recognise.</p>
+                  <p>An application ultimately decides whether to carry out a given invocation and in which order invocations are processed. An error with one invocation may prevent related invocations from being fulfilled.</p>
+                  <section id="uri-template-invocation" inlist="" rel="schema:hasPart" resource="#uri-template-invocation">
+                    <h4 property="schema:name">URI Template Invocation</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A <code>UriTemplateInvocation</code> describes invocation by navigation: the Consumer expands the template, resolves the result against the application's deployment IRI, and navigates the user agent to it via HTTP GET. The user agent performs a GET request; any fragment portion of the URI is processed client-side by the loaded application and is not included in the request.</p>
+                      <dl>
+                        <dt><code>template</code></dt>
+                        <dd>An RFC 6570 URI Template expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI to obtain the full invocation IRI, allowing the same template to work regardless of where the application is deployed. Variable names in the template correspond to the property names defined in the <a href="#invocation-variables">Invocation Variables</a> section; variables with other names require an explicit <code>mapping</code> entry. Variables <span rel="spec:requirement" resource="spec:MUST">MUST</span> appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value and the invoked capability. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded (RFC 3987).</dd>
+                        <dt><code>mapping</code></dt>
+                        <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). For variables whose names match a property name defined in the <a href="#invocation-variables">Invocation Variables</a> section, the mapping may be omitted. An explicit mapping is required for variables not defined in this specification; see <a href="#invocation-extension">Invocation Extension</a>.</dd>
+                      </dl>
+                      <p>Encoding rules: in the expanded invocation IRI, <code>&amp;</code> is the sole pair separator and <code>=</code> the sole name/value separator; receiving applications <span rel="dcterms:subject" resource="spec:MUSTNOT">must not</span> treat <code>;</code> as a separator. Because simple expansion percent-encodes sub-delimiters within values, every unencoded <code>&amp;</code> and <code>=</code> in the result is structural. Receiving applications parse fragment content with query-string semantics. A variable may carry multiple values; the canonical wire form repeats the name for each value (<code>open=uri1&amp;open=uri2</code>). RFC 6570 simple expansion of a list (<code>{open*}</code>) produces comma-separated values without name repetition and is not name-bearing; templates that need a variable to carry multiple values should use an expansion operator whose output is name-bearing.</p>
+                      <p>Receiver rules: receiving applications <span rel="spec:requirement" resource="spec:MUST">MUST</span> treat all invocation parameter values as untrusted input and validate or sanitise them before acting on them. A <code>login</code> value identifies who to authenticate as and never substitutes for authentication; <code>open</code> and other IRI-valued variables are untrusted IRIs to be retrieved with the user's own authorisation, with server-side receivers guarding against request forgery. Unknown variable names <span rel="spec:requirement" resource="spec:MUST">MUST</span> be ignored and <span rel="dcterms:subject" resource="spec:MUSTNOT">must not</span> be treated as errors. Receipt of an invocation implies nothing about grants or permissions; it is a request.</p>
+                      <div class="note" id="uri-fragment" inlist="" rel="schema:hasPart" resource="#uri-fragment">
+                        <h4 property="schema:name"><span>Note</span>: URI Fragment</h4>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>Passing invocation parameters via the fragment identifier is a pragmatic convention rather than strict conformance with <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5" rel="cito:citesForBackground">Fragment</a> [<cite><a class="bibref" href="#RFC3986">RFC3986</a></cite>], which defines fragment semantics as determined by the media type of the retrieved representation. The convention is adopted here because fragment content is not included in HTTP request targets (<cite><a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110</a></cite>), preventing the application host from learning the IRI of the resource being opened. In practice, the WHATWG HTML specification's <code>hashchange</code> event allows single-page applications to read fragment-encoded parameters client-side without a page reload. As noted in the <a href="#introduction">Introduction</a>, no existing specification defines a general-purpose mechanism for client-side application invocation via URI; this convention fills that gap and may be superseded by a more principled approach in future work.</p>
+                        </div>
+                      </div>
+                      <div class="note">
+                        <p><span>Note</span>: <code>UriTemplateInvocation</code> is deliberately a minimal profile: a single literal template with the variable conventions of this specification. Implementations wanting full variable-mapping machinery <span rel="spec:requirement" resource="spec:MAY">MAY</span> additionally type the node <code>hydra:IriTemplate</code>; the classes are not disjoint.</p>
+                      </div>
+                      <figure class="example listing" id="uri-template-invocation-example" rel="schema:hasPart" resource="#uri-template-invocation-example">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Fragment-form invocation and its expansion, opening a resource for viewing.</span></figcaption>
+                        <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#invoke-open",
+  "type": "UriTemplateInvocation",
+  "template": "#open={open}"
+}
+
+Resolved against application IRI https://app.example/ with
+     open = https://data.example/article :
+
+https://app.example/#open=https%3A%2F%2Fdata.example%2Farticle</code></pre>
+                      </figure>
+                      <figure class="example listing" id="combined-invocation-example" rel="schema:hasPart" resource="#combined-invocation-example">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Fragment-form invocation combining open and output: the Consumer selects the transform capability whose <code>output</code> matches the desired <code>output</code> value, then constructs the IRI with both variables.</span></figcaption>
+                        <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#invoke-transform",
+  "type": "UriTemplateInvocation",
+  "template": "#open={open}&amp;output={output}"
+}
+
+Resolved against application IRI https://app.example/ with
+     open   = https://data.example/report.md
+     output = text/html :
+
+https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text%2Fhtml</code></pre>
+                      </figure>
+                    </div>
+                  </section>
+                </div>
+              </section>
+              <section id="invocation-variables" inlist="" rel="schema:hasPart" resource="#invocation-variables">
+                <h3 property="schema:name">Invocation Variables</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This section defines properties in this vocabulary. Each property's local name is both the key for that property under the JSON-LD context and the canonical variable name in URI template expressions. For example, the <code>ac:</code> vocabulary property whose local name is <code>open</code> appears as the JSON-LD key <code>open</code> and as the URI template variable <code>{open}</code>. Applications <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> use these properties when the intended semantics match, so that Consumers can resolve variable meaning by property rather than by string convention alone. For variables not defined here, applications may declare a <code>mapping</code> that pairs the variable name used in the template with the defining property. A Consumer that encounters a variable whose property it does not recognise <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> still expand the template with the variables it does recognise.</p>
+                  <p>The properties defined here parameterise the IRI used to invoke an application. They do not represent user-activated operations or UI events within the running application; those are the concern of the <a href="https://www.w3.org/TR/web-user-agents/">user agent</a> and the relevant browser specifications.</p>
+                  <dl>
+                    <dt><dfn id="ivar-open"><code>open</code></dfn></dt>
+                    <dd>The IRI of a resource to open. The application renders, displays, or edits the identified resource.</dd>
+                    <dt><dfn id="ivar-search"><code>search</code></dfn></dt>
+                    <dd>A query or search expression submitted to the application. The format and interpretation are application-defined: the value may be a freetext string, a structured query, or any other expression the application understands.</dd>
+                    <dt><dfn id="ivar-output"><code>output</code></dfn></dt>
+                    <dd>The media type of the desired output. Used when invoking a transform capability: its value should match the <code>output</code> declared by the selected Capability. A Consumer that wants HTML output selects the capability declaring <code>output: text/html</code> and passes <code>output=text/html</code> in the invocation IRI.</dd>
+                    <dt><dfn id="ivar-login"><code>login</code></dfn></dt>
+                    <dd>The IRI of a user profile (e.g. a WebID) identifying who to authenticate as. This is a hint, not authentication: the application remains responsible for authenticating the user.</dd>
+                    <dt><dfn id="ivar-proxy"><code>proxy</code></dfn></dt>
+                    <dd>The URL of a proxy through which the application should route network requests. This variable has no effect on its own; when present alongside <code>open</code> or other variables that involve fetching a resource, the application uses the proxy URL for those requests.</dd>
+                  </dl>
+                  <p>Additional invocation variables can be introduced as described in <a href="#invocation-extension">Invocation Extension</a>.</p>
+                </div>
+              </section>
+              <section id="requirement" inlist="" rel="schema:hasPart" resource="#requirement">
+                <h3 property="schema:name">Requirement</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A <dfn id="dfn-requirement">requirement</dfn> is a resource of type <code>Requirement</code> that declares one environmental requirement an application has: a CSP directive the host server must include, or a browser permission the application may request at runtime. Where a <a href="#dfn-capability">Capability</a> declares what an application can do, a Requirement declares what the environment must provide for the application to function. An application links to one or more Requirement declarations via <code>requirement</code>. Declaring requirements as discrete resources allows each requirement to carry its own purpose annotation and to be individually identified and referenced.</p>
+                  <p>Application requirements serve two roles in this specification. As declarative self-description, they are readable by any <a href="#Consumer">Consumer</a>: a catalogue ranking applications by permission footprint, a user agent presenting requirements to a user before invocation, or an authorisation agent reviewing access. As protocol input, they are delivered by a <a href="#Sender">Sender</a> to a <a href="#Receiver">Receiver</a>, which reviews and acts on them by applying CSP headers or addressing declared authorisation needs; this active use is described in the <a href="#notifications">Notifications</a> section. The two roles are independent: a Consumer can read and act on declared requirements without any Sender–Receiver exchange having taken place.</p>
+                  <dl>
+                    <dt><code>cspDirective</code></dt>
+                    <dd>One or more CSP directives (CSP Level 3 syntax) the application requires the host server to include. <a href="#Sender">Senders</a> <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> declare the minimum directives necessary.</dd>
+                    <dt><code>browserPermission</code></dt>
+                    <dd>One or more browser permission names (Permissions API) the application may request at runtime.</dd>
+                    <dt><code>dpv:hasPurpose</code></dt>
+                    <dd>Links to a DPV purpose class expressing why the application needs the declared permissions, supporting transparency and informed review.</dd>
+                  </dl>
+                  <figure class="example listing" id="permissions-example" rel="schema:hasPart" resource="#permissions-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>A requirement declaring a CSP directive, with its purpose annotation. One declaration per requirement; the application's other CSP requirements (styles, connect) follow the same pattern.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#requirement-scripts",
+  "type": "Requirement",
+  "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
+  "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
+}</code></pre>
+                  </figure>
+                  <figure class="example listing" id="browser-permission-example" rel="schema:hasPart" resource="#browser-permission-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>A requirement declaring a browser permission, with its purpose annotation.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#requirement-notifications",
+  "type": "Requirement",
+  "browserPermission": "notifications",
+  "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
+              <section id="embedding-in-other-description-formats" inlist="" rel="schema:hasPart" resource="#embedding-in-other-description-formats">
+                <h3 property="schema:name">Embedding in Other Description Formats</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <p>Because <code>capability</code> and <code>requirement</code> attach to any resource identifying an application, an application already described by another vocabulary, e.g., Application Manifest, Web Extensions Manifest, Description of a Project, Activity Vocabulary, schema.org, Web of Things, OAuth, can include these properties on its existing subject without restructuring:</p>
+                  <figure class="example listing" id="embedding-jsonld-example" rel="schema:hasPart" resource="#embedding-jsonld-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Capability and requirements statements on a subject described by another vocabulary.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": [
+    "https://www.w3.org/ns/solid/oidc-context.jsonld",
+    "https://www.w3.org/ns/ac.jsonld"
+  ],
+  "id": "https://app.example/#this",
+  "client_name": "Example App",
+  "capability": "https://app.example/#capability-open",
+  "requirement": "https://app.example/#requirement-scripts"
+}</code></pre>
+                  </figure>
+                  <p>Description formats that are not JSON-LD can carry a capability description as a self-contained member with their own reference, whose value is a JSON-LD object using this specification's context. Processors of the host format ignore the member; Consumers extract and process it as JSON-LD.</p>
+                  <figure class="example listing" id="embedding-manifest-example" rel="schema:hasPart" resource="#embedding-manifest-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in a Web Application Manifest.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "name": "Example App",
+  "start_url": "/",
+  "ac": {
+    "@context": "https://www.w3.org/ns/ac.jsonld",
+    "id": "https://app.example/#this",
+    "capability": "https://app.example/#capability-open",
+    "requirement": "https://app.example/#requirement-scripts"
+  }
+}</code></pre>
+                  </figure>
+                  <p>In both cases, Discovery is unaffected: the application IRI remains the subject of the <code>capability</code> and <code>requirement</code> statements.</p>
+                </div>
+              </section>
+            </div>
+          </section>
+          <section id="notifications" inlist="" rel="schema:hasPart" resource="#notifications">
+            <h2 property="schema:name">Notifications</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>Consumers and Receivers can discover and act on a capability description entirely on their own. In addition, a <a href="#Sender">Sender</a> can proactively communicate with a <a href="#Receiver">Receiver</a> about an application by delivering a notification to the Receiver's inbox. A notification of this kind expresses a <dfn id="dfn-request">request</dfn>: it asks the Receiver to review information concerning an application and to act within its own authority, for example by serving the Content Security Policy headers an application requires, or by authorising an agent to access a resource.</p>
+              <p>The request notification is a general mechanism. This section describes two kinds of information a request can carry, a <a href="#requirements-review">requirements review</a> and an <a href="#access-request">access request</a>, but a request is not limited to these.</p>
+              <p>A Receiver that wishes to receive request notifications MUST advertise an inbox IRI in its own resource description or in error responses (see <a href="#error-response-inbox-discovery">Error Response Inbox Discovery</a>).</p>
+              <section id="request-notification" inlist="" rel="schema:hasPart" resource="#request-notification">
+                <h3 property="schema:name">Request Notification</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A <a href="#Sender">Sender</a> uses a request notification to explain its needs to a <a href="#Receiver">Receiver</a>. When the request concerns an application, the notification includes the application IRI, the subject of the application's capability description, which the Receiver can dereference (see <a href="#discovery">Discovery</a>). This specification does not constrain which property carries the application IRI; in the examples below it appears as <code>object</code>. When the request pertains to particular resources, the notification includes their IRIs. A request can include or reference one or more objects describing what is requested; this specification does not constrain the vocabulary of those objects.</p>
+                  <figure class="example listing" id="request-notification-example" rel="schema:hasPart" resource="#request-notification-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>A request notification. The actor makes the request, the object identifies the application, and the target identifies the resource concerned. Objects describing what is requested vary by the kind of request; see <a href="#requirements-review">Requirements Review</a> and <a href="#access-request">Access Request</a>.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/ac.jsonld"
+  ],
+  "type": "Request",
+  "actor": "https://agent.example/#i",
+  "object": "https://app.example/#i",
+  "target": "https://example.org/article"
+}</code></pre>
+                  </figure>
+                  <div class="note">
+                    <p><span>Note</span>: Access control on the inbox, sender authentication, payload constraints, and abuse mitigation are orthogonal to this interaction and are handled by the underlying notification and access control mechanisms (see <a href="#security-considerations">Security Considerations</a>).</p>
+                  </div>
+                  <p>The Receiver's response to a delivery concerns the notification itself: accepting the HTTP request creates the notification in the inbox, independently of any decision about its contents. The Receiver then reviews the stored request, by operator decision or by automated policy, and records the outcome. The Receiver is encouraged to deliver a notification indicating the outcome to an inbox associated with the request: the inbox stated in the request notification if any, otherwise the inbox in the application's capability description. The outcome notification identifies the request notification so that the two can be correlated.</p>
+                  <figure class="example listing" id="outcome-notification-example" rel="schema:hasPart" resource="#outcome-notification-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Outcome notification. The object references the request notification resource created in the Receiver's inbox; Accept or Reject indicates the outcome.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/ac.jsonld"
+  ],
+  "type": "Accept",
+  "actor": "https://example.org/#i",
+  "object": "https://example.org/inbox/d3aa37",
+  "target": "https://example.org/article",
+  "summary": "Requested access modes granted."
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
+              <section id="requirements-review" inlist="" rel="schema:hasPart" resource="#requirements-review">
+                <h3 property="schema:name">Requirements Review</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>An application embedded in or injected into an arbitrary HTML document depends on the server hosting that document to issue appropriate Content Security Policy (CSP) headers. Without server cooperation, the browser may block scripts, fetches, or other operations the application requires in order to function. A request can ask a Receiver to review the requirements declared in an application's capability description and act on them, for example by including approved CSP directives in responses served in the context of that application.</p>
+                  <p>A <a href="#Sender">Sender</a> publishes a capability description in which the application links to one or more <a href="#requirement">requirement</a> declarations via <code>requirement</code>. The <a href="#Receiver">Receiver</a> obtains the application IRI, whether at registration time, during policy setup, on first encounter with the application, or from a <a href="#request-notification">request notification</a>, dereferences the capability description, and reviews the declared requirements as described in <a href="#request-notification">Request Notification</a>. When serving responses in the context of that application, the Receiver includes CSP headers reflecting the approved requirements.</p>
+                  <figure class="example listing" id="requirements-review-example" rel="schema:hasPart" resource="#requirements-review-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>A capability description declaring CSP requirements, and a server response reflecting the approved requirements in responses served in the context of the application.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#i",
+  "type": "ac:Application",
+  "inbox": "https://app.example/inbox/",
+  "requirement": [
+    {
+      "id": "https://app.example/#requirement-scripts",
+      "type": "Requirement",
+      "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
+      "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
+    },
+    {
+      "id": "https://app.example/#requirement-connect",
+      "type": "Requirement",
+      "cspDirective": "connect-src 'self' https:"
+    }
+  ]
+}</code></pre>
+                    <pre property="schema:description"><code>HTTP/1.1 200 OK</code>
+<code>Content-Type: text/html</code>
+<code>Content-Security-Policy: script-src 'self' https://app.example/scripts/app.js;</code>
+<code>                         connect-src 'self' https:</code></pre>
+                  </figure>
+                </div>
+              </section>
+              <section id="access-request" inlist="" rel="schema:hasPart" resource="#access-request">
+                <h3 property="schema:name">Access Request</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A request can express that an agent seeks access to a resource. An <dfn id="dfn-access-request">access request</dfn> identifies the agent for whom access is requested, the resource or resources concerned, and the operations desired. This specification does not require a particular authorisation or policy vocabulary for expressing the requested access; the Receiver evaluates the request and enacts the outcome through its own access control mechanism. The representation and enforcement of any resulting authorisation, and the review process itself, are outside the scope of this specification.</p>
+                  <p>A common flow, continuing from <a href="#error-response-inbox-discovery">Error Response Inbox Discovery</a>: an agent using an application attempts an operation on a resource, receives a <code>403</code> response advertising an inbox, and delivers an access request to that inbox describing the access it needs. The review is decoupled from the inbox itself: any application authorised to act on the Receiver's behalf can process stored access requests and enact outcomes.</p>
+                  <figure class="example listing" id="access-request-wac-example" rel="schema:hasPart" resource="#access-request-wac-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Access request whose object expresses the desired authorisation using Web Access Control.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/ac.jsonld",
+    { "acl": "http://www.w3.org/ns/auth/acl#" }
+  ],
+  "type": "Request",
+  "actor": "https://agent.example/#i",
+  "target": "https://example.org/article",
+  "object": {
+    "type": "acl:Authorization",
+    "acl:agent": { "id": "https://agent.example/#i" },
+    "acl:accessTo": { "id": "https://example.org/article" },
+    "acl:mode": [ { "id": "acl:Read" }, { "id": "acl:Write" } ]
+  }
+}</code></pre>
+                  </figure>
+                  <figure class="example listing" id="access-request-odrl-example" rel="schema:hasPart" resource="#access-request-odrl-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Access request expressed as an ODRL Request policy. The purpose constraint uses the same DPV purposes as the application's requirement declarations.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "type": "Request",
+  "uid": "https://app.example/requests/e3b7",
+  "permission": [{
+    "assignee": "https://agent.example/#i",
+    "target": "https://example.org/article",
+    "action": ["read", "modify"],
+    "constraint": [{
+      "leftOperand": "purpose",
+      "operator": "eq",
+      "rightOperand": "https://w3id.org/dpv#ServiceProvision"
+    }]
+  }]
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
+              <section id="error-response-inbox-discovery" inlist="" rel="schema:hasPart" resource="#error-response-inbox-discovery">
+                <h3 property="schema:name">Error Response Inbox Discovery</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>When a <a href="#Sender">Sender</a> makes an HTTP request and receives a 4xx response, it may discover the <a href="#Receiver">Receiver</a>'s inbox from that response and send a notification referencing its capability description. This allows a Sender to inform the Receiver of its access modes, declared CSP directives, browser permissions, and processing purposes in response to a rejected request, rather than waiting for the Receiver to fetch the description independently.</p>
+                  <p>A <a href="#Receiver">Receiver</a> that wishes to advertise its inbox in a 4xx response <span rel="spec:requirement" resource="spec:MUST">MUST</span> do exactly one of the following:</p>
+                  <ul>
+                    <li>Include a <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
+                    <li>Return a representation whose encoded graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>, where the subject is the target resource and the object is the inbox IRI.</li>
+                  </ul>
+                  <p>A <a href="#Sender">Sender</a> that receives a 4xx response <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> attempt to discover the inbox: first from the <code>Link</code> header; if no inbox is found there, from the response body parsed as an RDF representation. If an inbox is discovered, the Sender delivers a notification to that inbox conveying its application IRI. The Receiver may then dereference the capability description from that IRI and follow the review process described in <a href="#request-notification">Request Notification</a>.</p>
+                  <p>A <a href="#Consumer">Consumer</a> that has obtained a Sender's capability description, whether directly from the Sender's IRI or via a Receiver, may use it to prepare invocations independently of whether the Sender–Receiver interaction has taken place.</p>
+                  <figure class="example listing" id="error-inbox-discovery-example" rel="schema:hasPart" resource="#error-inbox-discovery-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>403 response advertising an inbox. The Sender discovers the inbox and delivers a notification referencing its capability description.</span></figcaption>
+                    <pre property="schema:description"><code>PUT /article HTTP/1.1</code>
+<code>Host: example.org</code>
+<code>Content-Type: text/html;charset=utf-8</code>
+<code></code>
+<code>HTTP/1.1 403 Forbidden</code>
+<code>Link: &lt;https://example.org/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</code></pre>
+                  </figure>
+                </div>
+              </section>
+            </div>
+          </section>
+          <section id="extensions" inlist="" rel="schema:hasPart" resource="#extensions">
+            <h2 property="schema:name">Extensions</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>Extensions incorporate additional features beyond what is defined in this specification. Extensions <span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span> contradict nor cause the non-conformance of functionality defined in this specification.</p>
+              <section id="invocation-extension" inlist="" rel="schema:hasPart" resource="#invocation-extension">
+                <h3 property="schema:name">Invocation Extension</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <p>Applications can introduce invocation variables beyond those defined in <a href="#invocation-variables">Invocation Variables</a> by declaring a <code>mapping</code> that pairs the variable name used in the template with a property that defines its semantics. Consumers that do not recognise the property still expand the template with the variables they do recognise, and receiving applications treat extension variable values as untrusted input, per the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</p>
+                  <p>The following variables illustrate invocation extensions:</p>
+                  <dl>
+                    <dt><dfn id="ivar-graph"><code>graph</code></dfn></dt>
+                    <dd>The IRI of an RDF dataset or named graph to load and render.</dd>
+                    <dt><dfn id="ivar-style"><code>style</code></dfn></dt>
+                    <dd>The IRI of a stylesheet to apply when rendering the resource.</dd>
+                    <dt><dfn id="ivar-state"><code>state</code></dfn></dt>
+                    <dd>An application-defined value encoding the UI state in which to open the application, such as which panels are active or the current view mode. The encoding and interpretation of this variable are not further specified.</dd>
+                  </dl>
+                  <figure class="example listing" id="explicit-mapping-example" rel="schema:hasPart" resource="#explicit-mapping-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>An extension variable declared via an explicit mapping. The application defines the property that gives the variable its semantics; Consumers that recognise the property can supply a value, and receiving applications treat it as untrusted input like any other variable.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#invoke-graph",
+  "type": "UriTemplateInvocation",
+  "template": "#graph={graph}",
+  "mapping": [
+    {
+      "variable": "graph",
+      "property": "https://vocab.example/graph"
+    }
+  ]
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
+            </div>
+          </section>
+          <section id="considerations" inlist="" rel="schema:hasPart" resource="#considerations" typeof="spec:Considerations">
+            <h2 property="schema:name">Considerations</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>This section details <span about="" rel="spec:consideration"><a href="#security-considerations">security</a>, <a href="#privacy-considerations">privacy</a>, <a href="#accessibility-considerations">accessibility</a>, <a href="#internationalization-considerations">internationalization</a> considerations</span>, and <a href="#application-considerations">application</a> considerations.</p>
+              <p>Some of the normative references with this specification point to documents with a <em>Living Standard</em> or <em>Draft</em> status, meaning their contents can still change over time. It is advised to monitor these documents, as such changes might have implications.</p>
+              <section id="security-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations" typeof="spec:SecurityConsiderations">
+                <h3 property="schema:name">Security Considerations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <section id="threat-model" inlist="" rel="schema:hasPart" resource="#threat-model">
+                    <h4 property="schema:name">Threat Model</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>This threat analysis follows the framework of the <a href="https://www.w3.org/TR/threat-model-web/">W3C Threat Model for the Web</a> and draws on terminology from the <a href="https://www.w3.org/TR/privacy-principles/">W3C Privacy Principles</a>, including <em>web origin boundary</em>, <em>user-mediated permissions</em>, <em>data minimization</em>, <em>purpose limitation</em>, <em>secondary uses</em>, and <em>disloyalty</em>.</p>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Feature</th>
+                            <th>Threat</th>
+                            <th>Mitigation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><a href="#discovery">#discovery</a></td>
+                            <td><strong>Description substitution.</strong> A web attacker at a different origin serves a capability description purporting to represent a Sender at another origin, causing Consumers or Receivers to act on a fraudulent description and potentially grant privileges to the wrong party. This attack exploits the gap between a description's claimed subject and its serving origin, crossing the <em>web origin boundary</em> that ordinarily separates content by origin.</td>
+                            <td>Verify that the description is served from an IRI consistent with the Sender's declared identity before acting on its contents. The serving IRI, not human-readable metadata, is the primary trust anchor.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#capability-description">#capability-description</a></td>
+                            <td><strong>Application impersonation.</strong> A malicious application copies a legitimate application's human-readable metadata (name, description, homepage) to gain undeserved trust from Receivers and Consumers. Human-readable metadata is not a <em>security invariant</em>; the serving origin is.</td>
+                            <td>The IRI at which the description is served is the primary trust anchor. Receivers and Consumers verify the description origin, not merely its human-readable content.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#discovery">#discovery</a></td>
+                            <td><strong>Description tampering.</strong> A network attacker modifies a capability description in transit to expand declared CSP directives or browser permissions beyond what the Sender published, violating the integrity of the Sender's declared requirements.</td>
+                            <td>Fetch descriptions only over authenticated, encrypted transport (HTTPS) to preserve integrity in transit.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#requirement">#requirement</a></td>
+                            <td><strong>Permission inflation.</strong> A Sender declares broader CSP directives or browser permissions, or requests broader access, than its function requires, violating the principle of <em>data minimization</em> and attempting to acquire unnecessary access. If approved without scrutiny, this undermines the <em>user-mediated permissions</em> model: the user's expectation is that declared permissions reflect genuine need.</td>
+                            <td>Receivers treat declarations as input to operator review, not as automatic grants. Senders are strongly encouraged to declare only the minimum permissions necessary for their intended function.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#notifications">#notifications</a></td>
+                            <td><strong>Post-approval behavior change.</strong> A Sender presents minimal declarations during Receiver review, then changes its application to exploit the approved CSP headers, permissions, or access after trust is established. This is a form of <em>disloyalty</em>: the application acts against user interests under cover of legitimacy it has manufactured through the review process.</td>
+                            <td>Receivers re-fetch and re-review capability descriptions periodically. Any change to declared requirements should trigger renewed review rather than automatic acceptance.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#discovery">#discovery</a></td>
+                            <td><strong>Stale description.</strong> A Consumer or Receiver acts on a cached capability description that no longer reflects the Sender's current declared requirements, either because the Sender has reduced its claims (lower risk) or expanded them (higher risk).</td>
+                            <td>Apply standard HTTP caching controls. Receivers re-fetch before or after operator review and treat expired descriptions as requiring re-verification.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#discovery">#discovery</a></td>
+                            <td><strong>Capability description fetch as tracking.</strong> A Sender that logs requests to its capability description endpoint can observe which Consumers and Receivers are interested in its application, enabling <em>cross-context recognition</em> and <em>surveillance</em> of deployment and usage patterns. Fetching a capability description may itself constitute processing of <em>personal data</em> if the requesting party is identifiable. This is an instance of <em>automation asymmetry</em>: the Sender collects usage data automatically while the Consumer or Receiver has no corresponding visibility into what is logged.</td>
+                            <td>Consumers and Receivers are encouraged to use privacy-preserving fetching practices (no credentials, minimal request headers). <em>Data minimization</em> applies to the description itself: capability descriptions should disclose only what is necessary for discovery and invocation.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#uri-fragment">#uri-fragment</a></td>
+                            <td><strong>Invocation IRI disclosure.</strong> A URI Template using query parameters discloses the target resource IRI to the application's host server. Because the resource IRI may identify <em>personal data</em> or reveal browsing behaviour, this is a privacy consideration for any ACD that declares a query-form template.</td>
+                            <td>Fragment-form templates avoid this disclosure, since fragment content is not transmitted in HTTP requests. ACD publishers using query-form templates should document the disclosure and ensure it is acceptable given the application's context and the user's expectations.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#uri-template-invocation">#uri-template-invocation</a></td>
+                            <td><strong>Open redirect via invocation.</strong> A server-side application using a query-form template may be exploited as an open redirect if it uses an invocation variable such as <code>open</code> as an unvalidated redirect target, enabling phishing attacks that leverage the trusted application's domain. A user following such a redirect may be deceived by the legitimate origin displayed in the address bar.</td>
+                            <td>Receiving applications validate all invocation parameter values before using them as redirect targets or in navigation. Redirect targets should be checked against an allowlist or restricted to expected origin patterns.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#uri-template-invocation">#uri-template-invocation</a>, <a href="#invocation-extension">#invocation-extension</a></td>
+                            <td><strong>Server-side request forgery via invocation.</strong> A server-side application that fetches the resource identified by an <code>open</code> parameter or another IRI-valued invocation variable may be directed to private network resources or internal addresses not publicly reachable, violating the <em>web origin boundary</em> that ordinarily prevents web content from accessing private network infrastructure.</td>
+                            <td>Receiving applications validate invocation IRIs against an allowlist or deny private and internal address spaces before fetching, consistent with the Private Network Access specification.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#error-response-inbox-discovery">#error-response-inbox-discovery</a></td>
+                            <td><strong>Inbox forgery.</strong> A Sender declares a third party's inbox as the Receiver's endpoint, misdirecting notifications across trust boundaries; or a network attacker forges approval notifications to deceive a Sender into believing its declared requirements have been acted on.</td>
+                            <td>Discover the Receiver's inbox from the Receiver's own responses (Link headers, response body), not from an untrusted source. Treat approvals as requiring out-of-band verification where the stakes are high.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#notifications">#notifications</a></td>
+                            <td><strong>Inbox flooding.</strong> Advertising an inbox invites unsolicited notifications: a hostile party can deliver bulk or junk request notifications, exhausting storage or flooding the operator review process, in effect a denial of service on the Receiver's attention. Inexpensive, disposable sender identities lower the cost of this abuse.</td>
+                            <td>Inboxes are ordinary resources: Receivers can require authenticated senders, restrict delivery through access control (e.g., append-only), rate limit per sender identity, validate payloads against expected shapes, apply allowlists or trust frameworks, segregate notifications from unrecognised senders, or provision short-lived or per-request inboxes. These mitigations layer on the inbox model without changing the interaction.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#requirements-review">#requirements-review</a></td>
+                            <td><strong>CSP whitelist scope creep.</strong> CSP directives approved for one application may contain origins or patterns broad enough to benefit other applications on the same host, or to enable cross-site scripting if an approved origin can serve attacker-controlled content, widening the attack surface of the entire Receiver origin.</td>
+                            <td>Receivers evaluate approved directives in the context of the full host document, not just the specific application. Prefer narrow, specific source expressions over broad origin patterns, consistent with the principle of least privilege.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#requirement">#requirement</a></td>
+                            <td><strong>Purpose mismatch.</strong> A Sender uses granted permissions for purposes inconsistent with its declared <code>dpv:hasPurpose</code>, a form of <em>secondary use</em> or <em>disloyalty</em>. For example, an application may use a storage-access permission granted for document editing to exfiltrate user data for profiling.</td>
+                            <td><em>Purpose specification</em> via <code>dpv:hasPurpose</code> supports transparency and informed review. Enforcement depends on operator policy and legal mechanisms such as data protection law, which are outside the scope of this specification.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#uri-template-invocation">#uri-template-invocation</a>, <a href="#invocation-extension">#invocation-extension</a></td>
+                            <td><strong>Invocation parameter injection.</strong> A hostile party supplies invocation values (a forged <code>login</code> identity, or a script-injecting stylesheet IRI or application-state value supplied via <a href="#invocation-extension">extension variables</a>) that a receiving application processes without validation. This is an injection attack: untrusted input crosses a trust boundary and is treated as trusted.</td>
+                            <td>Receiving applications treat all invocation parameters as untrusted input and validate or sanitise them before use, as required by the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#capability-description">#capability-description</a></td>
+                            <td><strong>Triple injection.</strong> A Consumer or Receiver that merges a fetched capability description into a shared RDF store may pick up unrelated triples about other subjects, causing behaviour elsewhere to change based on untrusted input.</td>
+                            <td>Isolate parsed capability descriptions from other trusted data, or restrict the accepted triples to those whose subject is the description's declared IRI.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                  <p about="" id="capability-description-authenticity" rel="spec:advisement" resource="#capability-description-authenticity"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to verify that a capability description is served from an IRI consistent with the Sender's declared identity before acting on its contents, in order to mitigate the risk of a third party substituting a fraudulent description.</span></p>
+                  <p about="" id="capability-description-location-integrity" rel="spec:advisement" resource="#capability-description-location-integrity"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to publish capability descriptions at a location that is under the Sender's control and not publicly writable, so that Consumers and Receivers can rely on the serving IRI as a trust anchor.</span></p>
+                  <p about="" id="capability-description-transport" rel="spec:advisement" resource="#capability-description-transport"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to fetch capability descriptions only over authenticated, encrypted transport (HTTPS), to mitigate tampering in transit.</span></p>
+                  <p about="" id="capability-description-revalidation" rel="spec:advisement" resource="#capability-description-revalidation"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to re-fetch capability descriptions periodically and, when a Sender's declared requirements have changed since a prior review was recorded, to treat the change as requiring renewed review rather than continuing to act on the earlier decision.</span></p>
+                  <p about="" id="csp-minimum-necessary" rel="spec:advisement" resource="#csp-minimum-necessary"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare only the minimum CSP directives and browser permissions necessary for their intended function. Overly broad declarations <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discourage</span> Receiver trust and increase the risk of misuse if permissions are granted.</span></p>
+                  <p about="" id="server-policy-review" rel="spec:advisement" resource="#server-policy-review"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to treat a capability description as informational input to a review rather than as a grant of permissions. The decision to apply declared CSP directives remains with the Receiver's operator and <span rel="spec:advisementLevel" resource="spec:SHOULD">SHOULD</span> involve human review before first use.</span></p>
+                  <p about="" id="invocation-receiver-validation" rel="spec:advisement" resource="#invocation-receiver-validation"><span property="spec:statement">Receiving applications are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat all invocation parameters as untrusted input, as required by the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</span></p>
+                </div>
+              </section>
+              <section id="privacy-considerations" inlist="" rel="schema:hasPart" resource="#privacy-considerations" typeof="spec:PrivacyConsiderations">
+                <h3 property="schema:name">Privacy Considerations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <p about="" id="invocation-fragment-privacy" rel="spec:advisement" resource="#invocation-fragment-privacy"><span property="spec:statement">Applications that use the fragment (<code>#</code>) form for invocation parameters, as described in this specification, are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to document this choice explicitly, noting that fragment content is not transmitted to the server and therefore does not disclose the target resource IRI to the host from which the application is loaded.</span></p>
+                  <p about="" id="capability-description-data-minimisation" rel="spec:advisement" resource="#capability-description-data-minimisation"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to apply the principle of data minimisation when publishing capability descriptions, disclosing only the information necessary for discovery, invocation, and policy review by Consumers and Receivers.</span></p>
+                </div>
+              </section>
+              <section id="accessibility-considerations" inlist="" rel="schema:hasPart" resource="#accessibility-considerations" typeof="spec:AccessibilityConsiderations">
+                <h3 property="schema:name">Accessibility Considerations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                </div>
+              </section>
+              <section id="internationalization-considerations" inlist="" rel="schema:hasPart" resource="#internationalization-considerations" typeof="spec:InternationalizationConsiderations">
+                <h3 property="schema:name">Internationalization Considerations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                </div>
+              </section>
+              <section id="security-and-privacy-review" inlist="" rel="schema:hasPart" resource="#security-and-privacy-review" typeof="spec:SelfReviewQuestionnaireSecurityPrivacy">
+                <h3 property="schema:name">Security and Privacy Review</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                </div>
+              </section>
+              <section id="societal-impact-review" inlist="" rel="schema:hasPart" resource="#societal-impact-review">
+                <h3 property="schema:name">Societal Impact Review</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                </div>
+              </section>
+              <section id="application-considerations" inlist="" rel="schema:hasPart" resource="#application-considerations">
+                <h3 property="schema:name">Application Considerations</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <p>This section describes considerations for applications that publish capability descriptions. These are not normative requirements but reflect the spirit of the trust relationship that this specification establishes between applications, servers, and users.</p>
+                  <p about="" id="application-honesty" rel="spec:advisement" resource="#application-honesty"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare their permission needs accurately and completely. Understating requirements in order to gain access, or overstating them to acquire unnecessary capabilities, undermines the trust model on which this specification relies.</span></p>
+                  <p about="" id="application-user-primacy" rel="spec:advisement" resource="#application-user-primacy"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use permissions granted by a Receiver exclusively in the interests of the user on whose behalf those permissions were granted, consistent with the declared purpose expressed via <code>dpv:hasPurpose</code> in the capability description.</span></p>
+                  <p about="" id="application-invocation-stability" rel="spec:advisement" resource="#application-invocation-stability"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to maintain stability in the URI Templates declared in their capability descriptions, since Consumers and catalogues may cache and rely on these patterns. Where changes are necessary, Senders <span rel="spec:advisementLevel" resource="spec:Could">could</span> provide a transition period during which both the old and new patterns remain functional.</span></p>
+                </div>
+              </section>
+            </div>
+          </section>
+          <section class="appendix" id="changelog" inlist="" rel="schema:hasPart" resource="#changelog" typeof="spec:Changelog">
+            <h2 property="schema:name">Changelog</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+            </div>
+          </section>
+          <section class="appendix" id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
+            <h2 property="schema:name">Acknowledgements</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
+              <p>The Community Group would like to thank the following individuals for their useful comments, both large and small, that have led to changes to this specification over the years:</p>
+            </div>
+          </section>
+          <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
+            <h2 property="schema:name">References</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references">
+                <h3 property="schema:name">Normative References</h3>
+                <div datatype="rdf:HTML" property="schema:description"></div>
+              </section>
+              <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references">
+                <h3 property="schema:name">Informative References</h3>
+                <div datatype="rdf:HTML" property="schema:description"></div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+    <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+    <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+  </body>
+</html>
