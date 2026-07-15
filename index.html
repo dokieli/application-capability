@@ -1388,6 +1388,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Privacy Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
+                  <p about="" id="privacy-principles" rel="spec:advisement" resource="#privacy-principles"><span property="spec:statement">Privacy is one of the ethical values that underpin the web. To empower people with needs to have strong privacy protections with respect to information flows, implementers as well as developers of specifications are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to consider privacy-related design choices as per W3C <cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:obtainsBackgroundFrom">Privacy Principles</a></cite> [<cite><a class="bibref" href="#bib-privacy-principles">PRIVACY-PRINCIPLES</a></cite>].</span></p>
                   <p about="" id="invocation-fragment-privacy" rel="spec:advisement" resource="#invocation-fragment-privacy"><span property="spec:statement">Applications that use the fragment (<code>#</code>) form for invocation parameters, as described in this specification, are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to document this choice explicitly, noting that fragment content is not transmitted to the server and therefore does not disclose the target resource IRI to the host from which the application is loaded.</span></p>
                   <p about="" id="capability-description-data-minimisation" rel="spec:advisement" resource="#capability-description-data-minimisation"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to apply the principle of data minimisation when publishing capability descriptions, disclosing only the information necessary for discovery, invocation, and policy review by Consumers and Receivers.</span></p>
                 </div>
@@ -1408,12 +1409,14 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Security and Privacy Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
+                  <p>These questions provide an overview of security and privacy considerations for this specification as guided by [<cite><a class="bibref" href="#bib-security-privacy-questionnaire">SECURITY-PRIVACY-QUESTIONNAIRE</a></cite>].</p>
                 </div>
               </section>
               <section id="societal-impact-review" inlist="" rel="schema:hasPart" resource="#societal-impact-review">
                 <h3 property="schema:name">Societal Impact Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
+                  <p>These questions provide an overview of ethical considerations and societal impact as guided by [<cite><a class="bibref" href="#bib-societal-impact-questionnaire">SOCIETAL-IMPACT-QUESTIONNAIRE</a></cite>].</p>
                 </div>
               </section>
               <section id="application-considerations" inlist="" rel="schema:hasPart" resource="#application-considerations">
@@ -1438,6 +1441,10 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
             <div datatype="rdf:HTML" property="schema:description">
               <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
               <p>The Community Group would like to thank the following individuals for their useful comments, both large and small, that have led to changes to this specification over the years:</p>
+              <ul>
+                <li>Sarven Capadisli</li>
+                <li>Virginia Balseiro</li>
+              </ul>
             </div>
           </section>
           <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references">
