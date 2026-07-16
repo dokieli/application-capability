@@ -678,7 +678,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>cspDirective</code></td>
                         <td><code>ac:cspDirective</code></td>
-                        <td>A CSP directive the application requires the host server to include.</td>
+                        <td>A CSP directive the host server ought to include with responses of resources the application creates, modifies, or opens.</td>
                       </tr>
                       <tr>
                         <td><code>destination</code></td>
@@ -1027,7 +1027,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p>Application requirements serve two roles in this specification. As declarative self-description, they are readable by any <a href="#Consumer">Consumer</a>: a catalogue ranking applications by permission footprint, a user agent presenting requirements to a user before invocation, or an authorisation agent reviewing access. As protocol input, they are delivered by a <a href="#Sender">Sender</a> to a <a href="#Receiver">Receiver</a>, which reviews and acts on them by applying CSP headers or addressing declared authorisation needs; this active use is described in the <a href="#notifications">Notifications</a> section. The two roles are independent: a Consumer can read and act on declared requirements without any Sender–Receiver exchange having taken place.</p>
                   <dl>
                     <dt><code>cspDirective</code></dt>
-                    <dd>One or more CSP directives (CSP Level 3 syntax) the application requires the host server to include. <a href="#Sender">Senders</a> <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> declare the minimum directives necessary.</dd>
+                    <dd>One or more CSP directives (CSP Level 3 syntax) that the host server ought to include with responses of resources the application creates, modifies, or opens, so that the content of those resources functions as intended for any consumer of them.</dd>
                     <dt><code>browserPermission</code></dt>
                     <dd>One or more browser permission names (Permissions API) the application can request at runtime.</dd>
                     <dt><code>dpv:hasPurpose</code></dt>
@@ -1043,6 +1043,12 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
   "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
 }</code></pre>
                   </figure>
+                  <div class="note" id="csp-requirement-scope" inlist="" rel="schema:hasPart" resource="#csp-requirement-scope">
+                    <h4 property="schema:name"><span>Note</span>: Scope of CSP Requirements</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A CSP directive governs the document it is served with. For example, an article created by the application that includes <code>&lt;script src="https://app.example/scripts/app.js"&gt;</code> depends on the <code>script-src</code> directive the <a href="#Receiver">Receiver</a> serves with it, whichever application opens it; an embedded frame likewise depends on <code>frame-src</code>. Where a resource embeds the application, the application's own requirements are part of that content's needs: the embedded application depends on directives such as <code>connect-src</code> for the resources it reaches from within the article. The declaration can also inform a server that hosts, or is considering hosting, the application itself, where the application is the document. It does not concern resources that an application deployed at its own origin accesses through cross-origin requests: CSP served with a fetched resource has no effect on the fetching application; that interaction is governed by Cross-Origin Resource Sharing and access control.</p>
+                    </div>
+                  </div>
                   <figure class="example listing" id="browser-permission-example" rel="schema:hasPart" resource="#browser-permission-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A requirement declaring a browser permission, with its purpose annotation.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1384,7 +1390,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p about="" id="capability-description-transport" rel="spec:advisement" resource="#capability-description-transport"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to fetch capability descriptions only over authenticated, encrypted transport (HTTPS), to mitigate tampering in transit.</span></p>
                   <p about="" id="capability-description-revalidation" rel="spec:advisement" resource="#capability-description-revalidation"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to re-fetch capability descriptions periodically and, when a Sender's declared requirements have changed since a prior review was recorded, to treat the change as requiring renewed review rather than continuing to act on the earlier decision.</span></p>
                   <p about="" id="csp-minimum-necessary" rel="spec:advisement" resource="#csp-minimum-necessary"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare only the minimum CSP directives and browser permissions necessary for their intended function. Overly broad declarations <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discourage</span> Receiver trust and increase the risk of misuse if permissions are granted.</span></p>
-                  <p about="" id="server-policy-review" rel="spec:advisement" resource="#server-policy-review"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to treat a capability description as informational input to a review rather than as a grant of permissions. The decision to apply declared CSP directives remains with the Receiver's operator and <span rel="spec:advisementLevel" resource="spec:SHOULD">SHOULD</span> involve human review before first use.</span></p>
+                  <p about="" id="server-policy-review" rel="spec:advisement" resource="#server-policy-review"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat a capability description as informational input to a review rather than as a grant of permissions. The decision to apply declared CSP directives remains with the Receiver's operator, with human review before first use.</span></p>
                   <p about="" id="invocation-receiver-validation" rel="spec:advisement" resource="#invocation-receiver-validation"><span property="spec:statement">Receiving applications are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat all invocation parameters as untrusted input, as required by the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</span></p>
                 </div>
               </section>
@@ -1446,6 +1452,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
               <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
               <p>The Community Group would like to thank the following individuals for their useful comments, both large and small, that have led to changes to this specification over the years:</p>
               <ul>
+                <li>elf Pavlik</li>
                 <li>Sarven Capadisli</li>
                 <li>Virginia Balseiro</li>
               </ul>
