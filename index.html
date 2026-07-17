@@ -385,6 +385,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p><a class="tocxref" href="#extensions"><bdi class="secno">5.</bdi> <span>Extensions</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#invocation-extension"><bdi class="secno">5.1</bdi> <span>Invocation Extension</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#requirement-extension"><bdi class="secno">5.2</bdi> <span>Requirement Extension</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -1025,6 +1026,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <dfn id="dfn-requirement">requirement</dfn> is a resource of type <code>Requirement</code> that declares one environmental requirement an application has: a CSP directive the host server ought to include, or a browser permission the application can request at runtime. Where a <a href="#dfn-capability">Capability</a> declares what an application can do, a Requirement declares what the environment needs to provide for the application to function. An application links to one or more Requirement declarations via <code>requirement</code>. Declaring requirements as discrete resources allows each requirement to carry its own purpose annotation and to be individually identified and referenced.</p>
                   <p>Application requirements serve two roles in this specification. As declarative self-description, they are readable by any <a href="#Consumer">Consumer</a>: a catalogue ranking applications by permission footprint, a user agent presenting requirements to a user before invocation, or an authorisation agent reviewing access. As protocol input, they are delivered by a <a href="#Sender">Sender</a> to a <a href="#Receiver">Receiver</a>, which reviews and acts on them by applying CSP headers or addressing declared authorisation needs; this active use is described in the <a href="#notifications">Notifications</a> section. The two roles are independent: a Consumer can read and act on declared requirements without any Sender–Receiver exchange having taken place.</p>
+                  <p>Requirements are independent of the invocation mechanism: a Consumer evaluates them before invoking, whichever invocation it selects. Consumers ignore requirement properties they do not recognise.</p>
                   <dl>
                     <dt><code>cspDirective</code></dt>
                     <dd>One or more CSP directives (CSP Level 3 syntax) that the host server ought to include with responses of resources the application creates, modifies, or opens, so that the content of those resources functions as intended for any consumer of them.</dd>
@@ -1145,7 +1147,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Requirements Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An application embedded in or injected into an arbitrary HTML document depends on the server hosting that document to issue appropriate Content Security Policy (CSP) headers. Without server cooperation, the browser can block scripts, fetches, or other operations the application requires in order to function. A request can ask a Receiver to review the requirements declared in an application's capability description and act on them, for example by including approved CSP directives in responses served in the context of that application.</p>
-                  <p>A <a href="#Sender">Sender</a> publishes a capability description in which the application links to one or more <a href="#requirement">requirement</a> declarations via <code>requirement</code>. The <a href="#Receiver">Receiver</a> obtains the application IRI, whether at registration time, during policy setup, on first encounter with the application, or from a <a href="#request-notification">request notification</a>, dereferences the capability description, and reviews the declared requirements as described in <a href="#request-notification">Request Notification</a>. When serving responses in the context of that application, the Receiver includes CSP headers reflecting the approved requirements.</p>
+                  <p>A <a href="#Sender">Sender</a> publishes a capability description in which the application links to one or more <a href="#requirement">requirement</a> declarations via <code>requirement</code>. The <a href="#Receiver">Receiver</a> obtains the application IRI, whether at registration time, during policy setup, on first encounter with the application, or from a <a href="#request-notification">request notification</a>, dereferences the capability description, and reviews the declared requirements as described in <a href="#request-notification">Request Notification</a>. A review covers only the requirements the Receiver recognises. When serving responses in the context of that application, the Receiver includes CSP headers reflecting the approved requirements.</p>
                   <figure class="example listing" id="requirements-review-example" rel="schema:hasPart" resource="#requirements-review-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A capability description declaring CSP requirements, and a server response reflecting the approved requirements in responses served in the context of the application.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1275,6 +1277,13 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
   ]
 }</code></pre>
                   </figure>
+                </div>
+              </section>
+              <section id="requirement-extension" inlist="" rel="schema:hasPart" resource="#requirement-extension">
+                <h3 property="schema:name">Requirement Extension</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+                  <p>Applications can state environmental needs beyond those defined in <a href="#requirement">Requirement</a> by including properties from other vocabularies.</p>
                 </div>
               </section>
             </div>
