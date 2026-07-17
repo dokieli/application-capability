@@ -229,7 +229,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Application Capability</h1>
-          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2024-05-31T00:00:00Z">15 July 2026</time></p>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-07-17T00:00:00Z">17 July 2026</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -255,7 +255,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2026-07-15T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-07-15T10:58:10.735Z" property="schema:dateModified">2026-07-15</time></dd>
+              <dd><time content="2026-07-17T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-07-17T10:58:10.735Z" property="schema:dateModified">2026-07-17</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -331,7 +331,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>Application Capability (<abbr title="Application Capability">AC</abbr>) defines a structured description of an application's affordances: the actions it can perform, how to invoke them, and what it requires from the environment to function. Consumers, including servers, <a href="https://www.w3.org/TR/web-user-agents/">web user agents</a>, and applications, can discover and process these descriptions to make informed decisions about accessing, presenting, and interacting with resources.</p>
             </div>
           </section>
-          <section id="status-of-this-document" inlist="" rel="schema:hasPart" resource="#status-of-this-document">
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
             <h2 property="schema:name">Status of This Document</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>This report was published by the <a href="https://www.w3.org/groups/cg/foo-bar-baz/">Foo Bar Baz Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
@@ -366,10 +366,15 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#capability-description"><bdi class="secno">3.1</bdi> <span>Capability Description</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#capability"><bdi class="secno">3.2</bdi> <span>Capability</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#invocation"><bdi class="secno">3.3</bdi> <span>Invocation</span></a></li>
+                    <li class="tocline">
+                      <p><a class="tocxref" href="#invocation"><bdi class="secno">3.3</bdi> <span>Invocation</span></a></p>
+                      <ol>
+                        <li class="tocline"><a class="tocxref" href="#uri-template-invocation"><bdi class="secno">3.3.1</bdi> <span>URI Template Invocation</span></a></li>
+                      </ol>
+                    </li>
                     <li class="tocline"><a class="tocxref" href="#invocation-variables"><bdi class="secno">3.4</bdi> <span>Invocation Variables</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#requirement"><bdi class="secno">3.6</bdi> <span>Requirement</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#embedding-in-other-description-formats"><bdi class="secno">3.7</bdi> <span>Embedding in Other Description Formats</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#requirement"><bdi class="secno">3.5</bdi> <span>Requirement</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#embedding-in-other-description-formats"><bdi class="secno">3.6</bdi> <span>Embedding in Other Description Formats</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -463,15 +468,15 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="dfn-application">Application</dfn></dt>
                     <dd>A web application that operates on resources identified by IRIs. An application can be deployed at a fixed origin, embedded in markup-based host languages, or as a <cite>Web Extension</cite>. An application could act as a <a href="#dfn-sender">Sender</a>, a <a href="#dfn-consumer">Consumer</a>, or both.</dd>
                     <dt><dfn id="dfn-sender">Sender</dfn></dt>
-                    <dd>An implementation that publishes and, where applicable, delivers an Application Capability Description to a <a href="#dfn-receiver">Receiver</a>. Typically an application making its identity, capabilities, and requirements known.</dd>
+                    <dd>An implementation that publishes and, where applicable, delivers an Application Capability Description to a <a href="#dfn-receiver">Receiver</a>. Typically an <a href="#dfn-application">Application</a> making its identity, capabilities, and requirements known.</dd>
                     <dt><dfn id="dfn-receiver">Receiver</dfn></dt>
-                    <dd>An implementation that accepts and processes capability descriptions or notifications referencing them. Typically an HTTP server that hosts resources, hosts an inbox, reviews declared requirements, and serves Content Security Policy headers accordingly.</dd>
+                    <dd>An implementation that accepts and processes capability descriptions or notifications referencing them. Typically an HTTP server that hosts resources, hosts an inbox, reviews declared requirements, and serves Content Security Policy headers accordingly to a <a href="#dfn-sender">Sender</a> or a <a href="#dfn-consumer">Consumer</a>.</dd>
                     <dt><dfn id="dfn-consumer">Consumer</dfn></dt>
-                    <dd>An implementation that reads and processes an Application Capability Description, obtained directly from the application's IRI or from a <a href="#dfn-receiver">Receiver</a>, in order to discover capabilities, prepare invocations, or inform authorisation decisions.</dd>
+                    <dd>An implementation that reads and processes an Application Capability Description, obtained directly from the <a href="#dfn-application">Application</a>'s IRI or from a <a href="#dfn-receiver">Receiver</a>, in order to discover capabilities, prepare invocations, or inform authorisation decisions.</dd>
                     <dt><dfn id="dfn-capability">Capability</dfn></dt>
-                    <dd>A declared affordance of an application: an action that can be triggered by an invocation.</dd>
+                    <dd>A declared affordance of an <a href="#dfn-application">Application</a>: an action that can be triggered by an invocation.</dd>
                     <dt><dfn id="dfn-invocation">Invocation</dfn></dt>
-                    <dd>The act of triggering an application to perform processes, for example by navigating to a URI constructed from a URI Template. For invocations based on URI Templates, an invocation covers only the URL-loading step; subsequent user-activated operations or UI events within the application are out of scope, even though the capabilities do express these affordances.</dd>
+                    <dd>The act of triggering an <a href="#dfn-application">Application</a> to perform processes, for example by navigating to a URI constructed from a URI Template. For invocations based on URI Templates, an invocation covers only the URL-loading step; subsequent user-activated operations or UI events within the application are out of scope, even though the capabilities do express these affordances.</dd>
                   </dl>
                 </div>
               </section>
@@ -760,7 +765,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <section id="specification-category" inlist="" rel="schema:hasPart spec:specificationCategory" resource="#specification-category" typeof="skos:ConceptScheme">
                     <h4 property="schema:name skos:prefLabel">Specification Category</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Application Capability</span> specification identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:ContentData">content/data</span> (the capability description format), <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span> (the URI Template invocation syntax), and <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span> (the discovery and notification interactions between Senders, Receivers, and Consumers). These categories correspond to the severable modules identified in the Status of This Document.</p>
+                      <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Application Capability</span> specification identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:ContentData">content/data</span> (the capability description format), <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span> (the URI Template invocation syntax), and <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span> (the discovery and notification interactions between Senders, Receivers, and Consumers).</p>
                     </div>
                   </section>
                   <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
@@ -828,12 +833,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The following properties are defined by this specification for the discovery of an application's capabilities and requirements.</p>
                   <dl>
-                    <dt><code>capability</code></dt>
+                    <dt><dfn id="description-capability"><code>capability</code></dfn></dt>
                     <dd>Links the application to one or more <a href="#capability">Capability</a> declarations.</dd>
-                    <dt><code>requirement</code></dt>
+                    <dt><dfn id="description-requirement"><code>requirement</code></dfn></dt>
                     <dd>Links the application to one or more <a href="#requirement">requirement</a> declarations.</dd>
-                    <dt><code>inbox</code></dt>
-                    <dd>The IRI of a Linked Data Notifications inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> publish this property.</dd>
+                    <dt><dfn id="description-inbox"><code>inbox</code></dfn></dt>
+                    <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [LDN].</dd>
                   </dl>
                   <p>The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedding-in-other-description-formats">Embedding in Other Description Formats</a> for usage alongside other vocabularies and within non-RDF formats.</p>
                   <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
@@ -862,25 +867,25 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="capability" inlist="" rel="schema:hasPart" resource="#capability">
                 <h3 property="schema:name">Capability</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <dfn id="dfn-capability-node">Capability</dfn> is a resource of type <code>Capability</code> that declares one action an application can perform, the media types (if any) the action applies to, and how to invoke it.</p>
+                  <p>A <dfn id="dfn-capability">Capability</dfn> is a resource of type <code>Capability</code> that declares one action an application can perform, the media types (if any) the action applies to, and how to invoke it.</p>
                   <p>Because capabilities are identified by IRIs, they can be shared across applications. An application's capability description can reference a capability IRI published elsewhere (for example, a well-known capability defined by a community or standard) rather than defining its own. Multiple applications linking to the same capability IRI signal that they support the same action under the same terms.</p>
                   <dl>
-                    <dt><code>accept</code></dt>
+                    <dt><dfn id="capability-accept"><code>accept</code></dfn></dt>
                     <dd>Zero or more media types (RFC 2046) that this capability accepts as input.</dd>
-                    <dt><code>resourceType</code></dt>
+                    <dt><dfn id="capability-resourceType"><code>resourceType</code></dfn></dt>
                     <dd>Zero or more IRIs identifying the classes of resource (e.g., <code>rdf:type</code>) this capability applies to.</dd>
-                    <dt><code>shape</code></dt>
+                    <dt><dfn id="capability-shape"><code>shape</code></dfn></dt>
                     <dd>Zero or more IRIs identifying shapes (e.g., SHACL) for a resource that this capability applies to. The interpretation of a shape is bound to the capability's <code>action</code>: for a display or edit action the shape describes the accepted input; for a transform action it describes the accepted source. Shape-based matching is stricter than <code>accept</code> or <code>resourceType</code> matching, and Consumers can fall back to the coarser criteria when shape validation is unavailable.</dd>
-                    <dt><code>action</code></dt>
+                    <dt><dfn id="capability-action"><code>action</code></dfn></dt>
                     <dd>The action the application can perform per capability. Each capability declares an action. Recommended practice is to use values from a controlled and shared vocabulary (such as ODRL actions). An application that affords multiple actions declares multiple capabilities, which can share an <a href="#invocation">invocation</a> by reference.</dd>
-                    <dt><code>invocation</code></dt>
+                    <dt><dfn id="capability-invocation"><code>invocation</code></dfn></dt>
                     <dd>Links the capability to one or more <a href="#invocation">invocations</a> describing how to trigger it.</dd>
-                    <dt><code>destination</code></dt>
+                    <dt><dfn id="capability-destination"><code>destination</code></dfn></dt>
                     <dd>The IRI to deliver or save the result to. Used when the action produces an output.</dd>
-                    <dt><code>output</code></dt>
+                    <dt><dfn id="capability-output"><code>output</code></dfn></dt>
                     <dd>Zero or more media types of the result produced by the action. An application that can produce multiple output formats declares a separate Capability for each format. Consumers match the desired output format against the declared <code>output</code> to select the appropriate Capability, then pass that format as the <code>output</code> invocation variable.</dd>
                   </dl>
-                  <p>Matching semantics: a Consumer performing a given match never selects a capability that declares no criterion of that kind. A media-type match ignores capabilities without <code>accept</code>, an output-format match ignores capabilities without <code>output</code>, a resource-type match ignores capabilities without <code>resourceType</code>, and a shape match ignores capabilities without <code>shape</code>. Capabilities that declare none of these criteria are selected by <code>action</code>. Consumers <span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span> ignore capabilities whose declared <code>action</code>, <code>accept</code>, or <code>resourceType</code> they do not recognise rather than treat them as errors.</p>
+                  <p>Matching semantics: a capability is matched on a criterion (<code>accept</code>, <code>output</code>, <code>resourceType</code>, <code>shape</code>) only if it declares that criterion; an absent criterion is not a wildcard. A capability that declares none of them is selected by its <code>action</code>. Consumers are encouraged to ignore capabilities whose declared <code>action</code>, <code>accept</code>, or <code>resourceType</code> they do not recognise rather than treat them as errors.</p>
                   <div class="note">
                     <p><span>Note</span>: <code>action</code> describes what the application affords once invoked. It is unrelated to the HTTP GET used for navigation and to the methods the application later uses to manipulate the resource, which are outside the scope of this specification.</p>
                   </div>
@@ -940,21 +945,21 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="invocation" inlist="" rel="schema:hasPart" resource="#invocation">
                 <h3 property="schema:name">Invocation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An <dfn id="dfn-invocation-node">Invocation</dfn> is a resource describing one mechanism by which a capability is triggered. <code>Invocation</code> is an abstract class; every Invocation is typed with one of its subclasses. This specification defines <code>UriTemplateInvocation</code>. Other invocation kinds can be described by defining additional subclasses of <code>Invocation</code>; this specification does not constrain their form.</p>
-                  <p>A capability can declare multiple invocations. A Consumer selects an invocation according to its own deployment context and not by document order. Consumers <span rel="spec:requirement" resource="spec:MUST">MUST</span> ignore invocations of a type they do not recognise.</p>
+                  <p>An <dfn id="dfn-invocation">Invocation</dfn> is a resource describing one mechanism by which a capability is triggered. <code>Invocation</code> is an abstract class; every Invocation is typed with one of its subclasses. This specification defines <code>UriTemplateInvocation</code>. Other invocation kinds can be described by defining additional subclasses of <code>Invocation</code>; this specification does not constrain their form.</p>
+                  <p>A capability can declare multiple invocations. A Consumer selects an invocation according to its own deployment context and not by document order. Consumers are encouraged to ignore invocations of a type they do not recognise rather than treat them as errors.</p>
                   <p>An application ultimately decides whether to carry out a given invocation and in which order invocations are processed. An error with one invocation could prevent related invocations from being fulfilled.</p>
                   <section id="uri-template-invocation" inlist="" rel="schema:hasPart" resource="#uri-template-invocation">
                     <h4 property="schema:name">URI Template Invocation</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>A <code>UriTemplateInvocation</code> describes invocation by navigation: the Consumer expands the template, resolves the result against the application's deployment IRI, and navigates the user agent to it via HTTP GET. The user agent performs a GET request; any fragment portion of the URI is processed client-side by the loaded application and is not included in the request.</p>
                       <dl>
-                        <dt><code>template</code></dt>
+                        <dt><dfn id="invocation-template"><code>template</code></dfn></dt>
                         <dd>An RFC 6570 URI Template expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Variable names in the template correspond to the property names defined in the <a href="#invocation-variables">Invocation Variables</a> section; variables with other names require an explicit <code>mapping</code> entry. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value and the invoked capability. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded (RFC 3987).</dd>
-                        <dt><code>mapping</code></dt>
+                        <dt><dfn id="invocation-mapping"><code>mapping</code></dfn></dt>
                         <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). For variables whose names match a property name defined in the <a href="#invocation-variables">Invocation Variables</a> section, the mapping can be omitted. An explicit mapping is required for variables not defined in this specification; see <a href="#invocation-extension">Invocation Extension</a>.</dd>
                       </dl>
                       <p>Encoding rules: in the expanded invocation IRI, <code>&amp;</code> is the sole pair separator and <code>=</code> the sole name/value separator; receiving applications <span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span> treat <code>;</code> as a separator. Because simple expansion percent-encodes sub-delimiters within values, every unencoded <code>&amp;</code> and <code>=</code> in the result is structural. Receiving applications parse fragment content with query-string semantics. A variable can carry multiple values; the canonical wire form repeats the name for each value (<code>open=uri1&amp;open=uri2</code>). RFC 6570 simple expansion of a list (<code>{open*}</code>) produces comma-separated values without name repetition and is not name-bearing; templates that need a variable to carry multiple values are encouraged to use an expansion operator whose output is name-bearing.</p>
-                      <p>Receiver rules: receiving applications <span rel="spec:requirement" resource="spec:MUST">MUST</span> treat all invocation parameter values as untrusted input and validate or sanitise them before acting on them. A <code>login</code> value identifies who to authenticate as and never substitutes for authentication; <code>open</code> and other IRI-valued variables are untrusted IRIs to be retrieved with the user's own authorisation, with server-side receivers guarding against request forgery. Unknown variable names <span rel="spec:requirement" resource="spec:MUST">MUST</span> be ignored and <span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span> be treated as errors. Receipt of an invocation implies nothing about grants or permissions; it is a request.</p>
+                      <p>Receivers are encouraged to treat all invocation parameter values as untrusted input and validate or sanitise them before acting on them. A <code>login</code> value identifies who to authenticate as and never substitutes for authentication; <code>open</code> and other IRI-valued variables are untrusted IRIs to be retrieved with the user's own authorisation, with server-side receivers guarding against request forgery. Receiving applications are encouraged to ignore variable names they do not recognise rather than treat them as errors, to treat every variable as optional, and to fail safe when a variable is absent or empty, since a Consumer may supply only the variables it recognises. Receipt of an invocation implies nothing about grants or permissions; it is a request.</p>
                       <div class="note" id="uri-fragment" inlist="" rel="schema:hasPart" resource="#uri-fragment">
                         <h4 property="schema:name"><span>Note</span>: URI Fragment</h4>
                         <div datatype="rdf:HTML" property="schema:description">
@@ -1004,18 +1009,18 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
               <section id="invocation-variables" inlist="" rel="schema:hasPart" resource="#invocation-variables">
                 <h3 property="schema:name">Invocation Variables</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>This section defines properties in this vocabulary. Each property's local name is both the key for that property under the JSON-LD context and the canonical variable name in URI template expressions. For example, the <code>ac:</code> vocabulary property whose local name is <code>open</code> appears as the JSON-LD key <code>open</code> and as the URI template variable <code>{open}</code>. Applications <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> use these properties when the intended semantics match, so that Consumers can resolve variable meaning by property rather than by string convention alone. For variables not defined here, applications can declare a <code>mapping</code> that pairs the variable name used in the template with the defining property. A Consumer that encounters a variable whose property it does not recognise <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> still expand the template with the variables it does recognise.</p>
+                  <p>The local name of each property defined in this section serves both as the property's key in the JSON-LD context and as the canonical variable name in URI template expressions. For example, the <code>ac:</code> vocabulary property whose local name is <code>open</code> appears as the JSON-LD key <code>open</code> and as the URI template variable <code>{open}</code>. Applications can use these properties when the intended semantics match, so that Consumers can resolve variable meaning by property rather than by string convention alone. For variables not defined here, applications can declare a <code>mapping</code> that pairs the variable name used in the template with the defining property. A Consumer that encounters a variable whose property it does not recognise is encouraged to still expand the template with the variables it does recognise, so that extension variables do not prevent invocation.</p>
                   <p>The properties defined here parameterise the IRI used to invoke an application. They do not represent user-activated operations or UI events within the running application; those are the concern of the <a href="https://www.w3.org/TR/web-user-agents/">user agent</a> and the relevant browser specifications.</p>
                   <dl>
-                    <dt><dfn id="ivar-open"><code>open</code></dfn></dt>
+                    <dt><dfn id="variable-open"><code>open</code></dfn></dt>
                     <dd>The IRI of a resource to open. The application renders, displays, or edits the identified resource.</dd>
-                    <dt><dfn id="ivar-search"><code>search</code></dfn></dt>
+                    <dt><dfn id="variable-search"><code>search</code></dfn></dt>
                     <dd>A query or search expression submitted to the application. The format and interpretation are application-defined: the value can be a freetext string, a structured query, or any other expression the application understands.</dd>
-                    <dt><dfn id="ivar-output"><code>output</code></dfn></dt>
+                    <dt><dfn id="variable-output"><code>output</code></dfn></dt>
                     <dd>The media type of the desired output. Used when invoking a transform capability: its value ought to match the <code>output</code> declared by the selected Capability. A Consumer that wants HTML output selects the capability declaring <code>output: text/html</code> and passes <code>output=text/html</code> in the invocation IRI.</dd>
-                    <dt><dfn id="ivar-login"><code>login</code></dfn></dt>
+                    <dt><dfn id="variable-login"><code>login</code></dfn></dt>
                     <dd>The IRI of a user profile (e.g. a WebID) identifying who to authenticate as. This is a hint, not authentication: the application remains responsible for authenticating the user.</dd>
-                    <dt><dfn id="ivar-proxy"><code>proxy</code></dfn></dt>
+                    <dt><dfn id="variable-proxy"><code>proxy</code></dfn></dt>
                     <dd>The URL of a proxy through which the application is intended to route network requests. This variable has no effect on its own; when present alongside <code>open</code> or other variables that involve fetching a resource, the application uses the proxy URL for those requests.</dd>
                   </dl>
                   <p>Additional invocation variables can be introduced as described in <a href="#invocation-extension">Invocation Extension</a>.</p>
@@ -1026,13 +1031,13 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <dfn id="dfn-requirement">requirement</dfn> is a resource of type <code>Requirement</code> that declares one environmental requirement an application has: a CSP directive the host server ought to include, or a browser permission the application can request at runtime. Where a <a href="#dfn-capability">Capability</a> declares what an application can do, a Requirement declares what the environment needs to provide for the application to function. An application links to one or more Requirement declarations via <code>requirement</code>. Declaring requirements as discrete resources allows each requirement to carry its own purpose annotation and to be individually identified and referenced.</p>
                   <p>Application requirements serve two roles in this specification. As declarative self-description, they are readable by any <a href="#Consumer">Consumer</a>: a catalogue ranking applications by permission footprint, a user agent presenting requirements to a user before invocation, or an authorisation agent reviewing access. As protocol input, they are delivered by a <a href="#Sender">Sender</a> to a <a href="#Receiver">Receiver</a>, which reviews and acts on them by applying CSP headers or addressing declared authorisation needs; this active use is described in the <a href="#notifications">Notifications</a> section. The two roles are independent: a Consumer can read and act on declared requirements without any Sender–Receiver exchange having taken place.</p>
-                  <p>Requirements are independent of the invocation mechanism: a Consumer evaluates them before invoking, whichever invocation it selects. Consumers ignore requirement properties they do not recognise.</p>
+                  <p>Requirements are independent of the invocation mechanism: a Consumer evaluates them before invoking, whichever invocation it selects. Consumers are encouraged to ignore requirement properties they do not recognise rather than treat them as errors.</p>
                   <dl>
-                    <dt><code>cspDirective</code></dt>
+                    <dt><dfn id="requirement-cspDirective"><code>cspDirective</code></dfn></dt>
                     <dd>One or more CSP directives (CSP Level 3 syntax) that the host server ought to include with responses of resources the application creates, modifies, or opens, so that the content of those resources functions as intended for any consumer of them.</dd>
-                    <dt><code>browserPermission</code></dt>
+                    <dt><dfn id="requirement-browserPermission"><code>browserPermission</code></dfn></dt>
                     <dd>One or more browser permission names (Permissions API) the application can request at runtime.</dd>
-                    <dt><code>dpv:hasPurpose</code></dt>
+                    <dt><dfn id="requirement-hasPurpose"><code>dpv:hasPurpose</code></dfn></dt>
                     <dd>Links to a DPV purpose class expressing why the application needs the declared permissions, supporting transparency and informed review.</dd>
                   </dl>
                   <figure class="example listing" id="permissions-example" rel="schema:hasPart" resource="#permissions-example">
@@ -1229,7 +1234,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <li>Include a <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
                     <li>Return a representation whose encoded graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>, where the subject is the target resource and the object is the inbox IRI.</li>
                   </ul>
-                  <p>A <a href="#Sender">Sender</a> that receives a 4xx response <span rel="spec:requirement" resource="spec:SHOULD">SHOULD</span> attempt to discover the inbox: first from the <code>Link</code> header; if no inbox is found there, from the response body parsed as an RDF representation. If an inbox is discovered, the Sender delivers a notification to that inbox conveying its application IRI. The Receiver can then dereference the capability description from that IRI and follow the review process described in <a href="#request-notification">Request Notification</a>.</p>
+                  <p>A <a href="#Sender">Sender</a> that receives a 4xx response <span rel="spec:requirement" resource="spec:MUST">MUST</span> attempt to discover the inbox: first from the <code>Link</code> header; if no inbox is found there, from the response body parsed as an RDF representation. If an inbox is discovered, the Sender delivers a notification to that inbox conveying its application IRI. The Receiver can then dereference the capability description from that IRI and follow the review process described in <a href="#request-notification">Request Notification</a>.</p>
                   <p>A <a href="#Consumer">Consumer</a> that has obtained a Sender's capability description, whether directly from the Sender's IRI or via a Receiver, can use it to prepare invocations independently of whether the Sender–Receiver interaction has taken place.</p>
                   <figure class="example listing" id="error-inbox-discovery-example" rel="schema:hasPart" resource="#error-inbox-discovery-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>403 response advertising an inbox. The Sender discovers the inbox and delivers a notification referencing its capability description.</span></figcaption>
@@ -1255,11 +1260,11 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p>Applications can introduce invocation variables beyond those defined in <a href="#invocation-variables">Invocation Variables</a> by declaring a <code>mapping</code> that pairs the variable name used in the template with a property that defines its semantics. Consumers that do not recognise the property still expand the template with the variables they do recognise, and receiving applications treat extension variable values as untrusted input, per the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</p>
                   <p>The following variables illustrate invocation extensions:</p>
                   <dl>
-                    <dt><dfn id="ivar-graph"><code>graph</code></dfn></dt>
+                    <dt><dfn id="variable-graph"><code>graph</code></dfn></dt>
                     <dd>The IRI of an RDF dataset or named graph to load and render.</dd>
-                    <dt><dfn id="ivar-style"><code>style</code></dfn></dt>
+                    <dt><dfn id="variable-style"><code>style</code></dfn></dt>
                     <dd>The IRI of a stylesheet to apply when rendering the resource.</dd>
-                    <dt><dfn id="ivar-state"><code>state</code></dfn></dt>
+                    <dt><dfn id="variable-state"><code>state</code></dfn></dt>
                     <dd>An application-defined value encoding the UI state in which to open the application, such as which panels are active or the current view mode. The encoding and interpretation of this variable are not further specified.</dd>
                   </dl>
                   <figure class="example listing" id="explicit-mapping-example" rel="schema:hasPart" resource="#explicit-mapping-example">
