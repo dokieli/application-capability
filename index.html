@@ -342,7 +342,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             <div>
               <ol class="toc">
                 <li class="tocline"><a class="tocxref" href="#abstract"><bdi class="secno"></bdi> <span>Abstract</span></a></li>
-                <li class="tocline"><a class="tocxref" href="#status-of-this-document"><bdi class="secno"></bdi> <span>Status of This Document</span></a></li>
+                <li class="tocline"><a class="tocxref" href="#sotd"><bdi class="secno"></bdi> <span>Status of This Document</span></a></li>
                 <li class="tocline">
                   <p><a class="tocxref" href="#introduction"><bdi class="secno">1.</bdi> <span>Introduction</span></a></p>
                   <ol>
@@ -374,7 +374,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     </li>
                     <li class="tocline"><a class="tocxref" href="#invocation-variables"><bdi class="secno">3.4</bdi> <span>Invocation Variables</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#requirement"><bdi class="secno">3.5</bdi> <span>Requirement</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#embedding-in-other-description-formats"><bdi class="secno">3.6</bdi> <span>Embedding in Other Description Formats</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#policy"><bdi class="secno">3.6</bdi> <span>Policy</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#embedding-in-other-description-formats"><bdi class="secno">3.7</bdi> <span>Embedding in Other Description Formats</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -575,6 +576,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "inbox": {"@id": "ldp:inbox", "@type": "@id"},
     "Invocation": "ac:Invocation",
     "invocation": {"@id": "ac:invocation", "@type": "@id"},
+    "issuedPolicy": {"@id": "odrl:issuedPolicy", "@type": "@id"},
     "login": {"@id": "ac:login", "@type": "@id"},
     "mapping": "ac:mapping",
     "object": {"@id": "as:object", "@type": "@id"},
@@ -705,6 +707,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <td><code>invocation</code></td>
                         <td><code>ac:invocation</code></td>
                         <td>Links a capability to one or more <a href="#invocation">Invocations</a> describing how to trigger it.</td>
+                      </tr>
+                      <tr>
+                        <td><code>issuedPolicy</code></td>
+                        <td><code>odrl:issuedPolicy</code></td>
+                        <td>Links an application, as a Party, to a <a href="#policy">policy</a> it issues about its own conduct.</td>
                       </tr>
                       <tr>
                         <td><code>mapping</code></td>
@@ -1068,6 +1075,44 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   </figure>
                 </div>
               </section>
+              <section id="policy" inlist="" rel="schema:hasPart" resource="#policy">
+                <h3 property="schema:name">Policy</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A <dfn id="dfn-policy">policy</dfn> is a resource of type <code>odrl:Policy</code> [<cite><a class="bibref" href="#bib-odrl-model">ODRL Information Model 2.2</a></cite>] an application issues about its own conduct. Where a <a href="#dfn-capability">Capability</a> declares an affordance the application can perform, a policy declares a self-imposed constraint on exercising it; both may use the same <code>odrl:action</code> terms. A self-issued permission compels no one, so an issued policy's substance is usually its prohibitions and obligations. An application links to one or more policies via <code>issuedPolicy</code>, as with <code>capability</code> and <code>requirement</code>.</p>
+                  <dl>
+                    <dt><dfn id="policy-issuedPolicy"><code>issuedPolicy</code></dfn></dt>
+                    <dd>Links the application, as an <code>odrl:Party</code>, to a policy, inline or referenced by IRI, it asserts about its own conduct, e.g., rules over data it processes or defaults it applies to resources it creates. Issuing a policy grants no privileges.</dd>
+                  </dl>
+                  <p>Policies are declarations, not authorisations. A Consumer can compare an application's issued policies against policies issued by other parties, for example, a user's policies of type <code>odrl:Preference</code>, terms the issuer prefers but can renegotiate, discovered from the user's profile via the same <code>issuedPolicy</code> property, and surface discrepancies to the user before invocation, e.g., an action permitted by the application's policy but prohibited by the user's. Locating a user's profile is out of scope. How policies are matched is left to the Consumer, which may apply ODRL conflict-resolution strategies (<code>odrl:conflict</code>). Consumers are encouraged to ignore policy content they do not recognise rather than treat it as an error.</p>
+                  <div class="note" id="comparing-policies" inlist="" rel="schema:hasPart" resource="#comparing-policies">
+                    <h4 property="schema:name"><span>Note</span>: Comparing Policies</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A policy constrains only the party it binds, and a permission compels no one: an application that prohibits itself from an action a user permits simply abstains, which is not a discrepancy. A discrepancy worth surfacing is one where an action a party's policy permits is prohibited by another party's policy, for example an application permitting itself an action the user prohibits.</p>
+                    </div>
+                  </div>
+                  <div class="note" id="policies-targeting-the-application" inlist="" rel="schema:hasPart" resource="#policies-targeting-the-application">
+                    <h4 property="schema:name"><span>Note</span>: Policies Targeting the Application</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Policies whose rules target the application itself, for example terms of use of the application, are expressed with <code>odrl:hasPolicy</code> as defined by ODRL and are not further specified here.</p>
+                    </div>
+                  </div>
+                  <figure class="example listing" id="policy-example" rel="schema:hasPart" resource="#policy-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>An application issues a policy prohibiting itself from selling data it processes.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#i",
+  "issuedPolicy": {
+    "id": "https://app.example/#policy-conduct",
+    "type": "odrl:Policy",
+    "odrl:prohibition": {
+      "odrl:assignee": { "id": "https://app.example/#i" },
+      "odrl:action": { "id": "odrl:sell" }
+    }
+  }
+}</code></pre>
+                  </figure>
+                </div>
+              </section>
               <section id="embedding-in-other-description-formats" inlist="" rel="schema:hasPart" resource="#embedding-in-other-description-formats">
                 <h3 property="schema:name">Embedding in Other Description Formats</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -1386,6 +1431,16 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                             <td><em>Purpose specification</em> via <code>dpv:hasPurpose</code> supports transparency and informed review. Enforcement depends on operator policy and legal mechanisms such as data protection law, which are outside the scope of this specification.</td>
                           </tr>
                           <tr>
+                            <td><a href="#policy">#policy</a></td>
+                            <td><strong>Policy misrepresentation.</strong> A Sender issues policies it does not observe, for example an <code>odrl:Preference</code> prohibiting the sale of processed data while the application sells it regardless. Issued policies are self-asserted and are not a <em>security invariant</em>; a favourable policy comparison can manufacture trust the application does not deserve, a form of <em>disloyalty</em>.</td>
+                            <td>Consumers present policy comparison as information supporting a user decision, not as assurance of conduct. Enforcement depends on operator policy and legal mechanisms such as data protection law, which are outside the scope of this specification.</td>
+                          </tr>
+                          <tr>
+                            <td><a href="#policy">#policy</a></td>
+                            <td><strong>Policy change after reliance.</strong> A Sender issues agreeable policies, then narrows or replaces them after users or Receivers have made decisions based on an earlier comparison, exploiting stale copies and previously established trust.</td>
+                            <td>Consumers re-fetch and re-compare policies rather than acting on cached comparisons. A change in an application's issued policies ought to trigger a renewed decision rather than automatic acceptance.</td>
+                          </tr>
+                          <tr>
                             <td><a href="#uri-template-invocation">#uri-template-invocation</a>, <a href="#invocation-extension">#invocation-extension</a></td>
                             <td><strong>Invocation parameter injection.</strong> A hostile party supplies invocation values (a forged <code>login</code> identity, or a script-injecting stylesheet IRI or application-state value supplied via <a href="#invocation-extension">extension variables</a>) that a receiving application processes without validation. This is an injection attack: untrusted input crosses a trust boundary and is treated as trusted.</td>
                             <td>Receiving applications treat all invocation parameters as untrusted input and validate or sanitise them before use, as required by the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</td>
@@ -1405,6 +1460,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p about="" id="capability-description-revalidation" rel="spec:advisement" resource="#capability-description-revalidation"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to re-fetch capability descriptions periodically and, when a Sender's declared requirements have changed since a prior review was recorded, to treat the change as requiring renewed review rather than continuing to act on the earlier decision.</span></p>
                   <p about="" id="csp-minimum-necessary" rel="spec:advisement" resource="#csp-minimum-necessary"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare only the minimum CSP directives and browser permissions necessary for their intended function. Overly broad declarations <span rel="spec:advisementLevel" resource="spec:StronglyDiscouraged">strongly discourage</span> Receiver trust and increase the risk of misuse if permissions are granted.</span></p>
                   <p about="" id="server-policy-review" rel="spec:advisement" resource="#server-policy-review"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat a capability description as informational input to a review rather than as a grant of permissions. The decision to apply declared CSP directives remains with the Receiver's operator, with human review before first use.</span></p>
+                  <p about="" id="issued-policy-informational" rel="spec:advisement" resource="#issued-policy-informational"><span property="spec:statement">Consumers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat an application's issued <a href="#policy">policies</a> as informational input to a user decision rather than as assurance that the application behaves accordingly, and to re-compare policies when an issued policy changes.</span></p>
                   <p about="" id="invocation-receiver-validation" rel="spec:advisement" resource="#invocation-receiver-validation"><span property="spec:statement">Receiving applications are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat all invocation parameters as untrusted input, as required by the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</span></p>
                 </div>
               </section>
