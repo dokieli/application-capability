@@ -375,7 +375,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#invocation-variables"><bdi class="secno">3.4</bdi> <span>Invocation Variables</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#requirement"><bdi class="secno">3.5</bdi> <span>Requirement</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#policy"><bdi class="secno">3.6</bdi> <span>Policy</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#embedding-in-other-description-formats"><bdi class="secno">3.7</bdi> <span>Embedding in Other Description Formats</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#embedded-descriptions"><bdi class="secno">3.7</bdi> <span>Embedded Descriptions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -848,7 +848,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="description-inbox"><code>inbox</code></dfn></dt>
                     <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [LDN].</dd>
                   </dl>
-                  <p>The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedding-in-other-description-formats">Embedding in Other Description Formats</a> for usage alongside other vocabularies and within non-RDF formats.</p>
+                  <p>The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedded-descriptions">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
                   <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Application capability description in JSON-LD. One capability per action; capabilities can include their invocations. The type and descriptive properties come from host vocabularies (here <code>ac:Application</code> and <code>as:name</code>); neither is required.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1114,12 +1114,12 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   </figure>
                 </div>
               </section>
-              <section id="embedding-in-other-description-formats" inlist="" rel="schema:hasPart" resource="#embedding-in-other-description-formats">
-                <h3 property="schema:name">Embedding in Other Description Formats</h3>
+              <section id="embedded-descriptions" inlist="" rel="schema:hasPart" resource="#embedded-descriptions">
+                <h3 property="schema:name">Embedded Descriptions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                   <p>Because <code>capability</code> and <code>requirement</code> attach to any resource identifying an application, an application already described by another vocabulary, e.g., Application Manifest, Web Extensions Manifest, Description of a Project, Activity Vocabulary, schema.org, Web of Things, OAuth, can include these properties on its existing subject without restructuring:</p>
-                  <figure class="example listing" id="embedding-jsonld-example" rel="schema:hasPart" resource="#embedding-jsonld-example">
+                  <figure class="example listing" id="embedded-descriptions-jsonld-example" rel="schema:hasPart" resource="#embedded-descriptions-jsonld-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Capability and requirements statements on a subject described by another vocabulary.</span></figcaption>
                     <pre property="schema:description"><code>{
   "@context": [
@@ -1128,12 +1128,12 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
   ],
   "id": "https://app.example/#this",
   "client_name": "Example App",
-  "capability": "https://app.example/#capability-open",
-  "requirement": "https://app.example/#requirement-scripts"
+  "capability": ["https://app.example/#capability-open"],
+  "requirement": ["https://app.example/#requirement-scripts"]
 }</code></pre>
                   </figure>
                   <p>Description formats that are not JSON-LD can carry a capability description as a self-contained member with their own reference, whose value is a JSON-LD object using this specification's context. Processors of the host format ignore the member; Consumers extract and process it as JSON-LD.</p>
-                  <figure class="example listing" id="embedding-manifest-example" rel="schema:hasPart" resource="#embedding-manifest-example">
+                  <figure class="example listing" id="embedded-descriptions-manifest-example" rel="schema:hasPart" resource="#embedded-descriptions-manifest-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in a Web Application Manifest.</span></figcaption>
                     <pre property="schema:description"><code>{
   "name": "Example App",
@@ -1141,12 +1141,26 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
   "ac": {
     "@context": "https://www.w3.org/ns/ac.jsonld",
     "id": "https://app.example/#this",
-    "capability": "https://app.example/#capability-open",
-    "requirement": "https://app.example/#requirement-scripts"
+    "capability": ["https://app.example/#capability-open"],
+    "requirement": ["https://app.example/#requirement-scripts"]
   }
 }</code></pre>
                   </figure>
-                  <p>In both cases, Discovery is unaffected: the application IRI remains the subject of the <code>capability</code> and <code>requirement</code> statements.</p>
+                  <figure class="example listing" id="embedded-descriptions-webextension-example" rel="schema:hasPart" resource="#embedded-descriptions-webextension-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in a Web Extension manifest.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "manifest_version": 3,
+  "name": "Example Extension",
+  "version": "1.0",
+  "ac": {
+    "@context": "https://www.w3.org/ns/ac.jsonld",
+    "id": "https://app.example/#this",
+    "capability": ["https://app.example/#capability-open"],
+    "requirement": ["https://app.example/#requirement-scripts"]
+  }
+}</code></pre>
+                  </figure>
+                  <p>The <code>ac</code> member name in the non-JSON-LD examples is illustrative: the key under which a host format carries an embedded capability description is declared by that format, not by this specification. Once the member is extracted and processed as JSON-LD, Discovery is unaffected: the application IRI remains the subject of the <code>capability</code> and <code>requirement</code> statements.</p>
                 </div>
               </section>
             </div>
