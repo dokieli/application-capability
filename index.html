@@ -485,7 +485,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <h3 property="schema:name">Namespaces</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The following prefixes and namespaces are used in this specification.</p>
-                  <table>
+                  <table id="prefixes-namespaces">
                     <caption>Prefixes and Namespaces</caption>
                     <thead>
                       <tr>
@@ -602,7 +602,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>When this context is combined with other JSON-LD contexts, for example ActivityStreams in <a href="#notifications">request notifications</a>, it is listed last so that its term definitions apply.</p>
                   <p>This context does not define a term for typing the application itself. A capability description subject can carry any type from its host vocabulary (for example <code>as:Application</code>, an OAuth client, a <code>doap:Project</code>, or a Web of Things Thing) or none at all; see <a href="#capability-description">Capability Description</a>.</p>
                   <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as <code>as</code>, <code>hydra</code>, and <code>ldp</code>, retain the semantics of their defining specifications.</p>
-                  <table>
+                  <table id="classes">
                     <caption>Classes</caption>
                     <thead>
                       <tr>
@@ -649,7 +649,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </tr>
                     </tbody>
                   </table>
-                  <table>
+                  <table id="properties">
                     <caption>Properties</caption>
                     <thead>
                       <tr>
@@ -1366,7 +1366,8 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <h4 property="schema:name">Threat Model</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>This threat analysis follows the framework of the <a href="https://www.w3.org/TR/threat-model-web/">W3C Threat Model for the Web</a> and draws on terminology from the <a href="https://www.w3.org/TR/privacy-principles/">W3C Privacy Principles</a>, including <em>web origin boundary</em>, <em>user-mediated permissions</em>, <em>data minimization</em>, <em>purpose limitation</em>, <em>secondary uses</em>, and <em>disloyalty</em>.</p>
-                      <table>
+                      <table id="threats-mitigations">
+                        <caption>Threats and Mitigations</caption>
                         <thead>
                           <tr>
                             <th>Feature</th>
