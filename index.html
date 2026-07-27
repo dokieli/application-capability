@@ -518,7 +518,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>hydra</code></td>
                         <td>http://www.w3.org/ns/hydra/core#</td>
-                        <td>[<cite><a class="bibref" href="#bib-hydra">Hydra Core Vocabulary</a></cite></td>
+                        <td>[<cite><a class="bibref" href="#bib-hydra">Hydra Core Vocabulary</a></cite>]</td>
                       </tr>
                       <tr>
                         <td><code>ldp</code></td>
@@ -560,6 +560,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "ac":      "https://www.w3.org/ns/ac#",
     "as":      "https://www.w3.org/ns/activitystreams#",
     "dpv":     "https://w3id.org/dpv#",
+    "hydra":   "http://www.w3.org/ns/hydra/core#",
     "ldp":     "http://www.w3.org/ns/ldp#",
     "odrl":    "http://www.w3.org/ns/odrl/2/",
     "id":   "@id",
@@ -578,11 +579,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "invocation": {"@id": "ac:invocation", "@type": "@id"},
     "issuedPolicy": {"@id": "odrl:issuedPolicy", "@type": "@id"},
     "login": {"@id": "ac:login", "@type": "@id"},
-    "mapping": "ac:mapping",
+    "mapping": "hydra:mapping",
     "object": {"@id": "as:object", "@type": "@id"},
     "open": {"@id": "ac:open", "@type": "@id"},
     "output": "ac:output",
-    "property": {"@id": "ac:property", "@type": "@id"},
+    "property": {"@id": "hydra:property", "@type": "@id"},
     "proxy": {"@id": "ac:proxy", "@type": "@id"},
     "Reject": "as:Reject",
     "Request": "ac:Request",
@@ -592,15 +593,15 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "search": "ac:search",
     "shape": {"@id": "ac:shape", "@type": "@id"},
     "summary": "as:summary",
-    "template": "ac:template",
+    "template": "hydra:template",
     "UriTemplateInvocation": "ac:UriTemplateInvocation",
-    "variable": "ac:variable"
+    "variable": "hydra:variable"
   }
 }</code></pre>
                   </figure>
                   <p>When this context is combined with other JSON-LD contexts, for example ActivityStreams in <a href="#notifications">request notifications</a>, it is listed last so that its term definitions apply.</p>
                   <p>This context does not define a term for typing the application itself. A capability description subject can carry any type from its host vocabulary (for example <code>as:Application</code>, an OAuth client, a <code>doap:Project</code>, or a Web of Things Thing) or none at all; see <a href="#capability-description">Capability Description</a>.</p>
-                  <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as <code>as</code> and <code>ldp</code>, retain the semantics of their defining specifications.</p>
+                  <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as <code>as</code>, <code>hydra</code>, and <code>ldp</code>, retain the semantics of their defining specifications.</p>
                   <table>
                     <caption>Classes</caption>
                     <thead>
@@ -644,7 +645,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>UriTemplateInvocation</code></td>
                         <td><code>ac:UriTemplateInvocation</code></td>
-                        <td>An Invocation by navigation to an IRI constructed from a URI Template. See <a href="#uri-template-invocation">URI Template Invocation</a>.</td>
+                        <td>An Invocation by navigation to an IRI constructed from a URI Template; a subclass of <code>hydra:IriTemplate</code>. See <a href="#uri-template-invocation">URI Template Invocation</a>.</td>
                       </tr>
                     </tbody>
                   </table>
@@ -715,7 +716,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </tr>
                       <tr>
                         <td><code>mapping</code></td>
-                        <td><code>ac:mapping</code></td>
+                        <td><code>hydra:mapping</code></td>
                         <td>Mapping nodes pairing a template variable with its defining property.</td>
                       </tr>
                       <tr>
@@ -725,7 +726,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </tr>
                       <tr>
                         <td><code>property</code></td>
-                        <td><code>ac:property</code></td>
+                        <td><code>hydra:property</code></td>
                         <td>The property defining the semantics of a template variable.</td>
                       </tr>
                       <tr>
@@ -745,12 +746,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       </tr>
                       <tr>
                         <td><code>template</code></td>
-                        <td><code>ac:template</code></td>
+                        <td><code>hydra:template</code></td>
                         <td>An RFC 6570 URI Template expressing the invocation-specific part of the IRI.</td>
                       </tr>
                       <tr>
                         <td><code>variable</code></td>
-                        <td><code>ac:variable</code></td>
+                        <td><code>hydra:variable</code></td>
                         <td>The string name of a variable as used in a template.</td>
                       </tr>
                     </tbody>
