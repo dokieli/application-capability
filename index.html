@@ -372,7 +372,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <li class="tocline"><a class="tocxref" href="#uri-template-invocation"><bdi class="secno">3.3.1</bdi> <span>URI Template Invocation</span></a></li>
                       </ol>
                     </li>
-                    <li class="tocline"><a class="tocxref" href="#invocation-variables"><bdi class="secno">3.4</bdi> <span>Invocation Variables</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#invocation-properties"><bdi class="secno">3.4</bdi> <span>Invocation Properties</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#requirement"><bdi class="secno">3.5</bdi> <span>Requirement</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#policy"><bdi class="secno">3.6</bdi> <span>Policy</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#embedded-descriptions"><bdi class="secno">3.7</bdi> <span>Embedded Descriptions</span></a></li>
@@ -697,7 +697,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>login</code>, <code>open</code>, <code>output</code>, <code>proxy</code>, <code>search</code></td>
                         <td><code>ac:login</code>, <code>ac:open</code>, <code>ac:output</code>, <code>ac:proxy</code>, <code>ac:search</code></td>
-                        <td>Invocation variables parameterising the IRI used to invoke an application. See <a href="#invocation-variables">Invocation Variables</a>.</td>
+                        <td>Invocation properties parameterising the IRI used to invoke an application. See <a href="#invocation-properties">Invocation Properties</a>.</td>
                       </tr>
                       <tr>
                         <td><code>inbox</code></td>
@@ -842,9 +842,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>The following properties are defined by this specification for the discovery of an application's capabilities and requirements.</p>
                   <dl>
                     <dt><dfn id="description-capability"><code>capability</code></dfn></dt>
-                    <dd>Links the application to one or more <a href="#capability">Capability</a> declarations.</dd>
+                    <dd>Links the application to one or more <a href="#capability"><code>Capability</code></a> declarations.</dd>
                     <dt><dfn id="description-requirement"><code>requirement</code></dfn></dt>
-                    <dd>Links the application to one or more <a href="#requirement">requirement</a> declarations.</dd>
+                    <dd>Links the application to one or more <a href="#requirement"><code>requirement</code></a> declarations.</dd>
                     <dt><dfn id="description-inbox"><code>inbox</code></dfn></dt>
                     <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [LDN].</dd>
                   </dl>
@@ -885,9 +885,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="capability-shape"><code>shape</code></dfn></dt>
                     <dd>Zero or more IRIs identifying shapes (e.g., SHACL) for a resource that this capability applies to. The interpretation of a shape is bound to the capability's <code>action</code>: for a display or edit action the shape describes the accepted input; for a transform action it describes the accepted source. Shape-based matching is stricter than <code>accept</code> or <code>resourceType</code> matching, and Consumers can fall back to the coarser criteria when shape validation is unavailable.</dd>
                     <dt><dfn id="capability-action"><code>action</code></dfn></dt>
-                    <dd>The action the application can perform per capability. Each capability declares an action. Recommended practice is to use values from a controlled and shared vocabulary (such as ODRL actions). An application that affords multiple actions declares multiple capabilities, which can share an <a href="#invocation">invocation</a> by reference.</dd>
+                    <dd>The action the application can perform per capability. Each capability declares an action. Recommended practice is to use values from a controlled and shared vocabulary (such as ODRL actions). An application that affords multiple actions declares multiple capabilities, which can share an <a href="#invocation"><code>invocation</code></a> by reference.</dd>
                     <dt><dfn id="capability-invocation"><code>invocation</code></dfn></dt>
-                    <dd>Links the capability to one or more <a href="#invocation">invocations</a> describing how to trigger it.</dd>
+                    <dd>Links the capability to one or more <a href="#invocation"><code>invocations</code></a> describing how to trigger it.</dd>
                     <dt><dfn id="capability-destination"><code>destination</code></dfn></dt>
                     <dd>The IRI to deliver or save the result to. Used when the action produces an output.</dd>
                     <dt><dfn id="capability-output"><code>output</code></dfn></dt>
@@ -962,9 +962,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>A <code>UriTemplateInvocation</code> describes invocation by navigation: the Consumer expands the template, resolves the result against the application's deployment IRI, and navigates the user agent to it via HTTP GET. The user agent performs a GET request; any fragment portion of the URI is processed client-side by the loaded application and is not included in the request.</p>
                       <dl>
                         <dt><dfn id="invocation-template"><code>template</code></dfn></dt>
-                        <dd>An RFC 6570 URI Template expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Variable names in the template correspond to the property names defined in the <a href="#invocation-variables">Invocation Variables</a> section; variables with other names require an explicit <code>mapping</code> entry. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value and the invoked capability. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded (RFC 3987).</dd>
+                        <dd>An RFC 6570 URI Template expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Each variable in the template has a <a href="#invocation-mapping"><code>mapping</code></a> entry giving its property. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value in the expanded IRI. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded (RFC 3987).</dd>
                         <dt><dfn id="invocation-mapping"><code>mapping</code></dfn></dt>
-                        <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). For variables whose names match a property name defined in the <a href="#invocation-variables">Invocation Variables</a> section, the mapping can be omitted. An explicit mapping is required for variables not defined in this specification; see <a href="#invocation-extension">Invocation Extension</a>.</dd>
+                        <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). Each variable in the template has a mapping node; the variable name is a local placeholder, and its meaning rests on the property, whether one defined in <a href="#invocation-properties">Invocation Properties</a> or an application-defined one; see <a href="#invocation-extension">Invocation Extension</a>.</dd>
                       </dl>
                       <p>Encoding rules: in the expanded invocation IRI, <code>&amp;</code> is the sole pair separator and <code>=</code> the sole name/value separator; receiving applications <span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span> treat <code>;</code> as a separator. Because simple expansion percent-encodes sub-delimiters within values, every unencoded <code>&amp;</code> and <code>=</code> in the result is structural. Receiving applications parse fragment content with query-string semantics. A variable can carry multiple values; the canonical wire form repeats the name for each value (<code>open=uri1&amp;open=uri2</code>). RFC 6570 simple expansion of a list (<code>{open*}</code>) produces comma-separated values without name repetition and is not name-bearing; templates that need a variable to carry multiple values are encouraged to use an expansion operator whose output is name-bearing.</p>
                       <p>Receivers are encouraged to treat all invocation parameter values as untrusted input and validate or sanitise them before acting on them. A <code>login</code> value identifies who to authenticate as and never substitutes for authentication; <code>open</code> and other IRI-valued variables are untrusted IRIs to be retrieved with the user's own authorisation, with server-side receivers guarding against request forgery. Receiving applications are encouraged to ignore variable names they do not recognise rather than treat them as errors, to treat every variable as optional, and to fail safe when a variable is absent or empty, since a Consumer may supply only the variables it recognises. Receipt of an invocation implies nothing about grants or permissions; it is a request.</p>
@@ -987,7 +987,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
   "@context": "https://www.w3.org/ns/ac.jsonld",
   "id": "https://app.example/#invoke-open",
   "type": "UriTemplateInvocation",
-  "template": "#open={open}"
+  "template": "#open={open}",
+  "mapping": [
+    {
+      "variable": "open",
+      "property": "ac:open"
+    }
+  ]
 }
 
 Resolved against application IRI https://app.example/ with
@@ -1001,7 +1007,11 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Farticle</code></pre>
   "@context": "https://www.w3.org/ns/ac.jsonld",
   "id": "https://app.example/#invoke-transform",
   "type": "UriTemplateInvocation",
-  "template": "#open={open}&amp;output={output}"
+  "template": "#open={open}&amp;output={output}",
+  "mapping": [
+    { "variable": "open", "property": "ac:open" },
+    { "variable": "output", "property": "ac:output" }
+  ]
 }
 
 Resolved against application IRI https://app.example/ with
@@ -1014,11 +1024,12 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   </section>
                 </div>
               </section>
-              <section id="invocation-variables" inlist="" rel="schema:hasPart" resource="#invocation-variables">
-                <h3 property="schema:name">Invocation Variables</h3>
+              <section id="invocation-properties" inlist="" rel="schema:hasPart" resource="#invocation-properties">
+                <h3 property="schema:name">Invocation Properties</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The local name of each property defined in this section serves both as the property's key in the JSON-LD context and as the canonical variable name in URI template expressions. For example, the <code>ac:</code> vocabulary property whose local name is <code>open</code> appears as the JSON-LD key <code>open</code> and as the URI template variable <code>{open}</code>. Applications can use these properties when the intended semantics match, so that Consumers can resolve variable meaning by property rather than by string convention alone. For variables not defined here, applications can declare a <code>mapping</code> that pairs the variable name used in the template with the defining property. A Consumer that encounters a variable whose property it does not recognise is encouraged to still expand the template with the variables it does recognise, so that extension variables do not prevent invocation.</p>
+                  <p>This section defines properties that give invocation variables their meaning. A template variable is a local placeholder; its meaning comes from the property it is mapped to, whether a property defined here or an application-defined one. A Consumer resolves each variable by its property, not by its name, and can still expand the template with the variables whose property it recognises. Using a property's local name as the variable name, for example <code>{open}</code> for <a href="#variable-open"><code>open</code></a>, is a convention for readability.</p>
                   <p>The properties defined here parameterise the IRI used to invoke an application. They do not represent user-activated operations or UI events within the running application; those are the concern of the <a href="https://www.w3.org/TR/web-user-agents/">user agent</a> and the relevant browser specifications.</p>
+                  <p>Each entry below is an invocation property, shown by its conventional variable name. The name is what you use in a template and mapping; the property it denotes is what a Consumer resolves.</p>
                   <dl>
                     <dt><dfn id="variable-open"><code>open</code></dfn></dt>
                     <dd>The IRI of a resource to open. The application renders, displays, or edits the identified resource.</dd>
@@ -1031,7 +1042,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dt><dfn id="variable-proxy"><code>proxy</code></dfn></dt>
                     <dd>The URL of a proxy through which the application is intended to route network requests. This variable has no effect on its own; when present alongside <code>open</code> or other variables that involve fetching a resource, the application uses the proxy URL for those requests.</dd>
                   </dl>
-                  <p>Additional invocation variables can be introduced as described in <a href="#invocation-extension">Invocation Extension</a>.</p>
+                  <p>Applications can use properties beyond those defined here, referenced by their own variable names, as described in <a href="#invocation-extension">Invocation Extension</a>.</p>
                 </div>
               </section>
               <section id="requirement" inlist="" rel="schema:hasPart" resource="#requirement">
@@ -1317,8 +1328,8 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Invocation Extension</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-                  <p>Applications can introduce invocation variables beyond those defined in <a href="#invocation-variables">Invocation Variables</a> by declaring a <code>mapping</code> that pairs the variable name used in the template with a property that defines its semantics. Consumers that do not recognise the property still expand the template with the variables they do recognise, and receiving applications treat extension variable values as untrusted input, per the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</p>
-                  <p>The following variables illustrate invocation extensions:</p>
+                  <p>Applications can use properties beyond those defined in <a href="#invocation-properties">Invocation Properties</a> by declaring a <code>mapping</code> that pairs a template variable with the property that defines its meaning. Consumers that do not recognise a property still expand the template with the variables whose property they do recognise, and receiving applications treat extension values as untrusted input, per the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</p>
+                  <p>The following properties illustrate invocation extensions:</p>
                   <dl>
                     <dt><dfn id="variable-graph"><code>graph</code></dfn></dt>
                     <dd>The IRI of an RDF dataset or named graph to load and render.</dd>
