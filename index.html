@@ -747,7 +747,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>template</code></td>
                         <td><code>hydra:template</code></td>
-                        <td>An RFC 6570 URI Template expressing the invocation-specific part of the IRI.</td>
+                        <td>A URI Template [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] expressing the invocation-specific part of the IRI.</td>
                       </tr>
                       <tr>
                         <td><code>variable</code></td>
@@ -846,7 +846,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="description-requirement"><code>requirement</code></dfn></dt>
                     <dd>Links the application to one or more <a href="#requirement"><code>requirement</code></a> declarations.</dd>
                     <dt><dfn id="description-inbox"><code>inbox</code></dfn></dt>
-                    <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [LDN].</dd>
+                    <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</dd>
                   </dl>
                   <p>The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedded-descriptions">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
                   <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
@@ -879,7 +879,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>Because capabilities are identified by IRIs, they can be shared across applications. An application's capability description can reference a capability IRI published elsewhere (for example, a well-known capability defined by a community or standard) rather than defining its own. Multiple applications linking to the same capability IRI signal that they support the same action under the same terms.</p>
                   <dl>
                     <dt><dfn id="capability-accept"><code>accept</code></dfn></dt>
-                    <dd>Zero or more media types (RFC 2046) that this capability accepts as input.</dd>
+                    <dd>Zero or more media types [<cite><a class="bibref" href="#bib-iana-media-types">IANA-MEDIA-TYPES</a></cite>] that this capability accepts as input.</dd>
                     <dt><dfn id="capability-resourceType"><code>resourceType</code></dfn></dt>
                     <dd>Zero or more IRIs identifying the classes of resource (e.g., <code>rdf:type</code>) this capability applies to.</dd>
                     <dt><dfn id="capability-shape"><code>shape</code></dfn></dt>
@@ -962,7 +962,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>A <code>UriTemplateInvocation</code> describes invocation by navigation: the Consumer expands the template, resolves the result against the application's deployment IRI, and navigates the user agent to it via HTTP GET. The user agent performs a GET request; any fragment portion of the URI is processed client-side by the loaded application and is not included in the request.</p>
                       <dl>
                         <dt><dfn id="invocation-template"><code>template</code></dfn></dt>
-                        <dd>An RFC 6570 URI Template expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Each variable in the template has a <a href="#invocation-mapping"><code>mapping</code></a> entry giving its property. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value in the expanded IRI. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded (RFC 3987).</dd>
+                        <dd>A URI Template [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Each variable in the template has a <a href="#invocation-mapping"><code>mapping</code></a> entry giving its property. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value in the expanded IRI. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>].</dd>
                         <dt><dfn id="invocation-mapping"><code>mapping</code></dfn></dt>
                         <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). Each variable in the template has a mapping node; the variable name is a local placeholder, and its meaning rests on the property, whether one defined in <a href="#invocation-properties">Invocation Properties</a> or an application-defined one; see <a href="#invocation-extension">Invocation Extension</a>.</dd>
                       </dl>
@@ -1090,7 +1090,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
               <section id="policy" inlist="" rel="schema:hasPart" resource="#policy">
                 <h3 property="schema:name">Policy</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <dfn id="dfn-policy">policy</dfn> is a resource of type <code>odrl:Policy</code> [<cite><a class="bibref" href="#bib-odrl-model">ODRL Information Model 2.2</a></cite>] an application issues about its own conduct. Where a <a href="#dfn-capability">Capability</a> declares an affordance the application can perform, a policy declares a self-imposed constraint on exercising it; both may use the same <code>odrl:action</code> terms. A self-issued permission compels no one, so an issued policy's substance is usually its prohibitions and obligations. An application links to one or more policies via <code>issuedPolicy</code>, as with <code>capability</code> and <code>requirement</code>.</p>
+                  <p>A <dfn id="dfn-policy">policy</dfn> is a resource of type <code>odrl:Policy</code> [<cite><a class="bibref" href="#bib-odrl-model">ODRL-MODEL</a></cite>] an application issues about its own conduct. Where a <a href="#dfn-capability">Capability</a> declares an affordance the application can perform, a policy declares a self-imposed constraint on exercising it; both may use the same <code>odrl:action</code> terms. A self-issued permission compels no one, so an issued policy's substance is usually its prohibitions and obligations. An application links to one or more policies via <code>issuedPolicy</code>, as with <code>capability</code> and <code>requirement</code>.</p>
                   <dl>
                     <dt><dfn id="policy-issuedPolicy"><code>issuedPolicy</code></dfn></dt>
                     <dd>Links the application, as an <code>odrl:Party</code>, to a policy, inline or referenced by IRI, it asserts about its own conduct, e.g., rules over data it processes or defaults it applies to resources it creates. Issuing a policy grants no privileges.</dd>
@@ -1561,11 +1561,53 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
             <div datatype="rdf:HTML" property="schema:description">
               <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references">
                 <h3 property="schema:name">Normative References</h3>
-                <div datatype="rdf:HTML" property="schema:description"></div>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="bib-dc-terms">[DC-TERMS]</dt>
+                    <dd><cite><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority">Dublin Core Metadata Terms, version 1.1</a></cite>. DCMI Usage Board.  DCMI. 11 October 2010. DCMI Recommendation. URL: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a></dd>
+                    <dt id="bib-dpv">[DPV]</dt>
+                    <dd><cite><a href="https://w3id.org/dpv" rel="cito:citesAsAuthority">Data Privacy Vocabulary (DPV)</a></cite>. Harshvardhan J. Pandit; Beatriz Esteves; Georg P. Krog.  W3C Data Privacy Vocabularies and Controls Community Group. Draft Community Group Report. URL: <a href="https://w3id.org/dpv">https://w3id.org/dpv</a></dd>
+                    <dt id="bib-hydra">[HYDRA]</dt>
+                    <dd><cite><a href="https://www.hydra-cg.com/spec/latest/core/" rel="cito:citesAsAuthority">Hydra Core Vocabulary</a></cite>. Markus Lanthaler.  W3C Hydra Community Group. Unofficial Draft. URL: <a href="https://www.hydra-cg.com/spec/latest/core/">https://www.hydra-cg.com/spec/latest/core/</a></dd>
+                    <dt id="bib-iana-media-types">[IANA-MEDIA-TYPES]</dt>
+                    <dd><cite><a href="https://www.iana.org/assignments/media-types/" rel="cito:citesAsAuthority">Media Types</a></cite>.  IANA. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a></dd>
+                    <dt id="bib-json-ld11">[JSON-LD11]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/json-ld11/" rel="cito:citesAsAuthority">JSON-LD 1.1</a></cite>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd>
+                    <dt id="bib-ldn">[LDN]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/ldn/" rel="cito:citesAsAuthority">Linked Data Notifications</a></cite>. Sarven Capadisli; Amy Guy.  W3C. 2 May 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a></dd>
+                    <dt id="bib-ldp">[LDP]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/ldp/" rel="cito:citesAsAuthority">Linked Data Platform 1.0</a></cite>. Steve Speicher; John Arwe; Ashok Malhotra.  W3C. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/">https://www.w3.org/TR/ldp/</a></dd>
+                    <dt id="bib-odrl-model">[ODRL-MODEL]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsAuthority">ODRL Information Model 2.2</a></cite>. Renato Iannella; Serena Villata.  W3C. 15 February 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/odrl-model/">https://www.w3.org/TR/odrl-model/</a></dd>
+                    <dt id="bib-odrl-vocab">[ODRL-VOCAB]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/odrl-vocab/" rel="cito:citesAsAuthority">ODRL Vocabulary &amp; Expression 2.2</a></cite>. Renato Iannella; Michael Steidl; Stuart Myles; Víctor Rodríguez-Doncel.  W3C. 15 February 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/odrl-vocab/">https://www.w3.org/TR/odrl-vocab/</a></dd>
+                    <dt id="bib-rdf-schema">[RDF-SCHEMA]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/rdf-schema/" rel="cito:citesAsAuthority">RDF Schema 1.1</a></cite>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd>
+                    <dt id="bib-rfc2119">[RFC2119]</dt>
+                    <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="cito:citesAsAuthority">Key words for use in RFCs to Indicate Requirement Levels</a></cite>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a></dd>
+                    <dt id="bib-rfc3986">[RFC3986]</dt>
+                    <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority">Uniform Resource Identifier (URI): Generic Syntax</a></cite>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a></dd>
+                    <dt id="bib-rfc3987">[RFC3987]</dt>
+                    <dd><cite><a href="https://www.rfc-editor.org/info/rfc3987" rel="cito:citesAsAuthority">Internationalized Resource Identifiers (IRIs)</a></cite>. M. Duerst; M. Suignard.  IETF. January 2005. Proposed Standard. URL: <a href="https://www.rfc-editor.org/info/rfc3987">https://www.rfc-editor.org/info/rfc3987</a></dd>
+                    <dt id="bib-rfc6570">[RFC6570]</dt>
+                    <dd><cite><a href="https://www.rfc-editor.org/info/rfc6570" rel="cito:citesAsAuthority">URI Template</a></cite>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard.  IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/info/rfc6570">https://www.rfc-editor.org/info/rfc6570</a></dd>
+                    <dt id="bib-rfc8174">[RFC8174]</dt>
+                    <dd><cite><a href="https://www.rfc-editor.org/info/rfc8174" rel="cito:citesAsAuthority">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a></cite>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a></dd>
+                  </dl>
+                </div>
               </section>
               <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references">
                 <h3 property="schema:name">Informative References</h3>
-                <div datatype="rdf:HTML" property="schema:description"></div>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="bib-privacy-principles">[PRIVACY-PRINCIPLES]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:citesAsPotentialSolution">Privacy Principles</a></cite>. Robin Berjon; Jeffrey Yasskin.  W3C. 18 May 2024. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/privacy-principles/">https://www.w3.org/TR/privacy-principles/</a></dd>
+                    <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Security and Privacy</a></cite>. Theresa O'Connor; Peter Snyder.  W3C. 16 December 2021. W3C Group Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
+                    <dt id="bib-societal-impact-questionnaire">[SOCIETAL-IMPACT-QUESTIONNAIRE]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Societal Impact</a></cite>. Sarven Capadisli; Lola Odelola.  W3C. 4 November 2025. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/societal-impact-questionnaire/">https://www.w3.org/TR/societal-impact-questionnaire/</a></dd>
+                  </dl>
+                </div>
               </section>
             </div>
           </section>
