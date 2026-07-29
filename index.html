@@ -974,6 +974,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                           <p>Passing invocation parameters via the fragment identifier is a pragmatic convention rather than strict conformance with <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5" rel="cito:citesForBackground">Fragment</a> [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>], which defines fragment semantics as determined by the media type of the retrieved representation. The convention is adopted here because fragment content is not included in HTTP request targets (<cite><a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110</a></cite>), preventing the application host from learning the IRI of the resource being opened. In practice, the WHATWG HTML specification's <code>hashchange</code> event allows single-page applications to read fragment-encoded parameters client-side without a page reload. As noted in the <a href="#introduction">Introduction</a>, no existing specification defines a general-purpose mechanism for client-side application invocation via URI; this convention fills that gap and can be superseded by a more principled approach in future work.</p>
                         </div>
                       </div>
+                      <div class="note" id="uri-fragment-cors" inlist="" rel="schema:hasPart" resource="#uri-fragment-cors">
+                        <h4 property="schema:name"><span>Note</span>: Cross-Origin Fetch</h4>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>When a <code>property</code> implies client-side fetching, e.g., <code>open</code>, <code>login</code>, in the context of a <code>template</code> using the fragment-form, their use is subject to the target server's Cross-Origin Resource Sharing (<abbr title="Cross-Origin Resource Sharing">CORS</abbr>) policy [<a class="bibref" href="#bib-fetch">FETCH</a>], and fails if the target does not participate in CORS. Consumers concerned about this limit can look for a <code>proxy</code> among the invocation's mapped properties and use it when available.</p>
+                        </div>
+                      </div>
                       <div class="note" id="uri-query" inlist="" rel="schema:hasPart" resource="#uri-query">
                         <h4 property="schema:name"><span>Note</span>: URI Query</h4>
                         <div datatype="rdf:HTML" property="schema:description">
@@ -1600,6 +1606,8 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-fetch">[FETCH]</dt>
+                    <dd><cite><a href="https://fetch.spec.whatwg.org/" rel="cito:citesAsAuthority">Fetch Standard</a></cite>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
                     <dt id="bib-privacy-principles">[PRIVACY-PRINCIPLES]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:citesAsPotentialSolution">Privacy Principles</a></cite>. Robin Berjon; Jeffrey Yasskin.  W3C. 18 May 2024. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/privacy-principles/">https://www.w3.org/TR/privacy-principles/</a></dd>
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
