@@ -1343,12 +1343,14 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p>Applications can use properties beyond those defined in <a href="#invocation-properties">Invocation Properties</a> by declaring a <code>mapping</code> that pairs a template variable with the property that defines its meaning. Consumers that do not recognise a property still expand the template with the variables whose property they do recognise, and receiving applications treat extension values as untrusted input, per the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</p>
                   <p>The following properties illustrate invocation extensions:</p>
                   <dl>
+                    <dt><dfn id="variable-diff"><code>diff</code></dfn></dt>
+                    <dd>The IRI of a resource to compare. It is supplied twice, as the original version then the changed version, and the application renders their difference.</dd>
                     <dt><dfn id="variable-graph"><code>graph</code></dfn></dt>
                     <dd>The IRI of an RDF dataset or named graph to load and render.</dd>
-                    <dt><dfn id="variable-style"><code>style</code></dfn></dt>
-                    <dd>The IRI of a stylesheet to apply when rendering the resource.</dd>
                     <dt><dfn id="variable-state"><code>state</code></dfn></dt>
                     <dd>An application-defined value encoding the UI state in which to open the application, such as which panels are active or the current view mode. The encoding and interpretation of this variable are not further specified.</dd>
+                    <dt><dfn id="variable-style"><code>style</code></dfn></dt>
+                    <dd>The IRI of a stylesheet to apply when rendering the resource.</dd>
                   </dl>
                   <figure class="example listing" id="explicit-mapping-example" rel="schema:hasPart" resource="#explicit-mapping-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>An extension variable declared via an explicit mapping. The application defines the property that gives the variable its semantics; Consumers that recognise the property can supply a value, and receiving applications treat it as untrusted input like any other variable.</span></figcaption>
