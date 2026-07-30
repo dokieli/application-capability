@@ -574,6 +574,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "capability": {"@id": "ac:capability", "@type": "@id"},
     "cspDirective": "ac:cspDirective",
     "destination": {"@id": "ac:destination", "@type": "@id"},
+    "hasPurpose": {"@id": "dpv:hasPurpose", "@type": "@id"},
     "inbox": {"@id": "ldp:inbox", "@type": "@id"},
     "Invocation": "ac:Invocation",
     "invocation": {"@id": "ac:invocation", "@type": "@id"},
@@ -693,6 +694,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <td><code>destination</code></td>
                         <td><code>ac:destination</code></td>
                         <td>The IRI to deliver or save the result of an action to.</td>
+                      </tr>
+                      <tr>
+                        <td><code>hasPurpose</code></td>
+                        <td><code>dpv:hasPurpose</code></td>
+                        <td>Links to a DPV purpose class expressing why the application needs the declared permissions.</td>
                       </tr>
                       <tr>
                         <td><code>login</code>, <code>open</code>, <code>output</code>, <code>proxy</code>, <code>search</code></td>
@@ -1062,7 +1068,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dd>One or more CSP directives (CSP Level 3 syntax) that the host server ought to include with responses of resources the application creates, modifies, or opens, so that the content of those resources functions as intended for any consumer of them.</dd>
                     <dt><dfn id="requirement-browserPermission"><code>browserPermission</code></dfn></dt>
                     <dd>One or more browser permission names (Permissions API) the application can request at runtime.</dd>
-                    <dt><dfn id="requirement-hasPurpose"><code>dpv:hasPurpose</code></dfn></dt>
+                    <dt><dfn id="requirement-hasPurpose"><code>hasPurpose</code></dfn></dt>
                     <dd>Links to a DPV purpose class expressing why the application needs the declared permissions, supporting transparency and informed review.</dd>
                   </dl>
                   <figure class="example listing" id="permissions-example" rel="schema:hasPart" resource="#permissions-example">
@@ -1072,7 +1078,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
   "id": "https://app.example/#requirement-scripts",
   "type": "Requirement",
   "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
-  "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
+  "hasPurpose": "dpv:ServiceProvision"
 }</code></pre>
                   </figure>
                   <div class="note" id="csp-requirement-scope" inlist="" rel="schema:hasPart" resource="#csp-requirement-scope">
@@ -1088,7 +1094,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
   "id": "https://app.example/#requirement-notifications",
   "type": "Requirement",
   "browserPermission": "notifications",
-  "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
+  "hasPurpose": "dpv:CommunicationManagement"
 }</code></pre>
                   </figure>
                 </div>
@@ -1242,7 +1248,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
       "id": "https://app.example/#requirement-scripts",
       "type": "Requirement",
       "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
-      "dpv:hasPurpose": { "id": "dpv:ServiceProvision" }
+      "hasPurpose": "dpv:ServiceProvision"
     },
     {
       "id": "https://app.example/#requirement-connect",
@@ -1488,10 +1494,10 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                           </tr>
                           <tr about="#risk-purpose-mismatch" typeof="dpv:Risk">
                             <td><a href="#requirement" rel="dcterms:subject">#requirement</a></td>
-                            <td><strong property="dcterms:title">Purpose mismatch</strong>. <span property="dcterms:description">A Sender uses granted permissions for purposes other than its declared <code>dpv:hasPurpose</code>, such as profiling.</span></td>
+                            <td><strong property="dcterms:title">Purpose mismatch</strong>. <span property="dcterms:description">A Sender uses granted permissions for purposes other than its declared <code>hasPurpose</code>, such as profiling.</span></td>
                             <td><a href="http://www.wikidata.org/entity/Q2775060" rel="dpv:hasImpact">Information disclosure</a>, <a href="https://linddun.org/threat-types/#Nc" rel="dpv:hasImpact">Non-compliance</a></td>
                             <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
-                            <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-purpose-mismatch" typeof="dpv:RiskMitigationMeasure" property="dcterms:description"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to declare each purpose via <code>dpv:hasPurpose</code> for review.</span></span></td>
+                            <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-purpose-mismatch" typeof="dpv:RiskMitigationMeasure" property="dcterms:description"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to declare each purpose via <code>hasPurpose</code> for review.</span></span></td>
                           </tr>
                           <tr about="#risk-policy-misrepresentation" typeof="dpv:Risk">
                             <td><a href="#policy" rel="dcterms:subject">#policy</a></td>
@@ -1590,7 +1596,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p><em>This section is non-normative.</em></p>
                   <p>This section describes considerations for applications that publish capability descriptions. These are not normative requirements but reflect the spirit of the trust relationship that this specification establishes between applications, servers, and users.</p>
                   <p about="" id="application-honesty" rel="spec:advisement" resource="#application-honesty"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare their permission needs accurately and completely. Understating requirements in order to gain access, or overstating them to acquire unnecessary capabilities, undermines the trust model on which this specification relies.</span></p>
-                  <p about="" id="application-user-primacy" rel="spec:advisement" resource="#application-user-primacy"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use permissions granted by a Receiver exclusively in the interests of the user on whose behalf those permissions were granted, consistent with the declared purpose expressed via <code>dpv:hasPurpose</code> in the capability description.</span></p>
+                  <p about="" id="application-user-primacy" rel="spec:advisement" resource="#application-user-primacy"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use permissions granted by a Receiver exclusively in the interests of the user on whose behalf those permissions were granted, consistent with the declared purpose expressed via <code>hasPurpose</code> in the capability description.</span></p>
                   <p about="" id="application-invocation-stability" rel="spec:advisement" resource="#application-invocation-stability"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to maintain stability in the URI Templates declared in their capability descriptions, since Consumers and catalogues can cache and rely on these patterns. Where changes are necessary, Senders <span rel="spec:advisementLevel" resource="spec:Could">could</span> provide a transition period during which both the old and new patterns remain functional.</span></p>
                 </div>
               </section>
