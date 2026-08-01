@@ -362,7 +362,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 </li>
                 <li class="tocline"><a class="tocxref" href="#discovery"><bdi class="secno">2.</bdi> <span>Discovery</span></a></li>
                 <li class="tocline">
-                  <p><a class="tocxref" href="#data-model"><bdi class="secno">3.</bdi> <span>Capability Description Data Model</span></a></p>
+                  <p><a class="tocxref" href="#data-model"><bdi class="secno">3.</bdi> <span>Data Model</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#capability-description"><bdi class="secno">3.1</bdi> <span>Capability Description</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#capability"><bdi class="secno">3.2</bdi> <span>Capability</span></a></li>
@@ -596,8 +596,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
   }
 }</code></pre>
                   </figure>
-                  <p>When this context is combined with other JSON-LD contexts, for example ActivityStreams in <a href="#notifications">request notifications</a>, it is listed last so that its term definitions apply.</p>
-                  <p>This context does not define a term for typing the application itself. A capability description subject can carry any type from its host vocabulary (for example <code>as:Application</code>, an OAuth client, a <code>doap:Project</code>, or a Web of Things Thing) or none at all; see <a href="#capability-description">Capability Description</a>.</p>
+                  <p>When this context is combined with other JSON-LD contexts, for example ActivityStreams in <a href="#request-notification" rel="rdfs:seeAlso">Request Notifications</a>, it is listed last so that its term definitions apply.</p>
+                  <p>This context does not define a term for typing the application itself. A capability description subject can carry any type from its host vocabulary (for example <code>as:Application</code>, an OAuth client, a <code>doap:Project</code>, or a Web of Things Thing) or none at all; see <a href="#capability-description" rel="rdfs:seeAlso">Capability Description</a>.</p>
                   <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as <code>as</code>, <code>hydra</code>, and <code>ldp</code>, retain the semantics of their defining specifications.</p>
                   <table id="classes">
                     <caption>Classes</caption>
@@ -622,27 +622,27 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>Capability</code></td>
                         <td><code>ac:Capability</code></td>
-                        <td>A declared affordance of an application: an action that can be triggered by an invocation. See <a href="#capability">Capability</a>.</td>
+                        <td>A declared affordance of an application: an action that can be triggered by an invocation. See <a href="#capability" rel="rdfs:seeAlso">Capability</a>.</td>
                       </tr>
                       <tr>
                         <td><code>Invocation</code></td>
                         <td><code>ac:Invocation</code></td>
-                        <td>An abstract class describing one mechanism by which a capability is triggered. See <a href="#invocation">Invocation</a>.</td>
+                        <td>An abstract class describing one mechanism by which a capability is triggered. See <a href="#invocation" rel="rdfs:seeAlso">Invocation</a>.</td>
                       </tr>
                       <tr>
                         <td><code>Request</code></td>
                         <td><code>ac:Request</code></td>
-                        <td>A notification asking a Receiver to review information concerning an application and act on it. See <a href="#request-notification">Request Notification</a>.</td>
+                        <td>A notification asking a Receiver to review information concerning an application and act on it. See <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>.</td>
                       </tr>
                       <tr>
                         <td><code>Requirement</code></td>
                         <td><code>ac:Requirement</code></td>
-                        <td>A declaration of something the application needs from its environment. See <a href="#requirement">Requirement</a>.</td>
+                        <td>A declaration of something the application needs from its environment. See <a href="#requirement" rel="rdfs:seeAlso">Requirement</a>.</td>
                       </tr>
                       <tr>
                         <td><code>UriTemplateInvocation</code></td>
                         <td><code>ac:UriTemplateInvocation</code></td>
-                        <td>An Invocation by navigation to an IRI constructed from a URI Template; a subclass of <code>hydra:IriTemplate</code>. See <a href="#uri-template-invocation">URI Template Invocation</a>.</td>
+                        <td>An Invocation by navigation to an IRI constructed from a URI Template; a subclass of <code>hydra:IriTemplate</code>. See <a href="#uri-template-invocation" rel="rdfs:seeAlso">URI Template Invocation</a>.</td>
                       </tr>
                     </tbody>
                   </table>
@@ -669,7 +669,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>actor</code>, <code>object</code>, <code>summary</code></td>
                         <td><code>as:actor</code>, <code>as:object</code>, <code>as:summary</code></td>
-                        <td>Properties used in <a href="#notifications">request notifications</a> (Activity Vocabulary).</td>
+                        <td>Properties used in <a href="#request-notification" rel="rdfs:seeAlso">Request Notifications</a> (Activity Vocabulary).</td>
                       </tr>
                       <tr>
                         <td><code>browserPermission</code></td>
@@ -679,7 +679,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>capability</code></td>
                         <td><code>ac:capability</code></td>
-                        <td>Links an application to one or more <a href="#capability">Capability</a> declarations.</td>
+                        <td>Links an application to one or more <a href="#capability" rel="rdfs:seeAlso">Capability</a> declarations.</td>
                       </tr>
                       <tr>
                         <td><code>cspDirective</code></td>
@@ -699,7 +699,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>login</code>, <code>open</code>, <code>output</code>, <code>proxy</code>, <code>search</code></td>
                         <td><code>ac:login</code>, <code>ac:open</code>, <code>ac:output</code>, <code>ac:proxy</code>, <code>ac:search</code></td>
-                        <td>Invocation properties parameterising the IRI used to invoke an application. See <a href="#invocation-properties">Invocation Properties</a>.</td>
+                        <td>Invocation properties parameterising the IRI used to invoke an application. See <a href="#invocation-properties" rel="rdfs:seeAlso">Invocation Properties</a>.</td>
                       </tr>
                       <tr>
                         <td><code>inbox</code></td>
@@ -709,12 +709,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>invocation</code></td>
                         <td><code>ac:invocation</code></td>
-                        <td>Links a capability to one or more <a href="#invocation">Invocations</a> describing how to trigger it.</td>
+                        <td>Links a capability to one or more <a href="#invocation" rel="rdfs:seeAlso">Invocations</a> describing how to trigger it.</td>
                       </tr>
                       <tr>
                         <td><code>issuedPolicy</code></td>
                         <td><code>odrl:issuedPolicy</code></td>
-                        <td>Links an application, as a Party, to a <a href="#policy">policy</a> it issues about its own conduct.</td>
+                        <td>Links an application, as a Party, to a <a href="#policy" rel="rdfs:seeAlso">Policy</a> it issues about its own conduct.</td>
                       </tr>
                       <tr>
                         <td><code>mapping</code></td>
@@ -734,7 +734,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <tr>
                         <td><code>requirement</code></td>
                         <td><code>ac:requirement</code></td>
-                        <td>Links an application to one or more <a href="#requirement">Requirement</a> declarations.</td>
+                        <td>Links an application to one or more <a href="#requirement" rel="rdfs:seeAlso">Requirement</a> declarations.</td>
                       </tr>
                       <tr>
                         <td><code>resourceType</code></td>
@@ -800,10 +800,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>This document can be subdivided into the following <a href="https://www.w3.org/TR/spec-variability/#subdivision-module">modules</a>:</p>
                       <ul>
-                        <li><a href="#discovery">Discovery</a> together with the <a href="#data-model">Capability Description Data Model</a></li>
-                        <li><a href="#notifications">Notifications</a></li>
+                        <li><a href="#discovery" rel="rdfs:seeAlso">Discovery</a> together with the <a href="#data-model" rel="rdfs:seeAlso">Data Model</a></li>
+                        <li><a href="#notifications" rel="rdfs:seeAlso">Notifications</a></li>
                       </ul>
-                      <p property="skos:definition">In this specification, interoperability occurs between the <a href="#classes-of-products">classes of products</a> defined by this specification: <a href="#Consumer-CapabilityDescription" rel="skos:hasTopConcept">Consumer–CapabilityDescription</a>, <a href="#Consumer-Receiver" rel="skos:hasTopConcept">Consumer–Receiver</a>, and <a href="#Sender-Receiver" rel="skos:hasTopConcept">Sender–Receiver</a>.</p>
+                      <p property="skos:definition">In this specification, interoperability occurs between the <a href="#classes-of-products" rel="rdfs:seeAlso">Classes of Products</a> defined by this specification: <a href="#Consumer-CapabilityDescription" rel="skos:hasTopConcept">Consumer–CapabilityDescription</a>, <a href="#Consumer-Receiver" rel="skos:hasTopConcept">Consumer–Receiver</a>, and <a href="#Sender-Receiver" rel="skos:hasTopConcept">Sender–Receiver</a>.</p>
                       <dl>
                         <dt about="#Consumer-CapabilityDescription" property="skos:prefLabel" typeof="skos:Concept"><dfn id="Consumer-CapabilityDescription">Consumer–Capability Description interoperability</dfn></dt>
                         <dd about="#Consumer-CapabilityDescription" property="skos:definition">Interoperability of implementations for <a href="#Consumer" rel="rdfs:seeAlso">Consumer</a> and <a href="#CapabilityDescription" rel="rdfs:seeAlso">Capability Description</a> is tested by evaluating the description's conformance to the data model and processing of descriptions.</dd>
@@ -836,7 +836,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
           <section id="data-model" inlist="" rel="schema:hasPart" resource="#data-model">
-            <h2 property="schema:name">Capability Description Data Model</h2>
+            <h2 property="schema:name">Data Model</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <section id="capability-description" inlist="" rel="schema:hasPart" resource="#capability-description">
                 <h3 property="schema:name">Capability Description</h3>
@@ -844,13 +844,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p>The following properties are defined by this specification for the discovery of an application's capabilities and requirements.</p>
                   <dl>
                     <dt><dfn id="description-capability"><code>capability</code></dfn></dt>
-                    <dd>Links the application to one or more <a href="#capability"><code>Capability</code></a> declarations.</dd>
+                    <dd>Links the application to one or more <a href="#capability" rel="rdfs:seeAlso"><code>Capability</code></a> declarations.</dd>
                     <dt><dfn id="description-requirement"><code>requirement</code></dfn></dt>
-                    <dd>Links the application to one or more <a href="#requirement"><code>requirement</code></a> declarations.</dd>
+                    <dd>Links the application to one or more <a href="#requirement" rel="rdfs:seeAlso"><code>requirement</code></a> declarations.</dd>
                     <dt><dfn id="description-inbox"><code>inbox</code></dfn></dt>
                     <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</dd>
                   </dl>
-                  <p>The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedded-descriptions">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
+                  <p>The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application; the <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery" rel="rdfs:seeAlso">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedded-descriptions" rel="rdfs:seeAlso">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
                   <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Application capability description in JSON-LD. One capability per action; capabilities can include their invocations. The type and descriptive properties come from host vocabularies (here <code>ac:Application</code> and <code>as:name</code>); neither is required.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -887,9 +887,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt><dfn id="capability-shape"><code>shape</code></dfn></dt>
                     <dd>Zero or more IRIs identifying shapes (e.g., SHACL) for a resource that this capability applies to. The interpretation of a shape is bound to the capability's <code>action</code>: for a display or edit action the shape describes the accepted input; for a transform action it describes the accepted source. Shape-based matching is stricter than <code>accept</code> or <code>resourceType</code> matching, and Consumers can fall back to the coarser criteria when shape validation is unavailable.</dd>
                     <dt><dfn id="capability-action"><code>action</code></dfn></dt>
-                    <dd>The action the application can perform per capability. Each capability declares an action. Recommended practice is to use values from a controlled and shared vocabulary (such as ODRL actions). An application that affords multiple actions declares multiple capabilities, which can share an <a href="#invocation"><code>invocation</code></a> by reference.</dd>
+                    <dd>The action the application can perform per capability. Each capability declares an action. Recommended practice is to use values from a controlled and shared vocabulary (such as ODRL actions). An application that affords multiple actions declares multiple capabilities, which can share an <a href="#invocation" rel="rdfs:seeAlso"><code>invocation</code></a> by reference.</dd>
                     <dt><dfn id="capability-invocation"><code>invocation</code></dfn></dt>
-                    <dd>Links the capability to one or more <a href="#invocation"><code>invocations</code></a> describing how to trigger it.</dd>
+                    <dd>Links the capability to one or more <a href="#invocation" rel="rdfs:seeAlso"><code>invocations</code></a> describing how to trigger it.</dd>
                     <dt><dfn id="capability-destination"><code>destination</code></dfn></dt>
                     <dd>The IRI to deliver or save the result to. Used when the action produces an output.</dd>
                     <dt><dfn id="capability-output"><code>output</code></dfn></dt>
@@ -966,14 +966,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <dt><dfn id="invocation-template"><code>template</code></dfn></dt>
                         <dd>A URI Template [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Each variable in the template has a <a href="#invocation-mapping"><code>mapping</code></a> entry giving its property. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value in the expanded IRI. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>].</dd>
                         <dt><dfn id="invocation-mapping"><code>mapping</code></dfn></dt>
-                        <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). Each variable in the template has a mapping node; the variable name is a local placeholder, and its meaning rests on the property, whether one defined in <a href="#invocation-properties">Invocation Properties</a> or an application-defined one; see <a href="#invocation-extension">Invocation Extension</a>.</dd>
+                        <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). Each variable in the template has a mapping node; the variable name is a local placeholder, and its meaning rests on the property, whether one defined in <a href="#invocation-properties" rel="rdfs:seeAlso">Invocation Properties</a> or an application-defined one; see <a href="#invocation-extension" rel="rdfs:seeAlso">Invocation Extension</a>.</dd>
                       </dl>
                       <p>Encoding rules: in the expanded invocation IRI, <code>&amp;</code> is the sole pair separator and <code>=</code> the sole name/value separator; <span about="" id="invocation-separator" rel="spec:requirement" resource="#invocation-separator"><span property="spec:statement">receiving applications <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> treat <code>;</code> as a separator.</span></span> Because simple expansion percent-encodes sub-delimiters within values, every unencoded <code>&amp;</code> and <code>=</code> in the result is structural. Receiving applications parse the invocation parameters, whether carried in the fragment or the query component, with query-string semantics. A variable can carry multiple values; the canonical wire form repeats the name for each value (<code>open=uri1&amp;open=uri2</code>). RFC 6570 simple expansion of a list (<code>{open*}</code>) produces comma-separated values without name repetition and is not name-bearing; templates that need a variable to carry multiple values are encouraged to use an expansion operator whose output is name-bearing.</p>
                       <p>Receivers are encouraged to treat all invocation parameter values as untrusted input and validate or sanitise them before acting on them. A <code>login</code> value identifies who to authenticate as and never substitutes for authentication; <code>open</code> and other IRI-valued variables are untrusted IRIs to be retrieved with the user's own authorisation, with server-side receivers guarding against request forgery. Receiving applications are encouraged to ignore variable names they do not recognise rather than treat them as errors, to treat every variable as optional, and to fail safe when a variable is absent or empty, since a Consumer may supply only the variables it recognises. Receipt of an invocation implies nothing about grants or permissions; it is a request.</p>
                       <div class="note" id="uri-fragment" inlist="" rel="schema:hasPart" resource="#uri-fragment">
                         <h4 property="schema:name"><span>Note</span>: URI Fragment</h4>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>Passing invocation parameters via the fragment identifier is a pragmatic convention rather than strict conformance with <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5" rel="cito:citesForBackground">Fragment</a> [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>], which defines fragment semantics as determined by the media type of the retrieved representation. The convention is adopted here because fragment content is not included in HTTP request targets (<cite><a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110</a></cite>), preventing the application host from learning the IRI of the resource being opened. In practice, the WHATWG HTML specification's <code>hashchange</code> event allows single-page applications to read fragment-encoded parameters client-side without a page reload. As noted in the <a href="#introduction">Introduction</a>, no existing specification defines a general-purpose mechanism for client-side application invocation via URI; this convention fills that gap and can be superseded by a more principled approach in future work.</p>
+                          <p>Passing invocation parameters via the fragment identifier is a pragmatic convention rather than strict conformance with <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5" rel="cito:citesForBackground">Fragment</a> [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>], which defines fragment semantics as determined by the media type of the retrieved representation. The convention is adopted here because fragment content is not included in HTTP request targets (<cite><a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110</a></cite>), preventing the application host from learning the IRI of the resource being opened. In practice, the WHATWG HTML specification's <code>hashchange</code> event allows single-page applications to read fragment-encoded parameters client-side without a page reload. As noted in the <a href="#introduction" rel="rdfs:seeAlso">Introduction</a>, no existing specification defines a general-purpose mechanism for client-side application invocation via URI; this convention fills that gap and can be superseded by a more principled approach in future work.</p>
                         </div>
                       </div>
                       <div class="note" id="uri-fragment-cors" inlist="" rel="schema:hasPart" resource="#uri-fragment-cors">
@@ -986,7 +986,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <h4 property="schema:name"><span>Note</span>: URI Query</h4>
                         <div datatype="rdf:HTML" property="schema:description">
                           <p>A template can carry invocation variables in the query (<code>?</code>) component instead of the fragment (<code>#</code>) component, but the two are not equivalent. The query component is part of the data that identifies a resource (<a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.4" rel="cito:citesForBackground">Query</a> [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), and it is included in the request target sent to the server (<cite><a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110</a></cite>). Each expansion of a query-form template therefore identifies a distinct resource on the application's host, and the expanded values, including the IRI of the resource being opened, are disclosed to that host. A fragment, by contrast, identifies a secondary resource relative to the retrieved representation and is not transmitted in the request.</p>
-                          <p>Applications are encouraged to use the fragment form so that invocation parameters are processed entirely client-side and, when the application is already loaded, without a further request to its host. Implementations that process invocations server-side can use the query form, accepting that the parameters become part of the request; see <a href="#threat-model">Threat Model</a> for the associated disclosure.</p>
+                          <p>Applications are encouraged to use the fragment form so that invocation parameters are processed entirely client-side and, when the application is already loaded, without a further request to its host. Implementations that process invocations server-side can use the query form, accepting that the parameters become part of the request; see <a href="#threat-model" rel="rdfs:seeAlso">Threat Model</a> for the associated disclosure.</p>
                         </div>
                       </div>
                       <figure class="example listing" id="uri-template-invocation-example" rel="schema:hasPart" resource="#uri-template-invocation-example">
@@ -1050,14 +1050,14 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dt><dfn id="variable-proxy"><code>proxy</code></dfn></dt>
                     <dd>The URL of a proxy through which the application is intended to route network requests. This variable has no effect on its own; when present alongside <code>open</code> or other variables that involve fetching a resource, the application uses the proxy URL for those requests.</dd>
                   </dl>
-                  <p>Applications can use properties beyond those defined here, referenced by their own variable names, as described in <a href="#invocation-extension">Invocation Extension</a>.</p>
+                  <p>Applications can use properties beyond those defined here, referenced by their own variable names, as described in <a href="#invocation-extension" rel="rdfs:seeAlso">Invocation Extension</a>.</p>
                 </div>
               </section>
               <section id="requirement" inlist="" rel="schema:hasPart" resource="#requirement">
                 <h3 property="schema:name">Requirement</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <dfn id="dfn-requirement">requirement</dfn> is a resource of type <code>Requirement</code> that declares one environmental requirement an application has: a CSP directive the host server ought to include, or a browser permission the application can request at runtime. Where a <a href="#dfn-capability">Capability</a> declares what an application can do, a Requirement declares what the environment needs to provide for the application to function. An application links to one or more Requirement declarations via <code>requirement</code>. Declaring requirements as discrete resources allows each requirement to carry its own purpose annotation and to be individually identified and referenced.</p>
-                  <p>Application requirements serve two roles in this specification. As declarative self-description, they are readable by any <a href="#Consumer">Consumer</a>: a catalogue ranking applications by permission footprint, a user agent presenting requirements to a user before invocation, or an authorisation agent reviewing access. As protocol input, they are delivered by a <a href="#Sender">Sender</a> to a <a href="#Receiver">Receiver</a>, which reviews and acts on them by applying CSP headers or addressing declared authorisation needs; this active use is described in the <a href="#notifications">Notifications</a> section. The two roles are independent: a Consumer can read and act on declared requirements without any Sender–Receiver exchange having taken place.</p>
+                  <p>Application requirements serve two roles in this specification. As declarative self-description, they are readable by any <a href="#Consumer">Consumer</a>: a catalogue ranking applications by permission footprint, a user agent presenting requirements to a user before invocation, or an authorisation agent reviewing access. As protocol input, they are delivered by a <a href="#Sender">Sender</a> to a <a href="#Receiver">Receiver</a>, which reviews and acts on them by applying CSP headers or addressing declared authorisation needs; this active use is described in the <a href="#notifications" rel="rdfs:seeAlso">Notifications</a> section. The two roles are independent: a Consumer can read and act on declared requirements without any Sender–Receiver exchange having taken place.</p>
                   <p>Requirements are independent of the invocation mechanism: a Consumer evaluates them before invoking, whichever invocation it selects. Consumers are encouraged to ignore requirement properties they do not recognise rather than treat them as errors.</p>
                   <dl>
                     <dt><dfn id="requirement-cspDirective"><code>cspDirective</code></dfn></dt>
@@ -1188,14 +1188,14 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
             <h2 property="schema:name">Notifications</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>Consumers and Receivers can discover and act on a capability description entirely on their own. In addition, a <a href="#Sender">Sender</a> can proactively communicate with a <a href="#Receiver">Receiver</a> about an application by delivering a notification to the Receiver's inbox. A notification of this kind expresses a <dfn id="dfn-request">request</dfn>: it asks the Receiver to review information concerning an application and to act within its own authority, for example by serving the Content Security Policy headers an application requires, or by authorising an agent to access a resource.</p>
-              <p>The request notification is a general mechanism. This section describes two kinds of information a request can carry, a <a href="#requirements-review">requirements review</a> and an <a href="#access-request">access request</a>, but a request is not limited to these.</p>
-              <p>A Receiver that wishes to receive request notifications advertises an inbox IRI in its own resource description or in error responses (see <a href="#inbox">Inbox</a>).</p>
+              <p>The request notification is a general mechanism. This section describes two kinds of information a request can carry, a <a href="#requirements-review" rel="rdfs:seeAlso">Requirements Review</a> and an <a href="#access-request" rel="rdfs:seeAlso">Access Request</a>, but a request is not limited to these.</p>
+              <p>A Receiver that wishes to receive request notifications advertises an inbox IRI in its own resource description or in error responses (see <a href="#inbox" rel="rdfs:seeAlso">Inbox</a>).</p>
               <section id="request-notification" inlist="" rel="schema:hasPart" resource="#request-notification">
                 <h3 property="schema:name">Request Notification</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <a href="#Sender">Sender</a> uses a request notification to explain its needs to a <a href="#Receiver">Receiver</a>. When the request concerns an application, the notification includes the application IRI, the subject of the application's capability description, which the Receiver can dereference (see <a href="#discovery">Discovery</a>). This specification does not constrain which property carries the application IRI; in the examples below it appears as <code>object</code>. When the request pertains to particular resources, the notification includes their IRIs. A request can include or reference one or more objects describing what is requested; this specification does not constrain the vocabulary of those objects.</p>
+                  <p>A <a href="#Sender">Sender</a> uses a request notification to explain its needs to a <a href="#Receiver">Receiver</a>. When the request concerns an application, the notification includes the application IRI, the subject of the application's capability description, which the Receiver can dereference (see <a href="#discovery" rel="rdfs:seeAlso">Discovery</a>). This specification does not constrain which property carries the application IRI; in the examples below it appears as <code>object</code>. When the request pertains to particular resources, the notification includes their IRIs. A request can include or reference one or more objects describing what is requested; this specification does not constrain the vocabulary of those objects.</p>
                   <figure class="example listing" id="request-notification-example" rel="schema:hasPart" resource="#request-notification-example">
-                    <figcaption property="schema:name"><span>Example</span>: <span>A request notification. The actor makes the request, the object identifies the application, and the target identifies the resource concerned. Objects describing what is requested vary by the kind of request; see <a href="#requirements-review">Requirements Review</a> and <a href="#access-request">Access Request</a>.</span></figcaption>
+                    <figcaption property="schema:name"><span>Example</span>: <span>A request notification. The actor makes the request, the object identifies the application, and the target identifies the resource concerned. Objects describing what is requested vary by the kind of request; see <a href="#requirements-review" rel="rdfs:seeAlso">Requirements Review</a> and <a href="#access-request" rel="rdfs:seeAlso">Access Request</a>.</span></figcaption>
                     <pre property="schema:description"><code>{
   "@context": [
     "https://www.w3.org/ns/activitystreams",
@@ -1208,7 +1208,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
 }</code></pre>
                   </figure>
                   <div class="note">
-                    <p><span>Note</span>: Access control on the inbox, sender authentication, payload constraints, and abuse mitigation are orthogonal to this interaction and are handled by the underlying notification and access control mechanisms (see <a href="#security-considerations">Security Considerations</a>).</p>
+                    <p><span>Note</span>: Access control on the inbox, sender authentication, payload constraints, and abuse mitigation are orthogonal to this interaction and are handled by the underlying notification and access control mechanisms (see <a href="#security-considerations" rel="rdfs:seeAlso">Security Considerations</a>).</p>
                   </div>
                   <p>The Receiver's response to a delivery concerns the notification itself: accepting the HTTP request creates the notification in the inbox, independently of any decision about its contents. The Receiver then reviews the stored request, by operator decision or by automated policy, and records the outcome. The Receiver is encouraged to deliver a notification indicating the outcome to an inbox associated with the request: the inbox stated in the request notification if any, otherwise the inbox in the application's capability description. The outcome notification identifies the request notification so that the two can be correlated.</p>
                   <figure class="example listing" id="outcome-notification-example" rel="schema:hasPart" resource="#outcome-notification-example">
@@ -1231,7 +1231,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Requirements Review</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An application embedded in or injected into an arbitrary HTML document depends on the server hosting that document to issue appropriate Content Security Policy (CSP) headers. Without server cooperation, the browser can block scripts, fetches, or other operations the application requires in order to function. A request can ask a Receiver to review the requirements declared in an application's capability description and act on them, for example by including approved CSP directives in responses served in the context of that application.</p>
-                  <p>A <a href="#Sender">Sender</a> publishes a capability description in which the application links to one or more <a href="#requirement">requirement</a> declarations via <code>requirement</code>. The <a href="#Receiver">Receiver</a> obtains the application IRI, whether at registration time, during policy setup, on first encounter with the application, or from a <a href="#request-notification">request notification</a>, dereferences the capability description, and reviews the declared requirements as described in <a href="#request-notification">Request Notification</a>. A review covers only the requirements the Receiver recognises. When serving responses in the context of that application, the Receiver includes CSP headers reflecting the approved requirements.</p>
+                  <p>A <a href="#Sender">Sender</a> publishes a capability description in which the application links to one or more <a href="#requirement" rel="rdfs:seeAlso">Requirement</a> declarations via <code>requirement</code>. The <a href="#Receiver">Receiver</a> obtains the application IRI, whether at registration time, during policy setup, on first encounter with the application, or from a <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>, dereferences the capability description, and reviews the declared requirements as described in <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>. A review covers only the requirements the Receiver recognises. When serving responses in the context of that application, the Receiver includes CSP headers reflecting the approved requirements.</p>
                   <figure class="example listing" id="requirements-review-example" rel="schema:hasPart" resource="#requirements-review-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A capability description declaring CSP requirements, and a server response reflecting the approved requirements in responses served in the context of the application.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1264,7 +1264,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Access Request</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A request can express that an agent seeks access to a resource. An <dfn id="dfn-access-request">access request</dfn> identifies the agent for whom access is requested, the resource or resources concerned, and the operations desired. This specification does not require a particular authorisation or policy vocabulary for expressing the requested access; the Receiver evaluates the request and enacts the outcome through its own access control mechanism. The representation and enforcement of any resulting authorisation, and the review process itself, are outside the scope of this specification.</p>
-                  <p>A common flow, continuing from <a href="#error-response-inbox-discovery">Error Response Inbox Discovery</a>: an agent using an application attempts an operation on a resource, receives a <code>403</code> response advertising an inbox, and delivers an access request to that inbox describing the access it needs. The review is decoupled from the inbox itself: any application authorised to act on the Receiver's behalf can process stored access requests and enact outcomes.</p>
+                  <p>A common flow, continuing from <a href="#error-response-inbox-discovery" rel="rdfs:seeAlso">Error Response Inbox Discovery</a>: an agent using an application attempts an operation on a resource, receives a <code>403</code> response advertising an inbox, and delivers an access request to that inbox describing the access it needs. The review is decoupled from the inbox itself: any application authorised to act on the Receiver's behalf can process stored access requests and enact outcomes.</p>
                   <figure class="example listing" id="access-request-wac-example" rel="schema:hasPart" resource="#access-request-wac-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Access request whose object expresses the desired authorisation using Web Access Control.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1310,7 +1310,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <p>An inbox is a resource to which notifications are delivered [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. A target resource advertises its inbox, in the <code>Link</code> header and/or as an <code>ldp:inbox</code> relation in its body, and senders and consumers discover it from the target.</p>
                   <p>Both an application and a <a href="#Receiver">Receiver</a> advertise inboxes, for opposite directions of the same exchange:</p>
                   <ul>
-                    <li>An application advertises an inbox in its capability description, through the <a href="#description-inbox"><code>inbox</code></a> property, so that it can receive feedback about its requests, such as the outcome of a <a href="#requirements-review">requirements review</a>.</li>
+                    <li>An application advertises an inbox in its capability description, through the <a href="#description-inbox"><code>inbox</code></a> property, so that it can receive feedback about its requests, such as the outcome of a <a href="#requirements-review" rel="rdfs:seeAlso">Requirements Review</a>.</li>
                     <li>A <a href="#Receiver">Receiver</a> advertises an inbox on a target resource it controls, in the resource's own description or in an error response, so that it can learn what an application needs from it.</li>
                   </ul>
                   <dl about="" id="inbox-discovery" rel="spec:requirement" resource="#inbox-discovery">
@@ -1325,12 +1325,12 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                       </div>
                     </dd>
                   </dl>
-                  <p id="sender-notification-delivery">The <a href="#Sender">Sender</a> then delivers a notification to the inbox, conveying information about its application, including the application IRI. Receipt does not oblige the Receiver to act; a <a href="#Consumer">Consumer</a> acting on the Receiver's behalf can dereference the capability description from that IRI to verify it, then the Receiver follows the review process described in <a href="#request-notification">Request Notification</a>.</p>
+                  <p id="sender-notification-delivery">The <a href="#Sender">Sender</a> then delivers a notification to the inbox, conveying information about its application, including the application IRI. Receipt does not oblige the Receiver to act; a <a href="#Consumer">Consumer</a> acting on the Receiver's behalf can dereference the capability description from that IRI to verify it, then the Receiver follows the review process described in <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>.</p>
                   <p>A <a href="#Consumer">Consumer</a> that has obtained a Sender's capability description, whether directly from the Sender's IRI or via a Receiver, can use it to prepare invocations independently of whether the Sender–Receiver interaction has taken place.</p>
                   <section id="error-response-inbox-discovery" inlist="" rel="schema:hasPart" resource="#error-response-inbox-discovery">
                     <h4 property="schema:name">Error Response Inbox Discovery</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>A client error response is a useful place to advertise an inbox: when a <a href="#Receiver">Receiver</a> rejects a request with a <code>4xx</code>, advertising an inbox in the response lets the requester follow up rather than being left without recourse. For example, an agent denied access can discover the inbox and deliver an <a href="#access-request">access request</a> for the access it needs, or convey its application's requirements for a <a href="#requirements-review">requirements review</a> (see <a href="#request-notification">Request Notification</a>).</p>
+                      <p>A client error response is a useful place to advertise an inbox: when a <a href="#Receiver">Receiver</a> rejects a request with a <code>4xx</code>, advertising an inbox in the response lets the requester follow up rather than being left without recourse. For example, an agent denied access can discover the inbox and deliver an <a href="#access-request" rel="rdfs:seeAlso">Access Request</a> for the access it needs, or convey its application's requirements for a <a href="#requirements-review" rel="rdfs:seeAlso">Requirements Review</a> (see <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>).</p>
                       <figure class="example listing" id="error-inbox-discovery-example" rel="schema:hasPart" resource="#error-inbox-discovery-example">
                         <figcaption property="schema:name"><span>Example</span>: <span>403 response advertising an inbox. The Sender discovers the inbox and delivers a notification referencing its capability description.</span></figcaption>
                         <pre property="schema:description"><code>PUT /article HTTP/1.1</code>
@@ -1345,7 +1345,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <section id="consuming-notifications" inlist="" rel="schema:hasPart" resource="#consuming-notifications">
                     <h4 property="schema:name">Consuming Notifications</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>A <a href="#Consumer">Consumer</a> can read and process the notifications an inbox holds, rather than deliver them. It discovers the inbox as in <a href="#inbox-discovery">Inbox Discovery</a>, then retrieves the inbox to obtain the notifications it contains and retrieves each in turn, as in [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. For example, a Consumer acting on a <a href="#Receiver">Receiver</a>'s behalf reviews an application's needs from the collected request notifications and acts within the Receiver's authority (see <a href="#requirements-review">Requirements Review</a> and <a href="#access-request">Access Request</a>).</p>
+                      <p>A <a href="#Consumer">Consumer</a> can read and process the notifications an inbox holds, rather than deliver them. It discovers the inbox as in <a href="#inbox-discovery" rel="rdfs:seeAlso">Inbox Discovery</a>, then retrieves the inbox to obtain the notifications it contains and retrieves each in turn, as in [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. For example, a Consumer acting on a <a href="#Receiver">Receiver</a>'s behalf reviews an application's needs from the collected request notifications and acts within the Receiver's authority (see <a href="#requirements-review" rel="rdfs:seeAlso">Requirements Review</a> and <a href="#access-request" rel="rdfs:seeAlso">Access Request</a>).</p>
                     </div>
                   </section>
                 </div>
@@ -1360,7 +1360,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Invocation Extension</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-                  <p>Applications can use properties beyond those defined in <a href="#invocation-properties">Invocation Properties</a> by declaring a <code>mapping</code> that pairs a template variable with the property that defines its meaning. Consumers that do not recognise a property still expand the template with the variables whose property they do recognise, and receiving applications treat extension values as untrusted input, per the receiver rules in <a href="#uri-template-invocation">URI Template Invocation</a>.</p>
+                  <p>Applications can use properties beyond those defined in <a href="#invocation-properties" rel="rdfs:seeAlso">Invocation Properties</a> by declaring a <code>mapping</code> that pairs a template variable with the property that defines its meaning. Consumers that do not recognise a property still expand the template with the variables whose property they do recognise, and receiving applications treat extension values as untrusted input, per the receiver rules in <a href="#uri-template-invocation" rel="rdfs:seeAlso">URI Template Invocation</a>.</p>
                   <p>The following properties illustrate invocation extensions:</p>
                   <dl>
                     <dt><dfn id="variable-diff"><code>diff</code></dfn></dt>
@@ -1393,7 +1393,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Requirement Extension</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-                  <p>Applications can state environmental needs beyond those defined in <a href="#requirement">Requirement</a> by including properties from other vocabularies.</p>
+                  <p>Applications can state environmental needs beyond those defined in <a href="#requirement" rel="rdfs:seeAlso">Requirement</a> by including properties from other vocabularies.</p>
                 </div>
               </section>
             </div>
@@ -1433,7 +1433,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Threat Model</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-                  <p>This threat analysis follows the framework of the <cite><a href="https://www.w3.org/TR/threat-model-web/" rel="cito:obtainsBackgroundFrom">W3C Threat Model for the Web</a></cite> and draws on terminology from the <cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:obtainsBackgroundFrom">Privacy Principles</a></cite>. <a href="#security-threats-mitigations" rel="rdfs:seeAlso" title="Security Threats and Mitigations">Security threats</a> are classified by a <a href="https://en.wikipedia.org/wiki/STRIDE_model" rel="rdfs:seeAlso" resource="http://www.wikidata.org/entity/Q7394815">STRIDE</a> threat type and <a href="#privacy-threats-mitigations" rel="rdfs:seeAlso" title="Privacy Threats and Mitigations">privacy threats</a> by a <a href="https://linddun.org/" rel="rdfs:seeAlso">LINDDUN</a> threat type. Each is assigned a risk level from the <cite><a href="https://w3id.org/dpv/risk">RISK Extension</a></cite> to DPV taxonomy [<cite><a class="bibref" href="#bib-dpv-risk">DPV-RISK</a></cite>].</p>
+                  <p>This threat analysis follows the framework of the <cite><a href="https://www.w3.org/TR/threat-model-web/" rel="cito:obtainsBackgroundFrom">W3C Threat Model for the Web</a></cite> and draws on terminology from the <cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:obtainsBackgroundFrom">Privacy Principles</a></cite>. <a href="#security-threats-mitigations" rel="rdfs:seeAlso" title="Security Threats and Mitigations">Security Threats</a> are classified by a <a href="https://en.wikipedia.org/wiki/STRIDE_model" rel="rdfs:seeAlso" resource="http://www.wikidata.org/entity/Q7394815">STRIDE</a> threat type and <a href="#privacy-threats-mitigations" rel="rdfs:seeAlso" title="Privacy Threats and Mitigations">Privacy Threats</a> by a <a href="https://linddun.org/" rel="rdfs:seeAlso">LINDDUN</a> threat type. Each is assigned a risk level from the <cite><a href="https://w3id.org/dpv/risk">RISK Extension</a></cite> to DPV taxonomy [<cite><a class="bibref" href="#bib-dpv-risk">DPV-RISK</a></cite>].</p>
                   <table id="security-threats-mitigations">
                     <caption>Security Threats and Mitigations</caption>
                     <thead>
