@@ -384,7 +384,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#request-notification"><bdi class="secno">4.1</bdi> <span>Request Notification</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#requirements-review"><bdi class="secno">4.2</bdi> <span>Requirements Review</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#access-request"><bdi class="secno">4.3</bdi> <span>Access Request</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#error-response-inbox-discovery"><bdi class="secno">4.4</bdi> <span>Error Response Inbox Discovery</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#inbox"><bdi class="secno">4.4</bdi> <span>Inbox</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -1189,7 +1189,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
             <div datatype="rdf:HTML" property="schema:description">
               <p>Consumers and Receivers can discover and act on a capability description entirely on their own. In addition, a <a href="#Sender">Sender</a> can proactively communicate with a <a href="#Receiver">Receiver</a> about an application by delivering a notification to the Receiver's inbox. A notification of this kind expresses a <dfn id="dfn-request">request</dfn>: it asks the Receiver to review information concerning an application and to act within its own authority, for example by serving the Content Security Policy headers an application requires, or by authorising an agent to access a resource.</p>
               <p>The request notification is a general mechanism. This section describes two kinds of information a request can carry, a <a href="#requirements-review">requirements review</a> and an <a href="#access-request">access request</a>, but a request is not limited to these.</p>
-              <p>A Receiver that wishes to receive request notifications advertises an inbox IRI in its own resource description or in error responses (see <a href="#error-response-inbox-discovery">Error Response Inbox Discovery</a>).</p>
+              <p>A Receiver that wishes to receive request notifications advertises an inbox IRI in its own resource description or in error responses (see <a href="#inbox">Inbox</a>).</p>
               <section id="request-notification" inlist="" rel="schema:hasPart" resource="#request-notification">
                 <h3 property="schema:name">Request Notification</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -1304,33 +1304,50 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   </figure>
                 </div>
               </section>
-              <section id="error-response-inbox-discovery" inlist="" rel="schema:hasPart" resource="#error-response-inbox-discovery">
-                <h3 property="schema:name">Error Response Inbox Discovery</h3>
+              <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox">
+                <h3 property="schema:name">Inbox</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A <a href="#Receiver">Receiver</a> can offer an inbox for notifications about requests it rejects, advertising it in the 4xx response. This lets a <a href="#Sender">Sender</a> convey its application's capability description and requirements for the Receiver to review and act on within its own authority.</p>
-                  <dl about="" id="receiver-inbox-mechanism" rel="spec:requirement" resource="#receiver-inbox-mechanism">
+                  <p>An inbox is a resource to which notifications are delivered [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. A target resource advertises its inbox, in the <code>Link</code> header and/or as an <code>ldp:inbox</code> relation in its body, and senders and consumers discover it from the target.</p>
+                  <p>Both an application and a <a href="#Receiver">Receiver</a> advertise inboxes, for opposite directions of the same exchange:</p>
+                  <ul>
+                    <li>An application advertises an inbox in its capability description, through the <a href="#description-inbox"><code>inbox</code></a> property, so that it can receive feedback about its requests, such as the outcome of a <a href="#requirements-review">requirements review</a>.</li>
+                    <li>A <a href="#Receiver">Receiver</a> advertises an inbox on a target resource it controls, in the resource's own description or in an error response, so that it can learn what an application needs from it.</li>
+                  </ul>
+                  <dl about="" id="inbox-discovery" rel="spec:requirement" resource="#inbox-discovery">
                     <dt>Inbox Discovery</dt>
                     <dd>
                       <div property="spec:statement">
-                        <p>A <span rel="spec:requirementSubject" resource="#Receiver"><a href="#Receiver">Receiver</a></span> that advertises an inbox this way <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use one of the following mechanisms [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]:</p>
-                        <ul>
-                          <li>Include a <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
-                          <li>Return a JSON-LD representation whose encoded graph contains a relation of type <code>http://www.w3.org/ns/ldp#inbox</code>, where the subject is the target resource and the object is the inbox IRI.</li>
-                        </ul>
+                        <p><span rel="spec:requirementSubject" resource="#Sender">Senders</span> and <span rel="spec:requirementSubject" resource="#Consumer">consumers</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> discover the target's inbox as follows, in order [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]:</p>
+                        <ol>
+                          <li>from the <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>;</li>
+                          <li>if none is found there, from the response body parsed as JSON-LD [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>], where an <code>http://www.w3.org/ns/ldp#inbox</code> relation has the target as subject and the inbox IRI as object.</li>
+                        </ol>
                       </div>
                     </dd>
                   </dl>
-                  <p><span about="" id="sender-inbox-discovery" rel="spec:requirement" resource="#sender-inbox-discovery"><span property="spec:statement">An <span rel="spec:requirementSubject" resource="#Sender">agent</span> that receives a 4xx response and intends to notify the <a href="#Receiver">Receiver</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> discover the inbox as in [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]: first from the <code>Link</code> header; if no inbox is found there, from the response body parsed as JSON-LD [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>].</span></span> It delivers a notification to the inbox, as a <a href="#Sender">Sender</a>, conveying information about its application, including the application IRI. Receipt does not oblige the Receiver to act; a <a href="#Consumer">Consumer</a> acting on the Receiver's behalf can dereference the capability description from that IRI to verify it, then the Receiver follows the review process described in <a href="#request-notification">Request Notification</a>.</p>
+                  <p id="sender-notification-delivery">The <a href="#Sender">Sender</a> then delivers a notification to the inbox, conveying information about its application, including the application IRI. Receipt does not oblige the Receiver to act; a <a href="#Consumer">Consumer</a> acting on the Receiver's behalf can dereference the capability description from that IRI to verify it, then the Receiver follows the review process described in <a href="#request-notification">Request Notification</a>.</p>
                   <p>A <a href="#Consumer">Consumer</a> that has obtained a Sender's capability description, whether directly from the Sender's IRI or via a Receiver, can use it to prepare invocations independently of whether the Sender–Receiver interaction has taken place.</p>
-                  <figure class="example listing" id="error-inbox-discovery-example" rel="schema:hasPart" resource="#error-inbox-discovery-example">
-                    <figcaption property="schema:name"><span>Example</span>: <span>403 response advertising an inbox. The Sender discovers the inbox and delivers a notification referencing its capability description.</span></figcaption>
-                    <pre property="schema:description"><code>PUT /article HTTP/1.1</code>
+                  <section id="error-response-inbox-discovery" inlist="" rel="schema:hasPart" resource="#error-response-inbox-discovery">
+                    <h4 property="schema:name">Error Response Inbox Discovery</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A client error response is a useful place to advertise an inbox: when a <a href="#Receiver">Receiver</a> rejects a request with a <code>4xx</code>, advertising an inbox in the response lets the requester follow up rather than being left without recourse. For example, an agent denied access can discover the inbox and deliver an <a href="#access-request">access request</a> for the access it needs, or convey its application's requirements for a <a href="#requirements-review">requirements review</a> (see <a href="#request-notification">Request Notification</a>).</p>
+                      <figure class="example listing" id="error-inbox-discovery-example" rel="schema:hasPart" resource="#error-inbox-discovery-example">
+                        <figcaption property="schema:name"><span>Example</span>: <span>403 response advertising an inbox. The Sender discovers the inbox and delivers a notification referencing its capability description.</span></figcaption>
+                        <pre property="schema:description"><code>PUT /article HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Content-Type: text/html;charset=utf-8</code>
 <code></code>
 <code>HTTP/1.1 403 Forbidden</code>
 <code>Link: &lt;https://example.org/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</code></pre>
-                  </figure>
+                      </figure>
+                    </div>
+                  </section>
+                  <section id="consuming-notifications" inlist="" rel="schema:hasPart" resource="#consuming-notifications">
+                    <h4 property="schema:name">Consuming Notifications</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A <a href="#Consumer">Consumer</a> can read and process the notifications an inbox holds, rather than deliver them. It discovers the inbox as in <a href="#inbox-discovery">Inbox Discovery</a>, then retrieves the inbox to obtain the notifications it contains and retrieves each in turn, as in [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. For example, a Consumer acting on a <a href="#Receiver">Receiver</a>'s behalf reviews an application's needs from the collected request notifications and acts within the Receiver's authority (see <a href="#requirements-review">Requirements Review</a> and <a href="#access-request">Access Request</a>).</p>
+                    </div>
+                  </section>
                 </div>
               </section>
             </div>
@@ -1693,7 +1710,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Security and Privacy</a></cite>. Theresa O'Connor; Peter Snyder.  W3C. 16 December 2021. W3C Group Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
                     <dt id="bib-societal-impact-questionnaire">[SOCIETAL-IMPACT-QUESTIONNAIRE]</dt>
-                    <dd><cite><a href="https://www.w3.org/TR/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Societal Impact</a></cite>. Sarven Capadisli; Lola Odelola.  W3C. 4 November 2025. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/societal-impact-questionnaire/">https://www.w3.org/TR/societal-impact-questionnaire/</a></dd>
+                    <dd><cite><a href="https://www.w3.org/TR/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Societal Impact</a></cite>. Sarven Capadisli; Lola Odelola.  W3C. 19 March 2026. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/societal-impact-questionnaire/">https://www.w3.org/TR/societal-impact-questionnaire/</a></dd>
                   </dl>
                 </div>
               </section>
