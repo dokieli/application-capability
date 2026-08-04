@@ -224,7 +224,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     <link href="https://dokie.li/media/css/dokieli.css" media="all" rel="stylesheet" />
     <script async="" src="https://dokie.li/scripts/dokieli.js"></script>
   </head>
-  <body about="" prefix="as: https://www.w3.org/ns/activitystreams# cito: http://purl.org/spar/cito/ dcterms: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# dpv: https://w3id.org/dpv# earl: http://www.w3.org/ns/earl# ldp: http://www.w3.org/ns/ldp# mem: http://mementoweb.org/ns# odrl: http://www.w3.org/ns/odrl/2/ owl: http://www.w3.org/2002/07/owl# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# rel: https://www.w3.org/ns/iana/link-relations/relation# schema: http://schema.org/ skos: http://www.w3.org/2004/02/skos/core# spec: http://www.w3.org/ns/spec# xsd: http://www.w3.org/2001/XMLSchema#">
+  <body about="" prefix="as: https://www.w3.org/ns/activitystreams# cito: http://purl.org/spar/cito/ dcat: http://www.w3.org/ns/dcat# dcterms: http://purl.org/dc/terms/ doap: http://usefulinc.com/ns/doap# dpv: https://w3id.org/dpv# earl: http://www.w3.org/ns/earl# ldp: http://www.w3.org/ns/ldp# mem: http://mementoweb.org/ns# odrl: http://www.w3.org/ns/odrl/2/ owl: http://www.w3.org/2002/07/owl# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# rel: https://www.w3.org/ns/iana/link-relations/relation# schema: http://schema.org/ skos: http://www.w3.org/2004/02/skos/core# spec: http://www.w3.org/ns/spec# xsd: http://www.w3.org/2001/XMLSchema#">
     <main>
       <article about="" typeof="schema:Article">
         <div class="head">
@@ -1441,6 +1441,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <th>Feature</th>
                         <th>Threat</th>
                         <th>STRIDE type</th>
+                        <th>Threat-model element</th>
                         <th>Risk level</th>
                         <th>Mitigation</th>
                       </tr>
@@ -1450,6 +1451,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#discovery" rel="dcterms:subject">#discovery</a></td>
                         <td><strong property="dcterms:title">Description substitution</strong>. <span property="dcterms:description">An attacker at another origin serves a capability description that claims to represent a Sender it is not, so Consumers or Receivers act on a fraudulent description.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q11081100" rel="dpv:hasImpact">Spoofing</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#High" rel="dpv:hasRiskLevel">High</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-description-substitution" id="mitigation-description-substitution" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to accept a description only when its serving IRI matches the Sender's declared identity</span>, which is the trust anchor rather than the metadata.</span></td>
                       </tr>
@@ -1457,6 +1459,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#discovery" rel="dcterms:subject">#discovery</a></td>
                         <td><strong property="dcterms:title">Description tampering</strong>. <span property="dcterms:description">A network attacker alters a description in transit to widen its declared CSP directives or permissions.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q7681776" rel="dpv:hasImpact">Tampering</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#network-boundary" rel="dcat:theme">B2 Network Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#High" rel="dpv:hasRiskLevel">High</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-description-tampering" id="mitigation-description-tampering" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to fetch descriptions only over HTTPS.</span></span></td>
                       </tr>
@@ -1464,6 +1467,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#discovery" rel="dcterms:subject">#discovery</a></td>
                         <td><strong property="dcterms:title">Stale description</strong>. <span property="dcterms:description">A Consumer or Receiver acts on a cached description that no longer matches the Sender's current requirements.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q7681776" rel="dpv:hasImpact">Tampering</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#browser-state-boundary" rel="dcat:theme">B3 Browser State Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-stale-description" id="mitigation-stale-description" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to apply HTTP caching, re-fetch before acting, and treat an expired description as needing re-verification.</span></span></td>
                       </tr>
@@ -1471,6 +1475,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#capability-description" rel="dcterms:subject">#capability-description</a></td>
                         <td><strong property="dcterms:title">Application impersonation</strong>. <span property="dcterms:description">A malicious application copies another application's name, description, or homepage to gain unearned trust.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q11081100" rel="dpv:hasImpact">Spoofing</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#High" rel="dpv:hasRiskLevel">High</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-application-impersonation" id="mitigation-application-impersonation" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receivers and Consumers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to judge an application by its serving origin, not its metadata.</span></span></td>
                       </tr>
@@ -1478,6 +1483,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#capability-description" rel="dcterms:subject">#capability-description</a></td>
                         <td><strong property="dcterms:title">Statement injection</strong>. <span property="dcterms:description">A description merged into a shared store adds statements about other subjects and changes unrelated behaviour.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q7681776" rel="dpv:hasImpact">Tampering</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-statement-injection" id="mitigation-statement-injection" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to isolate a processed description or accept only statements about its declared IRI.</span></span></td>
                       </tr>
@@ -1485,6 +1491,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#uri-template-invocation" rel="dcterms:subject">#uri-template-invocation</a></td>
                         <td><strong property="dcterms:title">Open redirect via invocation</strong>. <span property="dcterms:description">A server-side application using a query-form template becomes an open redirect when an invocation value such as <code>open</code> is an unvalidated redirect target.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q11081100" rel="dpv:hasImpact">Spoofing</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#High" rel="dpv:hasRiskLevel">High</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-open-redirect" id="mitigation-open-redirect" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receiving applications are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to validate invocation values before using them as redirect or navigation targets, and to restrict targets to expected origins.</span></span></td>
                       </tr>
@@ -1492,6 +1499,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#uri-template-invocation" rel="dcterms:subject">#uri-template-invocation</a>, <a href="#invocation-extension" rel="dcterms:subject">#invocation-extension</a></td>
                         <td><strong property="dcterms:title">Server-side request forgery via invocation</strong>. <span property="dcterms:description">A server-side application that fetches the resource named by <code>open</code> or another IRI value can be aimed at private or internal addresses.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q2775060" rel="dpv:hasImpact">Information disclosure</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#local-network-boundary" rel="dcat:theme">B1.8 Local Network Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#High" rel="dpv:hasRiskLevel">High</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-server-side-request-forgery" id="mitigation-server-side-request-forgery" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receiving applications are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to validate invocation IRIs and deny private and internal addresses before fetching.</span></span></td>
                       </tr>
@@ -1499,6 +1507,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#uri-template-invocation" rel="dcterms:subject">#uri-template-invocation</a>, <a href="#invocation-extension" rel="dcterms:subject">#invocation-extension</a></td>
                         <td><strong property="dcterms:title">Invocation parameter injection</strong>. <span property="dcterms:description">A hostile party supplies invocation values, such as a forged <code>login</code> or a script-bearing stylesheet IRI, that a receiver processes without validation.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q7681776" rel="dpv:hasImpact">Tampering</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#High" rel="dpv:hasRiskLevel">High</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-invocation-parameter-injection" id="mitigation-invocation-parameter-injection" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receiving applications are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to treat all invocation values as untrusted input and validate them before use.</span></span></td>
                       </tr>
@@ -1506,6 +1515,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#requirement" rel="dcterms:subject">#requirement</a></td>
                         <td><strong property="dcterms:title">Permission inflation</strong>. <span property="dcterms:description">A Sender declares broader CSP directives, permissions, or access than its function needs.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q1856893" rel="dpv:hasImpact">Elevation of privilege</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-permission-inflation" id="mitigation-permission-inflation" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare only the permissions their function needs, and Receivers to treat declarations as input to review rather than automatic grants.</span></span></td>
                       </tr>
@@ -1513,6 +1523,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#policy" rel="dcterms:subject">#policy</a></td>
                         <td><strong property="dcterms:title">Policy misrepresentation</strong>. <span property="dcterms:description">A Sender issues policies it does not follow, so a favourable comparison grants unearned trust.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q11081100" rel="dpv:hasImpact">Spoofing</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-policy-misrepresentation" id="mitigation-policy-misrepresentation" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to present policy comparison as input to a user decision, not as assurance of conduct.</span></span></td>
                       </tr>
@@ -1520,6 +1531,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#policy" rel="dcterms:subject">#policy</a></td>
                         <td><strong property="dcterms:title">Policy change after reliance</strong>. <span property="dcterms:description">A Sender issues agreeable policies, then narrows them after users or Receivers have relied on the earlier version.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q7681776" rel="dpv:hasImpact">Tampering</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-policy-change-after-reliance" id="mitigation-policy-change-after-reliance" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to re-fetch and re-compare policies rather than act on a cached comparison.</span></span></td>
                       </tr>
@@ -1527,6 +1539,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#notifications" rel="dcterms:subject">#notifications</a></td>
                         <td><strong property="dcterms:title">Post-approval behavior change</strong>. <span property="dcterms:description">A Sender shows minimal declarations during review, then changes the application to exploit the approved access.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q1856893" rel="dpv:hasImpact">Elevation of privilege</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-post-approval-behavior-change" id="mitigation-post-approval-behavior-change" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to re-fetch and re-review periodically, and to treat any change in declared requirements as needing renewed review.</span></span></td>
                       </tr>
@@ -1534,6 +1547,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#notifications" rel="dcterms:subject">#notifications</a></td>
                         <td><strong property="dcterms:title">Inbox flooding</strong>. <span property="dcterms:description">An advertised inbox invites bulk or junk notifications that exhaust storage or the review process.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q131406" rel="dpv:hasImpact">Denial of service</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#network-boundary" rel="dcat:theme">B2 Network Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-inbox-flooding" id="mitigation-inbox-flooding" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to require authenticated senders, apply access control and rate limits, validate payloads, or use short-lived inboxes.</span></span></td>
                       </tr>
@@ -1541,6 +1555,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#requirements-review" rel="dcterms:subject">#requirements-review</a></td>
                         <td><strong property="dcterms:title">CSP allowlist scope creep</strong>. <span property="dcterms:description">CSP directives approved for one application are broad enough to benefit others on the host or to enable cross-site scripting.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q1856893" rel="dpv:hasImpact">Elevation of privilege</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-csp-allowlist-scope-creep" id="mitigation-csp-allowlist-scope-creep" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to evaluate approved directives against the whole host document and to prefer narrow source expressions.</span></span></td>
                       </tr>
@@ -1548,6 +1563,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#error-response-inbox-discovery" rel="dcterms:subject">#error-response-inbox-discovery</a></td>
                         <td><strong property="dcterms:title">Inbox forgery</strong>. <span property="dcterms:description">A Sender names a third party's inbox as the Receiver's, or an attacker forges approval notifications.</span></td>
                         <td><a href="http://www.wikidata.org/entity/Q11081100" rel="dpv:hasImpact">Spoofing</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-inbox-forgery" id="mitigation-inbox-forgery" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers and Receivers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to discover an inbox only from the Receiver's own responses, and to verify high-stakes approvals out of band.</span></span></td>
                       </tr>
@@ -1560,6 +1576,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <th>Feature</th>
                         <th>Threat</th>
                         <th>LINDDUN type</th>
+                        <th>Threat-model element</th>
                         <th>Risk level</th>
                         <th>Mitigation</th>
                       </tr>
@@ -1569,6 +1586,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#discovery" rel="dcterms:subject">#discovery</a></td>
                         <td><strong property="dcterms:title">Capability description fetch as tracking</strong>. <span property="dcterms:description">A server that hosts its capability description can log who fetches it, when Consumers need to use the description or to verify an application IRI received in a <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>. These fetches can let the host identify who is using the description and correlate repeated fetches to track them.</span></td>
                         <td><a href="https://linddun.org/threat-types/#L" rel="dpv:hasImpact">Linking</a>, <a href="https://linddun.org/threat-types/#D" rel="dpv:hasImpact">Detecting</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Low" rel="dpv:hasRiskLevel">Low</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-capability-description-fetch-tracking" id="mitigation-capability-description-fetch-tracking" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to fetch without credentials and with minimal headers, and application hosts to minimise the logging and retention of fetch metadata.</span></span></td>
                       </tr>
@@ -1576,6 +1594,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#uri-template-invocation" rel="dcterms:subject">#uri-template-invocation</a></td>
                         <td><strong property="dcterms:title">Invocation IRI disclosure</strong>. <span property="dcterms:description">A query-form template sends the target resource IRI to the application's host, which can reveal personal data or browsing behaviour.</span></td>
                         <td><a href="https://linddun.org/threat-types/#DD" rel="dpv:hasImpact">Data Disclosure</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-invocation-iri-disclosure" id="mitigation-invocation-iri-disclosure" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use fragment-form templates, and to document the disclosure when a query-form template is used.</span></span></td>
                       </tr>
@@ -1583,6 +1602,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#uri-template-invocation" rel="dcterms:subject">#uri-template-invocation</a></td>
                         <td><strong property="dcterms:title">User identification via invocation</strong>. <span property="dcterms:description">An invocation value can identify the user directly, for example a <code>login</code> profile IRI. Even without such a value, a host that receives invocations can correlate repeated ones to single out the same user.</span></td>
                         <td><a href="https://linddun.org/threat-types/#I" rel="dpv:hasImpact">Identifying</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-user-identification" id="mitigation-user-identification" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to supply identifying values such as <code>login</code> only when needed, and Receivers not to retain or correlate them beyond the invoked function.</span></span></td>
                       </tr>
@@ -1590,6 +1610,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#uri-template-invocation" rel="dcterms:subject">#uri-template-invocation</a></td>
                         <td><strong property="dcterms:title">Unawareness of invocation disclosure</strong>. <span property="dcterms:description">A user may not know that an invocation discloses information, such as a query-form template sending the target IRI to the host, and cannot intervene.</span></td>
                         <td><a href="https://linddun.org/threat-types/#U" rel="dpv:hasImpact">Unawareness &amp; Unintervenability</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#user-agent-boundary" rel="dcat:theme">B0 User Agent Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-invocation-unawareness" id="mitigation-invocation-unawareness" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Consumers are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to show what an invocation discloses, and to whom, before acting, and to prefer fragment-form templates.</span></span></td>
                       </tr>
@@ -1597,6 +1618,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#requirement" rel="dcterms:subject">#requirement</a></td>
                         <td><strong property="dcterms:title">Purpose mismatch</strong>. <span property="dcterms:description">A Sender uses granted permissions for purposes other than its declared <code>hasPurpose</code>, such as profiling.</span></td>
                         <td><a href="https://linddun.org/threat-types/#Nc" rel="dpv:hasImpact">Non-compliance</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Moderate" rel="dpv:hasRiskLevel">Moderate</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-purpose-mismatch" id="mitigation-purpose-mismatch" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to declare each purpose via <code>hasPurpose</code>, and Receivers to grant only for the declared purposes and treat use beyond them as non-compliance.</span></span></td>
                       </tr>
@@ -1604,6 +1626,7 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                         <td><a href="#notifications" rel="dcterms:subject">#notifications</a></td>
                         <td><strong property="dcterms:title">Non-repudiable request records</strong>. <span property="dcterms:description">Delivering a notification records the requester's application IRI, which can remove deniability that a request was made.</span></td>
                         <td><a href="https://linddun.org/threat-types/#Nr" rel="dpv:hasImpact">Non-repudiation</a></td>
+                        <td><a href="https://www.w3.org/TR/threat-model-web/#web-origin-boundary" rel="dcat:theme">B1 Web Origin Boundary</a></td>
                         <td><a href="https://w3id.org/dpv/risk#Low" rel="dpv:hasRiskLevel">Low</a></td>
                         <td rel="dpv:isMitigatedByMeasure"><span about="#mitigation-invocation-non-repudiation" id="mitigation-invocation-non-repudiation" property="dcterms:description" typeof="dpv:RiskMitigationMeasure"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to convey only the identity the Receiver needs, and Receivers to retain records only as long as needed.</span></span></td>
                       </tr>
