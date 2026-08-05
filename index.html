@@ -229,7 +229,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Application Capability</h1>
-          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-08-01T00:00:00Z">1 August 2026</time></p>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-08-05T00:00:00Z">1 August 2026</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -255,7 +255,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2026-08-01T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-08-01T10:58:10.735Z" property="schema:dateModified">2026-08-01</time></dd>
+              <dd><time content="2026-08-05T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-08-05T10:58:10.735Z" property="schema:dateModified">2026-08-05</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -492,14 +492,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     </thead>
                     <tbody>
                       <tr>
-                        <td><code>rdf</code></td>
-                        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-                        <td>[<cite><a class="bibref" href="#bib-rdf-schema">rdf-schema</a></cite>]</td>
+                        <td><code>ac</code></td>
+                        <td>https://www.w3.org/ns/ac#</td>
+                        <td>Application Capability (this specification)</td>
                       </tr>
                       <tr>
-                        <td><code>rdfs</code></td>
-                        <td>http://www.w3.org/2000/01/rdf-schema#</td>
-                        <td>[<cite><a class="bibref" href="#bib-rdf-schema">rdf-schema</a></cite>]</td>
+                        <td><code>as</code></td>
+                        <td>https://www.w3.org/ns/activitystreams#</td>
+                        <td>[<cite><a class="bibref" href="#bib-activitystreams-vocabulary">Activity Vocabulary</a></cite>]</td>
                       </tr>
                       <tr>
                         <td><code>dcterms</code></td>
@@ -512,6 +512,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <td>Description of a Project</td>
                       </tr>
                       <tr>
+                        <td><code>dpv</code></td>
+                        <td>https://w3id.org/dpv#</td>
+                        <td>[<cite><a class="bibref" href="#bib-dpv">Data Privacy Vocabulary</a></cite>]</td>
+                      </tr>
+                      <tr>
                         <td><code>hydra</code></td>
                         <td>http://www.w3.org/ns/hydra/core#</td>
                         <td>[<cite><a class="bibref" href="#bib-hydra">Hydra Core Vocabulary</a></cite>]</td>
@@ -522,19 +527,24 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <td>[<cite><a class="bibref" href="#bib-ldp">Linked Data Platform</a></cite>]</td>
                       </tr>
                       <tr>
+                        <td><code>oa</code></td>
+                        <td>http://www.w3.org/ns/oa#</td>
+                        <td>[<cite><a class="bibref" href="#bib-annotation-vocab">Web Annotation Vocabulary</a></cite>]</td>
+                      </tr>
+                      <tr>
                         <td><code>odrl</code></td>
                         <td>http://www.w3.org/ns/odrl/2/</td>
                         <td>[<cite><a class="bibref" href="#bib-odrl-vocab">ODRL Vocabulary &amp; Expression 2.2</a></cite>]</td>
                       </tr>
                       <tr>
-                        <td><code>dpv</code></td>
-                        <td>https://w3id.org/dpv#</td>
-                        <td>[<cite><a class="bibref" href="#bib-dpv">Data Privacy Vocabulary</a></cite>]</td>
+                        <td><code>rdf</code></td>
+                        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                        <td>[<cite><a class="bibref" href="#bib-rdf-schema">rdf-schema</a></cite>]</td>
                       </tr>
                       <tr>
-                        <td><code>ac</code></td>
-                        <td>https://www.w3.org/ns/ac#</td>
-                        <td>Application Capability (this specification)</td>
+                        <td><code>rdfs</code></td>
+                        <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                        <td>[<cite><a class="bibref" href="#bib-rdf-schema">rdf-schema</a></cite>]</td>
                       </tr>
                     </tbody>
                   </table>
@@ -558,6 +568,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "dpv":     "https://w3id.org/dpv#",
     "hydra":   "http://www.w3.org/ns/hydra/core#",
     "ldp":     "http://www.w3.org/ns/ldp#",
+    "oa":      "http://www.w3.org/ns/oa#",
     "odrl":    "http://www.w3.org/ns/odrl/2/",
     "id":   "@id",
     "type": "@type",
@@ -588,6 +599,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "requirement": {"@id": "ac:requirement", "@type": "@id"},
     "resourceType": {"@id": "ac:resourceType", "@type": "@id"},
     "search": "ac:search",
+    "selector": {"@id": "oa:hasSelector", "@type": "@id"},
+    "state": {"@id": "oa:hasState", "@type": "@id"},
     "shape": {"@id": "ac:shape", "@type": "@id"},
     "summary": "as:summary",
     "template": "hydra:template",
@@ -700,6 +713,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         <td><code>login</code>, <code>open</code>, <code>output</code>, <code>proxy</code>, <code>search</code></td>
                         <td><code>ac:login</code>, <code>ac:open</code>, <code>ac:output</code>, <code>ac:proxy</code>, <code>ac:search</code></td>
                         <td>Invocation properties parameterising the IRI used to invoke an application. See <a href="#invocation-properties" rel="rdfs:seeAlso">Invocation Properties</a>.</td>
+                      </tr>
+                      <tr>
+                        <td><code>selector</code>, <code>state</code></td>
+                        <td><code>oa:hasSelector</code>, <code>oa:hasState</code></td>
+                        <td>Invocation properties identifying a segment and a version of the resource. See <a href="#invocation-properties" rel="rdfs:seeAlso">Invocation Properties</a>.</td>
                       </tr>
                       <tr>
                         <td><code>inbox</code></td>
@@ -964,11 +982,17 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>A <code>UriTemplateInvocation</code> describes invocation by navigation: the Consumer expands the template, resolves the result against the application's deployment IRI, and navigates the user agent to it via HTTP GET. How the invocation parameters are carried within the IRI, and the resulting trade-offs, are described in the notes below.</p>
                       <dl>
                         <dt><dfn id="invocation-template"><code>template</code></dfn></dt>
-                        <dd>A URI Template [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Each variable in the template has a <a href="#invocation-mapping"><code>mapping</code></a> entry giving its property. Variables appear in <em>name-bearing</em> form, pairing each variable's name with its value explicitly (for example, <code>#open={open}</code>), so that the receiving application can identify each value in the expanded IRI. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>].</dd>
+                        <dd>A URI Template [<cite><a class="bibref" href="#bib-rfc6570">RFC6570</a></cite>] expressing the invocation-specific part of the IRI. The Consumer resolves the expanded result against the application's deployment IRI, following the reference resolution rules of RFC 3986, to obtain the full invocation IRI, so that the same template works regardless of where the application is deployed; an expansion that is already an absolute IRI is used as is. Each variable in the template has a <a href="#invocation-mapping"><code>mapping</code></a> entry giving its property. How each variable's value appears in the expanded IRI follows one of two forms, the <a href="#query-form">query form</a> or the <a href="#functional-form">functional form</a>, described under <a href="#invocation-encoding">Encoding</a> below. Values produced by simple expansion are percent-encoded, satisfying the requirement that resource IRIs travel percent-encoded [<cite><a class="bibref" href="#bib-rfc3987">RFC3987</a></cite>].</dd>
                         <dt><dfn id="invocation-mapping"><code>mapping</code></dfn></dt>
                         <dd>Zero or more mapping nodes, each pairing a <code>variable</code> (the string name used in the template) with a <code>property</code> (the property that defines its semantics). Each variable in the template has a mapping node; the variable name is a local placeholder, and its meaning rests on the property, whether one defined in <a href="#invocation-properties" rel="rdfs:seeAlso">Invocation Properties</a> or an application-defined one; see <a href="#invocation-extension" rel="rdfs:seeAlso">Invocation Extension</a>.</dd>
                       </dl>
-                      <p>Encoding rules: in the expanded invocation IRI, <code>&amp;</code> is the sole pair separator and <code>=</code> the sole name/value separator; <span about="" id="invocation-separator" rel="spec:requirement" resource="#invocation-separator"><span property="spec:statement">receiving applications <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> treat <code>;</code> as a separator.</span></span> Because simple expansion percent-encodes sub-delimiters within values, every unencoded <code>&amp;</code> and <code>=</code> in the result is structural. Receiving applications parse the invocation parameters, whether carried in the fragment or the query component, with query-string semantics. A variable can carry multiple values; the canonical wire form repeats the name for each value (<code>open=uri1&amp;open=uri2</code>). RFC 6570 simple expansion of a list (<code>{open*}</code>) produces comma-separated values without name repetition and is not name-bearing; templates that need a variable to carry multiple values are encouraged to use an expansion operator whose output is name-bearing.</p>
+                      <p id="invocation-encoding">The invocation parameters in the expanded IRI take one of two forms, according to the property mapped to each variable. Both are general fragment (and, for the query form, query) grammars; the properties defined in this specification use one or the other, and extension properties may use either.</p>
+                      <dl>
+                        <dt><dfn id="query-form">Query form</dfn></dt>
+                        <dd>Name-bearing: each variable pairs its name with its value explicitly, for example <code>#open={open}</code>, so that the receiving application can identify each value in the expanded IRI. In the result, <code>&amp;</code> is the sole pair separator and <code>=</code> the sole name/value separator; <span about="" id="invocation-separator" rel="spec:requirement" resource="#invocation-separator"><span property="spec:statement">receiving applications <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> treat <code>;</code> as a separator.</span></span> Because simple expansion percent-encodes sub-delimiters within values, every unencoded <code>&amp;</code> and <code>=</code> in the result is structural. Receiving applications parse these parameters, whether carried in the fragment or the query component, with query-string semantics. A variable can carry multiple values; the canonical wire form repeats the name for each value (<code>open=uri1&amp;open=uri2</code>). RFC 6570 simple expansion of a list (<code>{open*}</code>) produces comma-separated values without name repetition and is not name-bearing; templates that need a variable to carry multiple values are encouraged to use an expansion operator whose output is name-bearing. The <code>open</code>, <code>output</code>, <code>search</code>, <code>login</code>, and <code>proxy</code> properties use this form.</dd>
+                        <dt><dfn id="functional-form">Functional form</dfn></dt>
+                        <dd>The fragment is a <code>name(data)</code> expression in the functional syntax of the XPointer Framework [<cite><a class="bibref" href="#bib-xptr-framework">XPTR-FRAMEWORK</a></cite>], where <code>name</code> identifies a scheme and the parenthesised <code>data</code> is defined by that scheme, nesting <code>key=name(…)</code> where a field is itself such an expression. In a template the <code>(</code>, <code>)</code>, <code>=</code>, and <code>,</code> are structural literals; each field is a variable expanded within them, and simple expansion percent-encodes the characters that make the fragment ambiguous (space, <code>=</code>, <code>,</code>, <code>#</code>). The <code>selector</code> and <code>state</code> properties use this form.</dd>
+                      </dl>
                       <p>Receivers are encouraged to treat all invocation parameter values as untrusted input and validate or sanitise them before acting on them. A <code>login</code> value identifies who to authenticate as and never substitutes for authentication; <code>open</code> and other IRI-valued variables are untrusted IRIs to be retrieved with the user's own authorisation, with server-side receivers guarding against request forgery. Receiving applications are encouraged to ignore variable names they do not recognise rather than treat them as errors, to treat every variable as optional, and to fail safe when a variable is absent or empty, since a Consumer may supply only the variables it recognises. Receipt of an invocation implies nothing about grants or permissions; it is a request.</p>
                       <div class="note" id="uri-fragment" inlist="" rel="schema:hasPart" resource="#uri-fragment">
                         <h4 property="schema:name"><span>Note</span>: URI Fragment</h4>
@@ -1028,6 +1052,46 @@ Resolved against application IRI https://app.example/ with
 
 https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text%2Fhtml</code></pre>
                       </figure>
+                      <figure class="example listing" id="invoke-selector-example" rel="schema:hasPart" resource="#invoke-selector-example">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Functional-form invocation with a <code>selector</code>, opening a resource focused on the segment a Web Annotation <code>TextQuoteSelector</code> identifies. The <code>selector(…)</code> syntax is defined by [<cite><a class="bibref" href="#bib-selectors-states">SELECTORS-STATES</a></cite>].</span></figcaption>
+                        <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#invoke-selector",
+  "type": "UriTemplateInvocation",
+  "template": "#selector(type=TextQuoteSelector,prefix={prefix},exact={exact},suffix={suffix})",
+  "mapping": [
+    { "variable": "prefix", "property": "oa:prefix" },
+    { "variable": "exact",  "property": "oa:exact" },
+    { "variable": "suffix", "property": "oa:suffix" }
+  ]
+}
+
+Resolved against application IRI https://app.example/ with
+     prefix = "dokieli is an "
+     exact  = "open source project"
+     suffix = " using open web standards." :
+
+https://app.example/#selector(type=TextQuoteSelector,prefix=dokieli%20is%20an%20,exact=open%20source%20project,suffix=%20using%20open%20web%20standards.)</code></pre>
+                      </figure>
+                      <figure class="example listing" id="invoke-mediafragment-example" rel="schema:hasPart" resource="#invoke-mediafragment-example">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Query-form invocation carrying a Media Fragments [<cite><a class="bibref" href="#bib-media-frags">MEDIA-FRAGS</a></cite>] temporal segment, opening a clip from 30 to 60 seconds. The <code>t</code> dimension (a <code>start,end</code> time in seconds) is defined by Media Fragments; the field properties are application-defined.</span></figcaption>
+                        <pre property="schema:description"><code>{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#invoke-clip",
+  "type": "UriTemplateInvocation",
+  "template": "#t={start},{end}",
+  "mapping": [
+    { "variable": "start", "property": "https://app.example/ns#start" },
+    { "variable": "end",   "property": "https://app.example/ns#end" }
+  ]
+}
+
+Resolved against application IRI https://app.example/ with
+     start = 30
+     end   = 60 :
+
+https://app.example/#t=30,60</code></pre>
+                      </figure>
                     </div>
                   </section>
                 </div>
@@ -1041,6 +1105,10 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                   <dl>
                     <dt><dfn id="variable-open"><code>open</code></dfn></dt>
                     <dd>The IRI of a resource to open. The application renders, displays, or edits the identified resource.</dd>
+                    <dt><dfn id="variable-selector"><code>selector</code></dfn></dt>
+                    <dd>A selector identifying a segment of the resource to focus on, as defined in [<cite><a class="bibref" href="#bib-selectors-states">SELECTORS-STATES</a></cite>]. Its value is carried in <a href="#functional-form">functional form</a> as <code>selector(…)</code>, whose fields (for example <code>oa:exact</code>, <code>oa:prefix</code>, <code>oa:suffix</code>) become the template variables.</dd>
+                    <dt><dfn id="variable-state"><code>state</code></dfn></dt>
+                    <dd>A state identifying a specific version or representation of the resource, as defined in [<cite><a class="bibref" href="#bib-selectors-states">SELECTORS-STATES</a></cite>]. Its value is carried in <a href="#functional-form">functional form</a> as <code>state(…)</code>.</dd>
                     <dt><dfn id="variable-search"><code>search</code></dfn></dt>
                     <dd>A query or search expression submitted to the application. The format and interpretation are application-defined: the value can be a freetext string, a structured query, or any other expression the application understands.</dd>
                     <dt><dfn id="variable-output"><code>output</code></dfn></dt>
@@ -1367,10 +1435,10 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dd>The IRI of a resource to compare. It is supplied twice, as the original version then the changed version, and the application renders their difference.</dd>
                     <dt><dfn id="variable-graph"><code>graph</code></dfn></dt>
                     <dd>The IRI of an RDF dataset or named graph to load and render.</dd>
-                    <dt><dfn id="variable-state"><code>state</code></dfn></dt>
-                    <dd>An application-defined value encoding the UI state in which to open the application, such as which panels are active or the current view mode. The encoding and interpretation of this variable are not further specified.</dd>
                     <dt><dfn id="variable-style"><code>style</code></dfn></dt>
                     <dd>The IRI of a stylesheet to apply when rendering the resource.</dd>
+                    <dt><dfn id="variable-view"><code>view</code></dfn></dt>
+                    <dd>An application-defined value encoding the UI view in which to open the application, such as which panels are active or the current mode. The encoding and interpretation of this variable are not further specified.</dd>
                   </dl>
                   <figure class="example listing" id="explicit-mapping-example" rel="schema:hasPart" resource="#explicit-mapping-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>An extension variable declared via an explicit mapping. The application defines the property that gives the variable its semantics; Consumers that recognise the property can supply a value, and receiving applications treat it as untrusted input like any other variable.</span></figcaption>
@@ -1687,6 +1755,10 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                 <h3 property="schema:name">Normative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-activitystreams-vocabulary">[ACTIVITYSTREAMS-VOCABULARY]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/activitystreams-vocabulary/" rel="cito:citesAsAuthority">Activity Vocabulary</a></cite>. James Snell; Evan Prodromou.  W3C. 23 May 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/activitystreams-vocabulary/">https://www.w3.org/TR/activitystreams-vocabulary/</a></dd>
+                    <dt id="bib-annotation-vocab">[ANNOTATION-VOCAB]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/annotation-vocab/" rel="cito:citesAsAuthority">Web Annotation Vocabulary</a></cite>. Robert Sanderson; Paolo Ciccarese; Benjamin Young.  W3C. 23 February 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></dd>
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
                     <dd><cite><a href="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/" rel="cito:citesAsAuthority">DCMI Metadata Terms</a></cite>. DCMI Usage Board.  DCMI. 20 January 2020. DCMI Recommendation. URL: <a href="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/">http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/</a></dd>
                     <dt id="bib-dpv">[DPV]</dt>
@@ -1717,6 +1789,10 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dd><cite><a href="https://www.rfc-editor.org/info/rfc6570" rel="cito:citesAsAuthority">URI Template</a></cite>. J. Gregorio; R. Fielding; M. Hadley; M. Nottingham; D. Orchard.  IETF. March 2012. Proposed Standard. URL: <a href="https://www.rfc-editor.org/info/rfc6570">https://www.rfc-editor.org/info/rfc6570</a></dd>
                     <dt id="bib-rfc8174">[RFC8174]</dt>
                     <dd><cite><a href="https://www.rfc-editor.org/info/rfc8174" rel="cito:citesAsAuthority">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a></cite>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a></dd>
+                    <dt id="bib-selectors-states">[SELECTORS-STATES]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/selectors-states/" rel="cito:citesAsAuthority">Selectors and States</a></cite>. Ivan Herman; Robert Sanderson; Paolo Ciccarese; Benjamin Young.  W3C. 23 February 2017. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/selectors-states/">https://www.w3.org/TR/selectors-states/</a></dd>
+                    <dt id="bib-xptr-framework">[XPTR-FRAMEWORK]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/xptr-framework/" rel="cito:citesAsAuthority">XPointer Framework</a></cite>. Paul Grosso; Eve Maler; Jonathan Marsh; Norman Walsh.  W3C. 25 March 2003. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xptr-framework/">https://www.w3.org/TR/xptr-framework/</a></dd>
                   </dl>
                 </div>
               </section>
@@ -1728,6 +1804,8 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                     <dd><cite><a href="https://w3id.org/dpv/risk" rel="cito:citesAsPotentialSolution">Risk Extension</a></cite>. Harshvardhan J. Pandit.  W3C Data Privacy Vocabularies and Controls Community Group. 25 February 2026. Final Community Group Report. URL: <a href="https://w3id.org/dpv/risk">https://w3id.org/dpv/risk</a></dd>
                     <dt id="bib-fetch">[FETCH]</dt>
                     <dd><cite><a href="https://fetch.spec.whatwg.org/" rel="cito:citesAsAuthority">Fetch Standard</a></cite>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
+                    <dt id="bib-media-frags">[MEDIA-FRAGS]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/media-frags/" rel="cito:citesAsSourceDocument">Media Fragments URI 1.0 (basic)</a></cite>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd>
                     <dt id="bib-privacy-principles">[PRIVACY-PRINCIPLES]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:citesAsPotentialSolution">Privacy Principles</a></cite>. Robin Berjon; Jeffrey Yasskin.  W3C. 15 May 2025. W3C Statement. URL: <a href="https://www.w3.org/TR/privacy-principles/">https://www.w3.org/TR/privacy-principles/</a></dd>
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
