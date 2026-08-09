@@ -368,8 +368,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#normative-and-informative-content"><bdi class="secno">3.1</bdi> <span>Normative and Informative Content</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#specification-category"><bdi class="secno">3.2</bdi> <span>Specification Category</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#classes-of-products"><bdi class="secno">3.3</bdi> <span>Classes of Products</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#subdivisions"><bdi class="secno">3.4</bdi> <span>Subdivisions</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#interoperability"><bdi class="secno">3.5</bdi> <span>Interoperability</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#interoperability"><bdi class="secno">3.4</bdi> <span>Interoperability</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#subdivisions"><bdi class="secno">3.5</bdi> <span>Subdivisions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline"><a class="tocxref" href="#discovery"><bdi class="secno">4.</bdi> <span>Discovery</span></a></li>
@@ -919,16 +919,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </dl>
                 </div>
               </section>
-              <section id="subdivisions" inlist="" rel="schema:hasPart" resource="#subdivisions">
-                <h3 property="schema:name skos:prefLabel">Subdivisions</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>This document can be subdivided into the following <a href="https://www.w3.org/TR/spec-variability/#subdivision-module">modules</a>:</p>
-                  <ul about="" rel="spec:module">
-                    <li resource="#module-discovery-data-model" typeof="spec:ConformanceModule"><a href="#discovery" rel="schema:hasPart">Discovery</a> together with the <a href="#data-model" rel="schema:hasPart">Data Model</a></li>
-                    <li resource="#module-notifications" typeof="spec:ConformanceModule"><a href="#notifications" rel="schema:hasPart">Notifications</a></li>
-                  </ul>
-                </div>
-              </section>
               <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability">
                 <h3 property="schema:name skos:prefLabel">Interoperability</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -941,6 +931,16 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt about="#Sender-Receiver" property="skos:prefLabel" typeof="skos:Concept"><dfn id="Sender-Receiver">Sender–Receiver interoperability</dfn></dt>
                     <dd about="#Sender-Receiver" property="skos:definition">Interoperability of implementations for <a href="#Sender" rel="rdfs:seeAlso">Sender</a> and <a href="#Receiver" rel="rdfs:seeAlso">Receiver</a> is tested by evaluating an implementation's ability to request and respond to HTTP messages.</dd>
                   </dl>
+                </div>
+              </section>
+              <section id="subdivisions" inlist="" rel="schema:hasPart" resource="#subdivisions">
+                <h3 property="schema:name">Subdivisions</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This document can be subdivided into the following <a href="https://www.w3.org/TR/spec-variability/#subdivision-module">modules</a>:</p>
+                  <ul about="" rel="spec:module">
+                    <li resource="#module-discovery-data-model" typeof="spec:ConformanceModule"><a href="#discovery" rel="schema:hasPart">Discovery</a> together with the <a href="#data-model" rel="schema:hasPart">Data Model</a></li>
+                    <li resource="#module-notifications" typeof="spec:ConformanceModule"><a href="#notifications" rel="schema:hasPart">Notifications</a></li>
+                  </ul>
                 </div>
               </section>
             </div>
