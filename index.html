@@ -1316,7 +1316,7 @@ https://app.example/#t=30,60</code></pre>
                 <h3 property="schema:name">Embedded Descriptions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
-                  <p>Because <code>capability</code> and <code>requirement</code> attach to any resource identifying an application, an application already described by another vocabulary, e.g., Application Manifest, Web Extensions Manifest, Description of a Project, Activity Vocabulary, schema.org, Web of Things, OAuth, can include these properties on its existing subject without restructuring:</p>
+                  <p>The properties defined in <a href="#capability-description" rel="rdfs:seeAlso">Capability Description</a> attach to any resource identifying an application. An application already described by another vocabulary (e.g., Web Application Manifest, Web Extensions manifest, Description of a Project, Activity Vocabulary, schema.org, Web of Things, or OAuth) can therefore carry them on its existing subject without restructuring:</p>
                   <figure class="example listing" id="embedded-descriptions-jsonld-example" rel="schema:hasPart" resource="#embedded-descriptions-jsonld-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Capability and requirements statements on a subject described by another vocabulary.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1324,13 +1324,13 @@ https://app.example/#t=30,60</code></pre>
     "https://www.w3.org/ns/solid/oidc-context.jsonld",
     "https://www.w3.org/ns/ac.jsonld"
   ],
-  "id": "https://app.example/#this",
+  "id": "https://app.example/#i",
   "client_name": "Example App",
   "capability": ["https://app.example/#capability-open"],
   "requirement": ["https://app.example/#requirement-scripts"]
 }</code></pre>
                   </figure>
-                  <p id="embedding-in-non-jsonld-formats">Description formats that are not JSON-LD can carry a capability description as a self-contained member with their own reference, whose value is a JSON-LD object using this specification's context. Processors of the host format ignore the member, and Consumers extract and process it as JSON-LD.</p>
+                  <p id="embedded-json-member">A JSON-based format that is not JSON-LD can carry a capability description as a self-contained member under its own key, whose value is a JSON-LD object using this specification's context. Processors of the host format ignore the member, and Consumers extract and process it as JSON-LD.</p>
                   <figure class="example listing" id="embedded-descriptions-manifest-example" rel="schema:hasPart" resource="#embedded-descriptions-manifest-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in a Web Application Manifest.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -1338,7 +1338,7 @@ https://app.example/#t=30,60</code></pre>
   "start_url": "/",
   "ac": {
     "@context": "https://www.w3.org/ns/ac.jsonld",
-    "id": "https://app.example/#this",
+    "id": "https://app.example/#i",
     "capability": ["https://app.example/#capability-open"],
     "requirement": ["https://app.example/#requirement-scripts"]
   }
@@ -1352,13 +1352,25 @@ https://app.example/#t=30,60</code></pre>
   "version": "1.0",
   "ac": {
     "@context": "https://www.w3.org/ns/ac.jsonld",
-    "id": "https://app.example/#this",
+    "id": "https://app.example/#i",
     "capability": ["https://app.example/#capability-open"],
     "requirement": ["https://app.example/#requirement-scripts"]
   }
 }</code></pre>
                   </figure>
                   <p id="embedded-member-name">The <code>ac</code> member name in the non-JSON-LD examples is illustrative: the key under which a host format carries an embedded capability description is declared by that format, not by this specification. Once the member is extracted and processed as JSON-LD, Discovery is unaffected: the application IRI remains the subject of the <code>capability</code> and <code>requirement</code> statements.</p>
+                  <p id="embedded-html-script">An HTML document can carry a capability description in a <code>&lt;script type="application/ld+json"&gt;</code> element, the standard mechanism for embedding JSON-LD in HTML. The element's content is a JSON-LD object using this specification's context, which a Consumer extracts and processes as JSON-LD.</p>
+                  <figure class="example listing" id="embedded-descriptions-html-script-example" rel="schema:hasPart" resource="#embedded-descriptions-html-script-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in an HTML document as a JSON-LD script.</span></figcaption>
+                    <pre property="schema:description"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "id": "https://app.example/#i",
+  "capability": ["https://app.example/#capability-open"],
+  "requirement": ["https://app.example/#requirement-scripts"]
+}
+&lt;/script&gt;</code></pre>
+                  </figure>
                 </div>
               </section>
             </div>
