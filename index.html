@@ -229,7 +229,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Application Capability</h1>
-          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-08-13T00:00:00Z">13 August 2026</time></p>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-08-17T00:00:00Z">17 August 2026</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -255,7 +255,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2026-08-13T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-08-13T10:58:10.735Z" property="schema:dateModified">2026-08-13</time></dd>
+              <dd><time content="2026-08-17T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-08-17T10:58:10.735Z" property="schema:dateModified">2026-08-17</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -950,7 +950,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             <div datatype="rdf:HTML" property="schema:description">
               <p>The starting point for discovery is a web resource containing a capability description. How the subject URI of an application is obtained is not constrained by this specification.</p>
                 
-              <p><a href="#capability-description" rel="rdfs:seeAlso">Capability Description</a> is a subject of <code>capability</code> or <code>requirement</code> statements. A <a href="#Consumer">Consumer</a> that obtains such a URI treats it as the subject of the capability description and dereferences it, directly or via redirect, requesting a format that carries the description, such as <code>application/ld+json</code>. In the case of a fragment URI, the Consumer fetches the document at the base IRI and locates the subject within it by matching the full URI. A <a href="#Consumer">Consumer</a> can obtain a capability description from a <a href="#Receiver">Receiver</a> that has accepted and stored it from a <a href="#Sender">Sender</a>.</p>
+              <p>A <a href="#capability-description" rel="rdfs:seeAlso">capability description</a> is the set of statements this specification defines about an application, sharing the application's IRI as their subject. A <a href="#Consumer">Consumer</a> that obtains that IRI treats it as the subject of the capability description and dereferences it, directly or via redirect, requesting a format that carries the description, such as <code>application/ld+json</code>. In the case of a fragment URI, the Consumer fetches the document at the base IRI and locates the subject within it by matching the full URI. A <a href="#Consumer">Consumer</a> can obtain a capability description from a <a href="#Receiver">Receiver</a> that has accepted and stored it from a <a href="#Sender">Sender</a>.</p>
               <p></p>
               <figure class="example listing" id="description-resource-request-response" rel="schema:hasPart" resource="#description-resource-request-response">
                 <figcaption property="schema:name"><span>Example</span>: <span>Discovery of a capability description resource.</span></figcaption>
@@ -968,16 +968,18 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="capability-description" inlist="" rel="schema:hasPart" resource="#capability-description">
                 <h3 property="schema:name">Capability Description</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The following properties are defined by this specification for the discovery of an application's capabilities and requirements.</p>
+                  <p>The following application-level properties are defined by this specification for describing an application.</p>
                   <dl>
                     <dt><dfn id="description-capability"><code>capability</code></dfn></dt>
                     <dd>Links the application to one or more <a href="#capability" rel="rdfs:seeAlso"><code>Capability</code></a> declarations.</dd>
                     <dt><dfn id="description-requirement"><code>requirement</code></dfn></dt>
-                    <dd>Links the application to one or more <a href="#requirement" rel="rdfs:seeAlso"><code>requirement</code></a> declarations.</dd>
+                    <dd>Links the application to one or more <a href="#requirement" rel="rdfs:seeAlso"><code>Requirement</code></a> declarations.</dd>
                     <dt><dfn id="description-inbox"><code>inbox</code></dfn></dt>
                     <dd>The IRI of an inbox to which a <a href="#Receiver">Receiver</a> can deliver notifications about the outcome of a requirements review. Applications that wish to receive such notifications can publish this property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>].</dd>
+                    <dt><dfn id="description-issuedPolicy"><code>issuedPolicy</code></dfn></dt>
+                    <dd>Links the application, as an <code>odrl:Party</code>, to a <a href="#policy" rel="rdfs:seeAlso">policy</a>, inline or referenced by IRI, it asserts about its own conduct, e.g., rules over data it processes or defaults it applies to resources it creates [<cite><a class="bibref" href="#bib-odrl-model">ODRL-MODEL</a></cite>]. Issuing a policy grants no privileges.</dd>
                   </dl>
-                  <p id="capability-requirement-attachment">The <code>capability</code> and <code>requirement</code> properties can be attached to any resource identifying an application. The <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery" rel="rdfs:seeAlso">Discovery</a>, which targets the subject of <code>capability</code> or <code>requirement</code> statements. See <a href="#embedded-descriptions" rel="rdfs:seeAlso">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
+                  <p id="capability-requirement-attachment">These properties can be attached to any resource identifying an application. The <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery" rel="rdfs:seeAlso">Discovery</a>, which targets the application as the subject of these statements. See <a href="#embedded-descriptions" rel="rdfs:seeAlso">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
                   <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Application capability description in JSON-LD. One capability per action, and capabilities can include their invocations. The type and descriptive properties come from host vocabularies (here <code>ac:Application</code> and <code>as:name</code>). Neither is required.</span></figcaption>
                     <pre property="schema:description"><code>{
@@ -996,7 +998,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     "https://app.example/#requirement-styles",
     "https://app.example/#requirement-connect",
     "https://app.example/#requirement-notifications"
-  ]
+  ],
+  "issuedPolicy": "https://app.example/#policy-conduct"
 }</code></pre>
                   </figure>
                 </div>
@@ -1279,10 +1282,6 @@ https://app.example/#t=30,60</code></pre>
                 <h3 property="schema:name">Policy</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>A <dfn id="dfn-policy">policy</dfn> is a resource of type <code>odrl:Policy</code> [<cite><a class="bibref" href="#bib-odrl-model">ODRL-MODEL</a></cite>] an application issues about its own conduct. Where a <a href="#dfn-capability">Capability</a> declares an affordance the application can perform, a policy declares a self-imposed constraint on exercising it. Both may use the same <code>odrl:action</code> terms. A self-issued permission compels no one, so an issued policy's substance is usually its prohibitions and obligations. An application links to one or more policies via <code>issuedPolicy</code>, as with <code>capability</code> and <code>requirement</code>.</p>
-                  <dl>
-                    <dt><dfn id="policy-issuedPolicy"><code>issuedPolicy</code></dfn></dt>
-                    <dd>Links the application, as an <code>odrl:Party</code>, to a policy, inline or referenced by IRI, it asserts about its own conduct, e.g., rules over data it processes or defaults it applies to resources it creates. Issuing a policy grants no privileges.</dd>
-                  </dl>
                   <p id="policies-as-declarations">Policies are declarations, not authorisations. A Consumer can compare an application's issued policies against policies issued by other parties, for example, a user's policies of type <code>odrl:Preference</code>, terms the issuer prefers but can renegotiate, discovered from the user's profile via the same <code>issuedPolicy</code> property, and surface discrepancies to the user before invocation, e.g., an action permitted by the application's policy but prohibited by the user's. Locating a user's profile is out of scope. How policies are matched is left to the Consumer, which may apply ODRL conflict-resolution strategies (<code>odrl:conflict</code>). Consumers are encouraged to ignore policy content they do not recognise rather than treat it as an error.</p>
                   <div class="note" id="comparing-policies" inlist="" rel="schema:hasPart" resource="#comparing-policies">
                     <h4 property="schema:name"><span>Note</span>: Comparing Policies</h4>
