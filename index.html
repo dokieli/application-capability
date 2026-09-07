@@ -229,7 +229,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Application Capability</h1>
-          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-08-17T00:00:00Z">17 August 2026</time></p>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-09-07T00:00:00Z">17 August 2026</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -255,7 +255,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2026-08-17T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-08-17T10:58:10.735Z" property="schema:dateModified">2026-08-17</time></dd>
+              <dd><time content="2026-09-07T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-09-07T10:58:10.735Z" property="schema:dateModified">2026-09-07</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -482,17 +482,17 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <figure class="example listing" id="explainer-example" rel="schema:hasPart" resource="#explainer-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A minimal capability description. The application displays a resource supplied via the <code>open</code> variable. A Consumer invoking it with <code>open = https://data.example/article</code> navigates to <code>https://app.example/#open=https%3A%2F%2Fdata.example%2Farticle</code>.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/",
   "capability": {
     "id": "#capability-open",
     "type": "Capability",
-    "action": "odrl:display",
+    "action": "http://www.w3.org/ns/odrl/2/display",
     "invocation": {
       "id": "#invoke-open",
       "type": "UriTemplateInvocation",
       "template": "#open={open}",
-      "mapping": [{ "variable": "open", "property": "ac:open" }]
+      "mapping": [{ "variable": "open", "property": "https://www.w3.org/ns/ac#open" }]
     }
   }
 }</code></pre>
@@ -581,7 +581,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="namespaces" inlist="" rel="schema:hasPart" resource="#namespaces">
                 <h3 property="schema:name">Namespaces</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The following prefixes and namespaces are used in this specification.</p>
+                  <p>In prose, a term defined in the JSON-LD context is referred to by its term name (for example, <code>Capability</code>), and any other IRI is written using the compact IRI (CURIE) convention [<cite><a class="bibref" href="#bib-curie">CURIE</a></cite>], in which a prefix abbreviates a namespace IRI (for example, <code>odrl:Policy</code> denotes <code>http://www.w3.org/ns/odrl/2/Policy</code>). The following prefixes and namespaces are used in this specification.</p>
                   <table id="prefixes-namespaces">
                     <caption>Prefixes and Namespaces</caption>
                     <thead>
@@ -654,68 +654,60 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="syntax" inlist="" rel="schema:hasPart" resource="#syntax">
                 <h3 property="schema:name">Syntax</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>This specification uses JSON-LD [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>] as the preferred data format, and <code>https://www.w3.org/ns/ac.jsonld</code> as a URI for the JSON-LD context and as a value of the <code>profile</code> parameter used for content negotiation.</p>
+                  <p>This specification uses JSON-LD [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>] as the preferred data format. The JSON-LD context for the current version is <code>https://www.w3.org/ns/ac/v1rc1</code>. Content negotiation uses <code>https://www.w3.org/ns/ac</code> as the value of the <code>profile</code> parameter, a version-independent identifier for an application capability description.</p>
                   <div class="note" id="jsonld-context-temporary-inclusion" inlist="" rel="schema:hasPart" resource="#jsonld-context-temporary-inclusion">
                     <h4 property="schema:name"><span>Note</span>: Temporary Inclusion</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>The JSON-LD context and the vocabulary outlined in this section are temporarily included here. Once the JSON-LD context document and the vocabulary are published, they will be the normative references.</p>
+                      <p>The JSON-LD context and the vocabulary outlined in this section are temporarily included here. Once the JSON-LD context document and the vocabulary are published, they will be the normative references. The context is versioned and immutable; <code>https://www.w3.org/ns/ac/v1rc1</code> is a release candidate for early deployments, and the final release will be published at <code>https://www.w3.org/ns/ac/v1</code>.</p>
                     </div>
                   </div>
                   <figure class="listing" id="jsonld-context" rel="schema:hasPart" resource="#jsonld-context">
-                    <figcaption property="schema:name">JSON-LD context (<code>https://www.w3.org/ns/ac.jsonld</code>)</figcaption>
+                    <figcaption property="schema:name">JSON-LD context (<code>https://www.w3.org/ns/ac/v1rc1</code>)</figcaption>
                     <pre><code datatype="rdf:JSON" property="schema:description">{
   "@context": {
     "@version": 1.1,
     "@protected": true,
-    "ac":      "https://www.w3.org/ns/ac#",
-    "as":      "https://www.w3.org/ns/activitystreams#",
-    "dpv":     "https://w3id.org/dpv#",
-    "hydra":   "http://www.w3.org/ns/hydra/core#",
-    "ldp":     "http://www.w3.org/ns/ldp#",
-    "oa":      "http://www.w3.org/ns/oa#",
-    "odrl":    "http://www.w3.org/ns/odrl/2/",
     "id":   "@id",
     "type": "@type",
-    "Accept": "as:Accept",
-    "accept": "ac:accept",
-    "action": {"@id": "ac:action", "@type": "@id"},
-    "actor": {"@id": "as:actor", "@type": "@id"},
-    "browserPermission": "ac:browserPermission",
-    "Capability": "ac:Capability",
-    "capability": {"@id": "ac:capability", "@type": "@id"},
-    "cspDirective": "ac:cspDirective",
-    "destination": {"@id": "ac:destination", "@type": "@id"},
-    "hasPurpose": {"@id": "dpv:hasPurpose", "@type": "@id"},
-    "inbox": {"@id": "ldp:inbox", "@type": "@id"},
-    "Invocation": "ac:Invocation",
-    "invocation": {"@id": "ac:invocation", "@type": "@id"},
-    "issuedPolicy": {"@id": "odrl:issuedPolicy", "@type": "@id"},
-    "login": {"@id": "ac:login", "@type": "@id"},
-    "mapping": "hydra:mapping",
-    "object": {"@id": "as:object", "@type": "@id"},
-    "open": {"@id": "ac:open", "@type": "@id"},
-    "output": "ac:output",
-    "property": {"@id": "hydra:property", "@type": "@id"},
-    "proxy": {"@id": "ac:proxy", "@type": "@id"},
-    "Reject": "as:Reject",
-    "Request": "ac:Request",
-    "Requirement": "ac:Requirement",
-    "requirement": {"@id": "ac:requirement", "@type": "@id"},
-    "resourceType": {"@id": "ac:resourceType", "@type": "@id"},
-    "search": "ac:search",
-    "selector": {"@id": "oa:hasSelector", "@type": "@id"},
-    "state": {"@id": "oa:hasState", "@type": "@id"},
-    "shape": {"@id": "ac:shape", "@type": "@id"},
-    "summary": "as:summary",
-    "template": "hydra:template",
-    "UriTemplateInvocation": "ac:UriTemplateInvocation",
-    "variable": "hydra:variable"
+    "Accept": "https://www.w3.org/ns/activitystreams#Accept",
+    "accept": "https://www.w3.org/ns/ac#accept",
+    "action": {"@id": "https://www.w3.org/ns/ac#action", "@type": "@id"},
+    "actor": {"@id": "https://www.w3.org/ns/activitystreams#actor", "@type": "@id"},
+    "browserPermission": "https://www.w3.org/ns/ac#browserPermission",
+    "Capability": "https://www.w3.org/ns/ac#Capability",
+    "capability": {"@id": "https://www.w3.org/ns/ac#capability", "@type": "@id"},
+    "cspDirective": "https://www.w3.org/ns/ac#cspDirective",
+    "destination": {"@id": "https://www.w3.org/ns/ac#destination", "@type": "@id"},
+    "hasPurpose": {"@id": "https://w3id.org/dpv#hasPurpose", "@type": "@id"},
+    "inbox": {"@id": "http://www.w3.org/ns/ldp#inbox", "@type": "@id"},
+    "Invocation": "https://www.w3.org/ns/ac#Invocation",
+    "invocation": {"@id": "https://www.w3.org/ns/ac#invocation", "@type": "@id"},
+    "issuedPolicy": {"@id": "http://www.w3.org/ns/odrl/2/issuedPolicy", "@type": "@id"},
+    "login": {"@id": "https://www.w3.org/ns/ac#login", "@type": "@id"},
+    "mapping": "http://www.w3.org/ns/hydra/core#mapping",
+    "object": {"@id": "https://www.w3.org/ns/activitystreams#object", "@type": "@id"},
+    "open": {"@id": "https://www.w3.org/ns/ac#open", "@type": "@id"},
+    "output": "https://www.w3.org/ns/ac#output",
+    "property": {"@id": "http://www.w3.org/ns/hydra/core#property", "@type": "@id"},
+    "proxy": {"@id": "https://www.w3.org/ns/ac#proxy", "@type": "@id"},
+    "Reject": "https://www.w3.org/ns/activitystreams#Reject",
+    "Request": "https://www.w3.org/ns/ac#Request",
+    "Requirement": "https://www.w3.org/ns/ac#Requirement",
+    "requirement": {"@id": "https://www.w3.org/ns/ac#requirement", "@type": "@id"},
+    "resourceType": {"@id": "https://www.w3.org/ns/ac#resourceType", "@type": "@id"},
+    "search": "https://www.w3.org/ns/ac#search",
+    "selector": {"@id": "http://www.w3.org/ns/oa#hasSelector", "@type": "@id"},
+    "state": {"@id": "http://www.w3.org/ns/oa#hasState", "@type": "@id"},
+    "shape": {"@id": "https://www.w3.org/ns/ac#shape", "@type": "@id"},
+    "template": "http://www.w3.org/ns/hydra/core#template",
+    "UriTemplateInvocation": "https://www.w3.org/ns/ac#UriTemplateInvocation",
+    "variable": "http://www.w3.org/ns/hydra/core#variable"
   }
 }</code></pre>
                   </figure>
                   <p id="combining-jsonld-contexts">When this context is combined with other JSON-LD contexts, for example ActivityStreams in <a href="#request-notification" rel="rdfs:seeAlso">Request Notifications</a>, it is listed last so that its term definitions apply.</p>
                   <p id="typing-the-application">This context does not define a term for typing the application itself. A capability description subject can carry any type from its host vocabulary (for example <code>as:Application</code>, an OAuth client, a <code>doap:Project</code>, or a Web of Things Thing) or none at all. See <a href="#capability-description" rel="rdfs:seeAlso">Capability Description</a>.</p>
-                  <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as <code>as</code>, <code>hydra</code>, and <code>ldp</code>, retain the semantics of their defining specifications.</p>
+                  <p>The <code>ac</code> vocabulary defines the following classes and properties. Terms mapped to other vocabularies, such as ActivityStreams, Hydra, Linked Data Platform, ODRL, Web Annotation, and Data Privacy Vocabulary, retain the semantics of their defining specifications.</p>
                   <table id="classes">
                     <caption>Classes</caption>
                     <thead>
@@ -981,25 +973,28 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </dl>
                   <p id="capability-requirement-attachment">These properties can be attached to any resource identifying an application. The <code>Application</code> type is not required for conformance. Consumers process these properties by subject, consistent with <a href="#discovery" rel="rdfs:seeAlso">Discovery</a>, which targets the application as the subject of these statements. See <a href="#embedded-descriptions" rel="rdfs:seeAlso">Embedded Descriptions</a> for usage alongside other vocabularies and within non-RDF formats.</p>
                   <figure class="example listing" id="capability-description-example" rel="schema:hasPart" resource="#capability-description-example">
-                    <figcaption property="schema:name"><span>Example</span>: <span>Application capability description in JSON-LD. One capability per action, and capabilities can include their invocations. The type and descriptive properties come from host vocabularies (here <code>ac:Application</code> and <code>as:name</code>). Neither is required.</span></figcaption>
+                    <figcaption property="schema:name"><span>Example</span>: <span>Application capability description in JSON-LD. One capability per action, referenced here by IRI. The type and descriptive properties come from host vocabularies (here ActivityStreams' <code>Application</code> and <code>name</code>) and are not required.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/ac/v1rc1"
+  ],
   "id": "https://app.example/#i",
-  "type": "ac:Application",
-  "as:name": "Example App",
+  "type": "Application",
+  "name": "Example App",
   "inbox": "https://app.example/inbox/",
   "capability": [
-    "https://app.example/#capability-view",
-    "https://app.example/#capability-edit",
-    "https://app.example/#capability-transform-html"
+    "#capability-view",
+    "#capability-edit",
+    "#capability-transform-html"
   ],
   "requirement": [
-    "https://app.example/#requirement-scripts",
-    "https://app.example/#requirement-styles",
-    "https://app.example/#requirement-connect",
-    "https://app.example/#requirement-notifications"
+    "#requirement-scripts",
+    "#requirement-styles",
+    "#requirement-connect",
+    "#requirement-notifications"
   ],
-  "issuedPolicy": "https://app.example/#policy-conduct"
+  "issuedPolicy": "#policy-conduct"
 }</code></pre>
                   </figure>
                 </div>
@@ -1035,52 +1030,52 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <figure class="example listing" id="capability-no-invocation-example" rel="schema:hasPart" resource="#capability-no-invocation-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A capability that advertises what the application can do without declaring how to invoke it. Consumers can surface it in a UI (e.g. a catalogue entry) but cannot construct an invocation IRI from it.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#capability-open",
   "type": "Capability",
-  "action": "odrl:display"
+  "action": "http://www.w3.org/ns/odrl/2/display"
 }</code></pre>
                   </figure>
                   <figure class="example listing" id="capability-open-example" rel="schema:hasPart" resource="#capability-open-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>An open capability with an invocation. No accept, output, or destination: the application opens any resource the Consumer provides.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#capability-open",
   "type": "Capability",
-  "action": "odrl:display",
-  "invocation": "https://app.example/#invoke-open"
+  "action": "http://www.w3.org/ns/odrl/2/display",
+  "invocation": "#invoke-open"
 }</code></pre>
                   </figure>
                   <figure class="example listing" id="capability-shared-invocation-example" rel="schema:hasPart" resource="#capability-shared-invocation-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>Two capabilities sharing one invocation by IRI reference. The Consumer selects by action (display versus modify), then follows the shared invocation IRI.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#capability-view",
   "type": "Capability",
   "accept": ["text/html", "text/markdown"],
-  "action": "odrl:display",
-  "invocation": "https://app.example/#invoke-open"
+  "action": "http://www.w3.org/ns/odrl/2/display",
+  "invocation": "#invoke-open"
 }</code></pre>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#capability-edit",
   "type": "Capability",
   "accept": ["text/html", "text/markdown"],
-  "action": "odrl:modify",
-  "invocation": "https://app.example/#invoke-open"
+  "action": "http://www.w3.org/ns/odrl/2/modify",
+  "invocation": "#invoke-open"
 }</code></pre>
                   </figure>
                   <figure class="example listing" id="capability-transform-example" rel="schema:hasPart" resource="#capability-transform-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A transform capability with all properties. The Consumer matches on accept and output format to select this capability, then invokes it with the resource to transform. The application delivers the result to the declared destination.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#capability-transform",
   "type": "Capability",
   "accept": "text/markdown",
-  "action": "odrl:transform",
+  "action": "http://www.w3.org/ns/odrl/2/transform",
   "output": "text/html",
   "destination": "https://storage.example/output/",
-  "invocation": "https://app.example/#invoke-transform"
+  "invocation": "#invoke-transform"
 }</code></pre>
                   </figure>
                 </div>
@@ -1131,14 +1126,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <figure class="example listing" id="uri-template-invocation-example" rel="schema:hasPart" resource="#uri-template-invocation-example">
                         <figcaption property="schema:name"><span>Example</span>: <span>Fragment-form invocation and its expansion, opening a resource for viewing.</span></figcaption>
                         <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#invoke-open",
   "type": "UriTemplateInvocation",
   "template": "#open={open}",
   "mapping": [
     {
       "variable": "open",
-      "property": "ac:open"
+      "property": "https://www.w3.org/ns/ac#open"
     }
   ]
 }
@@ -1151,13 +1146,13 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Farticle</code></pre>
                       <figure class="example listing" id="combined-invocation-example" rel="schema:hasPart" resource="#combined-invocation-example">
                         <figcaption property="schema:name"><span>Example</span>: <span>Fragment-form invocation combining open and output: the Consumer selects the transform capability whose <code>output</code> matches the desired <code>output</code> value, then constructs the IRI with both variables.</span></figcaption>
                         <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#invoke-transform",
   "type": "UriTemplateInvocation",
   "template": "#open={open}&amp;output={output}",
   "mapping": [
-    { "variable": "open", "property": "ac:open" },
-    { "variable": "output", "property": "ac:output" }
+    { "variable": "open", "property": "https://www.w3.org/ns/ac#open" },
+    { "variable": "output", "property": "https://www.w3.org/ns/ac#output" }
   ]
 }
 
@@ -1170,14 +1165,14 @@ https://app.example/#open=https%3A%2F%2Fdata.example%2Freport.md&amp;output=text
                       <figure class="example listing" id="invoke-selector-example" rel="schema:hasPart" resource="#invoke-selector-example">
                         <figcaption property="schema:name"><span>Example</span>: <span>Functional-form invocation with a <code>selector</code>, opening a resource focused on the segment a Web Annotation <code>TextQuoteSelector</code> identifies. The <code>selector(…)</code> syntax is defined by [<cite><a class="bibref" href="#bib-selectors-states">SELECTORS-STATES</a></cite>].</span></figcaption>
                         <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#invoke-selector",
   "type": "UriTemplateInvocation",
   "template": "#selector(type=TextQuoteSelector,prefix={prefix},exact={exact},suffix={suffix})",
   "mapping": [
-    { "variable": "prefix", "property": "oa:prefix" },
-    { "variable": "exact",  "property": "oa:exact" },
-    { "variable": "suffix", "property": "oa:suffix" }
+    { "variable": "prefix", "property": "http://www.w3.org/ns/oa#prefix" },
+    { "variable": "exact",  "property": "http://www.w3.org/ns/oa#exact" },
+    { "variable": "suffix", "property": "http://www.w3.org/ns/oa#suffix" }
   ]
 }
 
@@ -1191,7 +1186,7 @@ https://app.example/#selector(type=TextQuoteSelector,prefix=dokieli%20is%20an%20
                       <figure class="example listing" id="invoke-mediafragment-example" rel="schema:hasPart" resource="#invoke-mediafragment-example">
                         <figcaption property="schema:name"><span>Example</span>: <span>Query-form invocation carrying a Media Fragments [<cite><a class="bibref" href="#bib-media-frags">MEDIA-FRAGS</a></cite>] temporal segment, opening a clip from 30 to 60 seconds. The <code>t</code> dimension (a <code>start,end</code> time in seconds) is defined by Media Fragments. The field properties are application-defined.</span></figcaption>
                         <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#invoke-clip",
   "type": "UriTemplateInvocation",
   "template": "#t={start},{end}",
@@ -1253,11 +1248,11 @@ https://app.example/#t=30,60</code></pre>
                   <figure class="example listing" id="permissions-example" rel="schema:hasPart" resource="#permissions-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A requirement declaring a CSP directive, with its purpose annotation. One declaration per requirement. The application's other CSP requirements (styles, connect) follow the same pattern.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#requirement-scripts",
   "type": "Requirement",
   "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
-  "hasPurpose": "dpv:ServiceProvision"
+  "hasPurpose": "https://w3id.org/dpv#ServiceProvision"
 }</code></pre>
                   </figure>
                   <div class="note" id="csp-requirement-scope" inlist="" rel="schema:hasPart" resource="#csp-requirement-scope">
@@ -1269,11 +1264,11 @@ https://app.example/#t=30,60</code></pre>
                   <figure class="example listing" id="browser-permission-example" rel="schema:hasPart" resource="#browser-permission-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A requirement declaring a browser permission, with its purpose annotation.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#requirement-notifications",
   "type": "Requirement",
   "browserPermission": "notifications",
-  "hasPurpose": "dpv:CommunicationManagement"
+  "hasPurpose": "https://w3id.org/dpv#CommunicationManagement"
 }</code></pre>
                   </figure>
                 </div>
@@ -1298,14 +1293,14 @@ https://app.example/#t=30,60</code></pre>
                   <figure class="example listing" id="policy-example" rel="schema:hasPart" resource="#policy-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>An application issues a policy prohibiting itself from selling data it processes.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#i",
   "issuedPolicy": {
-    "id": "https://app.example/#policy-conduct",
-    "type": "odrl:Policy",
-    "odrl:prohibition": {
-      "odrl:assignee": { "id": "https://app.example/#i" },
-      "odrl:action": { "id": "odrl:sell" }
+    "id": "#policy-conduct",
+    "type": "http://www.w3.org/ns/odrl/2/Policy",
+    "http://www.w3.org/ns/odrl/2/prohibition": {
+      "http://www.w3.org/ns/odrl/2/assignee": { "id": "#i" },
+      "http://www.w3.org/ns/odrl/2/action": { "id": "http://www.w3.org/ns/odrl/2/sell" }
     }
   }
 }</code></pre>
@@ -1318,14 +1313,15 @@ https://app.example/#t=30,60</code></pre>
                   <p><em>This section is non-normative.</em></p>
                   <p>The properties defined in <a href="#capability-description" rel="rdfs:seeAlso">Capability Description</a> attach to any resource identifying an application. An application already described by another vocabulary (e.g., Web Application Manifest, Web Extensions manifest, Description of a Project, Activity Vocabulary, schema.org, Web of Things, or OAuth) can therefore carry them on its existing subject without restructuring:</p>
                   <figure class="example listing" id="embedded-descriptions-jsonld-example" rel="schema:hasPart" resource="#embedded-descriptions-jsonld-example">
-                    <figcaption property="schema:name"><span>Example</span>: <span>Capability and requirements statements on a subject described by another vocabulary.</span></figcaption>
+                    <figcaption property="schema:name"><span>Example</span>: <span>Capability and requirements statements on a subject described by another vocabulary, here a Web of Things Thing Description.</span></figcaption>
                     <pre property="schema:description"><code>{
   "@context": [
-    "https://www.w3.org/ns/solid/oidc-context.jsonld",
-    "https://www.w3.org/ns/ac.jsonld"
+    "https://www.w3.org/2022/wot/td/v1.1",
+    "https://www.w3.org/ns/ac/v1rc1"
   ],
   "id": "https://app.example/#i",
-  "client_name": "Example App",
+  "type": "Thing",
+  "title": "Example App",
   "capability": ["https://app.example/#capability-open"],
   "requirement": ["https://app.example/#requirement-scripts"]
 }</code></pre>
@@ -1337,7 +1333,7 @@ https://app.example/#t=30,60</code></pre>
   "name": "Example App",
   "start_url": "/",
   "ac": {
-    "@context": "https://www.w3.org/ns/ac.jsonld",
+    "@context": "https://www.w3.org/ns/ac/v1rc1",
     "id": "https://app.example/#i",
     "capability": ["https://app.example/#capability-open"],
     "requirement": ["https://app.example/#requirement-scripts"]
@@ -1351,7 +1347,22 @@ https://app.example/#t=30,60</code></pre>
   "name": "Example Extension",
   "version": "1.0",
   "ac": {
-    "@context": "https://www.w3.org/ns/ac.jsonld",
+    "@context": "https://www.w3.org/ns/ac/v1rc1",
+    "id": "https://app.example/#i",
+    "capability": ["https://app.example/#capability-open"],
+    "requirement": ["https://app.example/#requirement-scripts"]
+  }
+}</code></pre>
+                  </figure>
+                  <figure class="example listing" id="embedded-descriptions-oidc-example" rel="schema:hasPart" resource="#embedded-descriptions-oidc-example">
+                    <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in OpenID Connect client registration metadata.</span></figcaption>
+                    <pre property="schema:description"><code>{
+  "client_id": "https://app.example/#i",
+  "client_name": "Example App",
+  "redirect_uris": ["https://app.example/callback"],
+  "grant_types": ["authorization_code"],
+  "ac": {
+    "@context": "https://www.w3.org/ns/ac/v1rc1",
     "id": "https://app.example/#i",
     "capability": ["https://app.example/#capability-open"],
     "requirement": ["https://app.example/#requirement-scripts"]
@@ -1364,7 +1375,7 @@ https://app.example/#t=30,60</code></pre>
                     <figcaption property="schema:name"><span>Example</span>: <span>Capability description embedded in an HTML document as a JSON-LD script.</span></figcaption>
                     <pre property="schema:description"><code>&lt;script type="application/ld+json"&gt;
 {
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#i",
   "capability": ["https://app.example/#capability-open"],
   "requirement": ["https://app.example/#requirement-scripts"]
@@ -1390,7 +1401,7 @@ https://app.example/#t=30,60</code></pre>
                     <pre property="schema:description"><code>{
   "@context": [
     "https://www.w3.org/ns/activitystreams",
-    "https://www.w3.org/ns/ac.jsonld"
+    "https://www.w3.org/ns/ac/v1rc1"
   ],
   "type": "Request",
   "actor": "https://agent.example/#i",
@@ -1410,7 +1421,7 @@ https://app.example/#t=30,60</code></pre>
                     <pre property="schema:description"><code>{
   "@context": [
     "https://www.w3.org/ns/activitystreams",
-    "https://www.w3.org/ns/ac.jsonld"
+    "https://www.w3.org/ns/ac/v1rc1"
   ],
   "type": "Accept",
   "actor": "https://example.org/#i",
@@ -1429,19 +1440,19 @@ https://app.example/#t=30,60</code></pre>
                   <figure class="example listing" id="requirements-review-example" rel="schema:hasPart" resource="#requirements-review-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>A capability description declaring CSP requirements, and a server response reflecting the approved requirements in responses served in the context of the application.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#i",
-  "type": "ac:Application",
+  "type": "https://www.w3.org/ns/activitystreams#Application",
   "inbox": "https://app.example/inbox/",
   "requirement": [
     {
-      "id": "https://app.example/#requirement-scripts",
+      "id": "#requirement-scripts",
       "type": "Requirement",
       "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
-      "hasPurpose": "dpv:ServiceProvision"
+      "hasPurpose": "https://w3id.org/dpv#ServiceProvision"
     },
     {
-      "id": "https://app.example/#requirement-connect",
+      "id": "#requirement-connect",
       "type": "Requirement",
       "cspDirective": "connect-src 'self' https:"
     }
@@ -1464,17 +1475,16 @@ https://app.example/#t=30,60</code></pre>
                     <pre property="schema:description"><code>{
   "@context": [
     "https://www.w3.org/ns/activitystreams",
-    "https://www.w3.org/ns/ac.jsonld",
-    { "acl": "http://www.w3.org/ns/auth/acl#" }
+    "https://www.w3.org/ns/ac/v1rc1"
   ],
   "type": "Request",
   "actor": "https://agent.example/#i",
   "target": "https://example.org/article",
   "object": {
-    "type": "acl:Authorization",
-    "acl:agent": { "id": "https://agent.example/#i" },
-    "acl:accessTo": { "id": "https://example.org/article" },
-    "acl:mode": [ { "id": "acl:Read" }, { "id": "acl:Write" } ]
+    "type": "http://www.w3.org/ns/auth/acl#Authorization",
+    "http://www.w3.org/ns/auth/acl#agent": { "id": "https://agent.example/#i" },
+    "http://www.w3.org/ns/auth/acl#accessTo": { "id": "https://example.org/article" },
+    "http://www.w3.org/ns/auth/acl#mode": [ { "id": "http://www.w3.org/ns/auth/acl#Read" }, { "id": "http://www.w3.org/ns/auth/acl#Write" } ]
   }
 }</code></pre>
                   </figure>
@@ -1501,7 +1511,7 @@ https://app.example/#t=30,60</code></pre>
               <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox">
                 <h3 property="schema:name">Inbox</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An inbox is a resource to which notifications are delivered [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. A target resource advertises its inbox, in the <code>Link</code> header and/or as an <code>ldp:inbox</code> relation in its body, and senders and consumers discover it from the target.</p>
+                  <p>An inbox is a resource to which notifications are delivered [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>]. A target resource advertises its inbox, in the <code>Link</code> header and/or as an <code>inbox</code> relation in its body, and senders and consumers discover it from the target.</p>
                   <p id="inbox-directions">Both an application and a <a href="#Receiver">Receiver</a> advertise inboxes, for opposite directions of the same exchange:</p>
                   <ul>
                     <li>An application advertises an inbox in its capability description, through the <a href="#description-inbox"><code>inbox</code></a> property, so that it can receive feedback about its requests, such as the outcome of a <a href="#requirements-review" rel="rdfs:seeAlso">Requirements Review</a>.</li>
@@ -1569,7 +1579,7 @@ https://app.example/#t=30,60</code></pre>
                   <figure class="example listing" id="explicit-mapping-example" rel="schema:hasPart" resource="#explicit-mapping-example">
                     <figcaption property="schema:name"><span>Example</span>: <span>An extension variable declared via an explicit mapping. The application defines the property that gives the variable its semantics. Consumers that recognise the property can supply a value, and receiving applications treat it as untrusted input like any other variable.</span></figcaption>
                     <pre property="schema:description"><code>{
-  "@context": "https://www.w3.org/ns/ac.jsonld",
+  "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#invoke-graph",
   "type": "UriTemplateInvocation",
   "template": "#graph={graph}",
@@ -1962,6 +1972,7 @@ https://app.example/#t=30,60</code></pre>
               <ul>
                 <li>elf Pavlik</li>
                 <li>JG10</li>
+                <li>Manu Sporny</li>
                 <li>Marcos Caceres</li>
                 <li>Michael Peters</li>
                 <li>Sarven Capadisli</li>
@@ -2021,6 +2032,8 @@ https://app.example/#t=30,60</code></pre>
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-curie">[CURIE]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/curie/" rel="cito:citesAsAuthority">CURIE Syntax 1.0</a></cite>. Mark Birbeck; Shane McCarron.  W3C. 16 December 2010. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/curie/">https://www.w3.org/TR/curie/</a></dd>
                     <dt id="bib-dpv-risk">[DPV-RISK]</dt>
                     <dd><cite><a href="https://w3id.org/dpv/risk" rel="cito:citesAsPotentialSolution">Risk Extension</a></cite>. Harshvardhan J. Pandit.  W3C Data Privacy Vocabularies and Controls Community Group. 25 February 2026. Final Community Group Report. URL: <a href="https://w3id.org/dpv/risk">https://w3id.org/dpv/risk</a></dd>
                     <dt id="bib-fetch">[FETCH]</dt>
