@@ -1251,14 +1251,14 @@ https://app.example/#t=30,60</code></pre>
   "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#requirement-scripts",
   "type": "Requirement",
-  "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
+  "cspDirective": "script-src https://app.example/scripts/",
   "hasPurpose": "https://w3id.org/dpv#ServiceProvision"
 }</code></pre>
                   </figure>
                   <div class="note" id="csp-requirement-scope" inlist="" rel="schema:hasPart" resource="#csp-requirement-scope">
                     <h4 property="schema:name"><span>Note</span>: Scope of CSP Requirements</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>A CSP directive governs the document it is served with. For example, an article created by the application that includes <code>&lt;script src="https://app.example/scripts/app.js"&gt;</code> depends on the <code>script-src</code> directive the <a href="#Receiver">Receiver</a> serves with it, whichever application opens it. An embedded frame likewise depends on <code>frame-src</code>. Where a resource embeds the application, the application's own requirements are part of that content's needs: the embedded application depends on directives such as <code>connect-src</code> for the resources it reaches from within the article. The declaration can also inform a server that hosts, or is considering hosting, the application itself, where the application is the document. It does not concern resources that an application deployed at its own origin accesses through cross-origin requests: CSP served with a fetched resource has no effect on the fetching application. That interaction is governed by Cross-Origin Resource Sharing and access control.</p>
+                      <p>A CSP directive governs the document it is served with. For example, an article created by the application that includes <code>&lt;script src="https://app.example/scripts/app.js"&gt;</code> depends on the <code>script-src</code> directive the <a href="#Receiver">Receiver</a> serves with it, whichever application opens it. An embedded frame likewise depends on <code>frame-src</code>. Where a resource embeds the application, the application's own requirements are part of that content's needs: the embedded application depends on directives such as <code>connect-src</code> for the resources it reaches from within the article. The declaration can also inform a server that hosts, or is considering hosting, the application itself, where the application is the document. It does not concern resources that an application deployed at its own origin accesses through cross-origin requests: CSP served with a fetched resource has no effect on the fetching application. That interaction is governed by Cross-Origin Resource Sharing and access control. Keyword sources such as <code>'self'</code> are evaluated against the origin of the document the policy is served with, not the application's origin; an application names its own sources explicitly, as the path prefix <code>https://app.example/scripts/</code> above, which also covers scripts it loads progressively.</p>
                     </div>
                   </div>
                   <figure class="example listing" id="browser-permission-example" rel="schema:hasPart" resource="#browser-permission-example">
@@ -1438,7 +1438,7 @@ https://app.example/#t=30,60</code></pre>
                   <p id="embedded-application-content-security-policy">An application embedded in or injected into an arbitrary HTML document depends on the server hosting that document to issue appropriate Content Security Policy (CSP) headers. Without server cooperation, the browser can block scripts, fetches, or other operations the application requires in order to function. A request can ask a Receiver to review the requirements declared in an application's capability description and act on them, for example by including approved CSP directives in responses served in the context of that application.</p>
                   <p>A <a href="#Sender">Sender</a> publishes a capability description in which the application links to one or more <a href="#requirement" rel="rdfs:seeAlso">Requirement</a> declarations via <code>requirement</code>. The <a href="#Receiver">Receiver</a> obtains the application IRI, whether at registration time, during policy setup, on first encounter with the application, or from a <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>, dereferences the capability description, and reviews the declared requirements as described in <a href="#request-notification" rel="rdfs:seeAlso">Request Notification</a>. A review covers only the requirements the Receiver recognises. When serving responses in the context of that application, the Receiver includes CSP headers reflecting the approved requirements.</p>
                   <figure class="example listing" id="requirements-review-example" rel="schema:hasPart" resource="#requirements-review-example">
-                    <figcaption property="schema:name"><span>Example</span>: <span>A capability description declaring CSP requirements, and a server response reflecting the approved requirements in responses served in the context of the application.</span></figcaption>
+                    <figcaption property="schema:name"><span>Example</span>: <span>A capability description declaring CSP requirements, and a Receiver's response to a request for a document created with the application, reflecting the approved requirements.</span></figcaption>
                     <pre property="schema:description"><code>{
   "@context": "https://www.w3.org/ns/ac/v1rc1",
   "id": "https://app.example/#i",
@@ -1448,7 +1448,7 @@ https://app.example/#t=30,60</code></pre>
     {
       "id": "#requirement-scripts",
       "type": "Requirement",
-      "cspDirective": "script-src 'self' https://app.example/scripts/app.js",
+      "cspDirective": "script-src https://app.example/scripts/",
       "hasPurpose": "https://w3id.org/dpv#ServiceProvision"
     },
     {
@@ -1458,9 +1458,11 @@ https://app.example/#t=30,60</code></pre>
     }
   ]
 }</code></pre>
-                    <pre property="schema:description"><code>HTTP/1.1 200 OK</code>
+                    <pre property="schema:description"><code>GET /article HTTP/1.1</code>
+<code>Host: example.org</code>
+<code>HTTP/1.1 200 OK</code>
 <code>Content-Type: text/html</code>
-<code>Content-Security-Policy: script-src 'self' https://app.example/scripts/app.js;</code>
+<code>Content-Security-Policy: script-src https://app.example/scripts/;</code>
 <code>                         connect-src 'self' https:</code></pre>
                   </figure>
                 </div>
