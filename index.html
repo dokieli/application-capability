@@ -229,7 +229,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="">
         <div class="head">
           <h1 property="schema:name">Application Capability</h1>
-          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-10-10T00:00:00Z">10 October 2026</time></p>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types/#reports" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2026-10-24T00:00:00Z">24 October 2026</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -255,7 +255,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2026-10-10T10:58:10.735Z" datatype="xsd:dateTime" datetime="2026-10-10T10:58:10.735Z" property="schema:dateModified">2026-10-10</time></dd>
+              <dd><time content="2026-10-24T09:17:31.246Z" datatype="xsd:dateTime" datetime="2026-10-24T09:17:31.246Z" property="schema:dateModified">2026-10-24</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -329,7 +329,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <p>Application Capability (<abbr title="Application Capability">AC</abbr>) defines a structured description of an application's affordances: the actions it can perform, how to invoke them, and what it requires from the environment to function. Consumers, including servers, <a href="https://www.w3.org/TR/web-user-agents/">web user agents</a>, and applications, can discover and process these descriptions to make informed decisions about accessing, presenting, and interacting with resources.</p>
+              <p>Application Capability (<abbr title="Application Capability">AC</abbr>) defines a structured description of an application's affordances: the actions it can perform, how to invoke them, and what it requires from the environment to function. Consumers, including servers, <a href="https://www.w3.org/TR/user-agents/">user agents</a>, and applications, can discover and process these descriptions to make informed decisions about accessing, presenting, and interacting with resources.</p>
             </div>
           </section>
           <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
@@ -1211,7 +1211,7 @@ https://app.example/#t=30,60</code></pre>
                 <h3 property="schema:name">Invocation Properties</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p id="resolving-variables-by-property">This section defines properties that give invocation variables their meaning. A template variable is a local placeholder. Its meaning comes from the property it is mapped to, whether a property defined here or an application-defined one. A Consumer resolves each variable by its property, not by its name, and can still expand the template with the variables whose property it recognises. Using a property's local name as the variable name, for example <code>{open}</code> for <a href="#variable-open"><code>open</code></a>, is a convention for readability.</p>
-                  <p>The properties defined here parameterise the IRI used to invoke an application. They do not represent user-activated operations or UI events within the running application. Those are the concern of the <a href="https://www.w3.org/TR/web-user-agents/">user agent</a> and the relevant browser specifications.</p>
+                  <p>The properties defined here parameterise the IRI used to invoke an application. They do not represent user-activated operations or UI events within the running application. Those are the concern of the <a href="https://www.w3.org/TR/user-agents/">user agent</a> and the relevant browser specifications.</p>
                   <p>Each entry below is an invocation property, shown by its conventional variable name. The name is what you use in a template and mapping. The property it denotes is what a Consumer resolves.</p>
                   <dl>
                     <dt><dfn id="variable-open"><code>open</code></dfn></dt>
@@ -1615,7 +1615,7 @@ https://app.example/#t=30,60</code></pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                   <p about="" id="application-honesty" rel="spec:advisement" resource="#application-honesty"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to declare their permission needs accurately and completely. Understating requirements in order to gain access, or overstating them to acquire unnecessary capabilities, undermines the trust model on which this specification relies.</span></p>
-                  <p about="" id="application-user-primacy" rel="spec:advisement" resource="#application-user-primacy"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use permissions granted by a Receiver exclusively in the interests of the user on whose behalf those permissions were granted, consistent with the declared purpose expressed via <code>hasPurpose</code> in the capability description.</span></p>
+                  <p about="" id="application-user-primacy" rel="spec:advisement" resource="#application-user-primacy"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to use permissions granted by a Receiver exclusively in the interests of the user on whose behalf those permissions were granted, consistent with the declared purpose expressed via <code>hasPurpose</code> in the capability description.</span> This reflects the general principle that software acting on a user's behalf serves that user's interests [<cite><a class="bibref" href="#bib-user-agents">USER-AGENTS</a></cite>].</p>
                   <p about="" id="application-invocation-stability" rel="spec:advisement" resource="#application-invocation-stability"><span property="spec:statement">Senders are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to maintain stability in the URI Templates declared in their capability descriptions, since Consumers and catalogues can cache and rely on these patterns. Where changes are necessary, Senders <span rel="spec:advisementLevel" resource="spec:Could">could</span> provide a transition period during which both the old and new patterns remain functional.</span></p>
                 </div>
               </section>
@@ -2049,9 +2049,11 @@ https://app.example/#t=30,60</code></pre>
                     <dt id="bib-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Security and Privacy</a></cite>. Theresa O'Connor; Peter Snyder.  W3C. 18 April 2025. W3C Group Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
                     <dt id="bib-societal-impact-questionnaire">[SOCIETAL-IMPACT-QUESTIONNAIRE]</dt>
-                    <dd><cite><a href="https://www.w3.org/TR/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Societal Impact</a></cite>. Sarven Capadisli; Lola Odelola.  W3C. 19 March 2026. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/societal-impact-questionnaire/">https://www.w3.org/TR/societal-impact-questionnaire/</a></dd>
+                    <dd><cite><a href="https://www.w3.org/TR/societal-impact-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Societal Impact</a></cite>. Sarven Capadisli; Lola Odelola.  W3C. 22 October 2026. W3C Group Note. URL: <a href="https://www.w3.org/TR/societal-impact-questionnaire/">https://www.w3.org/TR/societal-impact-questionnaire/</a></dd>
                     <dt id="bib-threat-model-web">[THREAT-MODEL-WEB]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/threat-model-web/" rel="cito:obtainsBackgroundFrom">Threat Model for the Web</a></cite>. Simone Onofri; Joe Andrieu; Giovanni Corti.  W3C. 21 July 2026. W3C Group Note Draft. URL: <a href="https://www.w3.org/TR/threat-model-web/">https://www.w3.org/TR/threat-model-web/</a></dd>
+                    <dt id="bib-user-agents">[USER-AGENTS]</dt>
+                    <dd><cite><a href="https://www.w3.org/TR/user-agents/" rel="cito:obtainsBackgroundFrom">User Agents</a></cite>. Jeffrey Yasskin; Sarven Capadisli.  W3C. 22 October 2026. W3C Group Note. URL: <a href="https://www.w3.org/TR/user-agents/">https://www.w3.org/TR/user-agents/</a></dd>
                   </dl>
                 </div>
               </section>
